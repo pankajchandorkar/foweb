@@ -1,0 +1,68 @@
+.span_show {
+  font-size: 0.9rem;
+  margin-right: 5px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 11px;
+  left: 5px;
+}
+
+#txtTripTypes {
+  padding-left: 20px;
+  font-size: 0.8rem;
+}
+#txtTripTypes-label[data-shrink="false"] {
+  padding-left: 15px;
+  font-size: 0.8rem;
+}
+
+#txtChartFromDate,
+#txtChartToDate {
+  padding-left: 30px;
+  font-size:0.8rem;
+}
+
+.btn-orange,
+.btn-orange-outline {
+  text-transform: none !important;
+}
+
+
+.for_resultblock{
+  background:#F1F1F1;
+  min-height: 84vh;
+}
+
+/* for mobile */
+@media (max-width: 768px) {
+  .btn-orange,
+  .btn-orange-outline {
+    min-width: 100px !important;
+  }
+}
+
+/* for tablet */
+@media (min-width: 768px) {
+  .btn-orange,
+  .btn-orange-outline {
+    min-width: 100px !important;
+  }
+}
+
+/* for laptop */
+@media (min-width: 992px) {
+  .btn-orange,
+  .btn-orange-outline {
+    min-width: 80px !important;
+  }
+}
+
+/* for desktop */
+@media (min-width: 1200px) {
+  .btn-orange,
+  .btn-orange-outline {
+    min-width: 102px !important;
+  }
+}

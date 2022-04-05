@@ -1,0 +1,119 @@
+.scheDetails {
+  //border:solid 1px red;
+
+  &.Blocked {
+    & .percentage {
+      color: #ec3237;
+    }
+    & .gross {
+      color: #ec3237;
+    }
+    & .avgfare {
+      color: #ec3237;
+    }
+  }
+  &.Stop {
+    & .percentage {
+      color: #ec3237;
+    }
+    & .gross {
+      color: #ec3237;
+    }
+    & .avgfare {
+      color: #ec3237;
+    }
+  }
+
+  &.Inactive {
+    & .scheRow {
+      color: #7f7f7f;
+    }
+  }
+}
+.scheRow {
+  display: flex;
+  width: 100%;
+  padding-bottom: 7px;
+
+  .scheTitle {
+    width: 28%;
+    text-align: left;
+
+    &.bold {
+      font-weight: 600;
+    }
+  }
+
+  .busType {
+    width: 28%;
+    text-align: left;
+  }
+
+  .scheTime {
+    width: 44%;
+    text-align: right;
+    &.underline {
+      text-decoration: underline;
+    }
+    & .seatBooked {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+      float: right;
+    }
+  }
+
+  &.btmBrd {
+    border-bottom: solid 1px #eeeeee;
+  }
+
+  & .percentage {
+    width: 28%;
+    padding-top: 10px;
+
+    padding-bottom: 5px;
+  }
+
+  & .status {
+    width: 22%;
+    padding-top: 10px;
+
+    padding-bottom: 5px;
+  }
+
+  & .gross {
+    width: 25%;
+    padding-top: 10px;
+
+    text-align: right;
+    padding-bottom: 5px;
+    & span {
+      font-weight: 600;
+    }
+  }
+
+  & .avgfare {
+    width: 25%;
+    padding-top: 10px;
+
+    text-align: right;
+    padding-bottom: 5px;
+    & span {
+      font-weight: 600;
+    }
+  }
+}
+
+.card-action-left {
+  width: 50%;
+  text-align: center;
+  border-right: solid 1px #c9cfd5;
+  padding: 13px;
+}
+
+.card-action-right {
+  width: 50%;
+  text-align: center;
+  padding: 13px;
+}

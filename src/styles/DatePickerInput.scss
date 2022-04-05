@@ -1,0 +1,22 @@
+.MuiPickersCalendarHeader-daysHeader span:nth-child(6),
+.MuiPickersCalendarHeader-daysHeader span:nth-child(7) {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+}
+.MuiPickersCalendar-week div:nth-child(6) .MuiTypography-body2,
+.MuiPickersCalendar-week div:nth-child(7) .MuiTypography-body2 {
+  font-weight: 700;
+}
+
+
+
+// .MuiFormControl-root .MuiFormLabel-root.Mui-focused {
+//   color: red;
+// }
+
+// .MuiFormControl-root
+//   .MuiOutlinedInput-root.Mui-focused
+//   .MuiOutlinedInput-notchedOutline {
+//   border-color: red;
+//   border-width: 2px;
+// }
