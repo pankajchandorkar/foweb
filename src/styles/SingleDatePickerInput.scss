@@ -1,0 +1,156 @@
+:root {
+  --searchBoxBgColor: #3f51b5;
+  --buttonColor: #3f51b5;
+}
+
+.SingleDatePickerInput {
+  background: transparent;
+}
+.DateInput__block {
+  background: transparent;
+}
+.DateInput_input {
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 300;
+  border: 0;
+  padding: 30px 15px 10px;
+  line-height: 1;
+  background: transparent;
+}
+.DateInput_input__focused {
+  border: 0;
+}
+.DateInput_input:focus {
+  border: 2px solid #005575;
+}
+.DateInput_fang.DateInput_fang_1 {
+  display: none;
+}
+.SingleDatePicker_picker {
+  right: 0;
+  margin-top: -3px;
+}
+.CalendarDay__default {
+  border: 0;
+}
+.CalendarDay__default:focus {
+  outline: none;
+}
+.DayPickerNavigation_button__horizontal {
+  border-radius: 0;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  top: 25px;
+  border-color: transparent transparent #444 #444;
+  border-width: 2px;
+  outline: 0;
+}
+.DayPickerNavigation_button__horizontal svg {
+  display: none;
+}
+.DayPickerNavigation_leftButton__horizontal,
+.DayPickerNavigation_leftButton__horizontalDefault {
+  transform: rotate(45deg);
+}
+.DayPickerNavigation_rightButton__horizontal,
+.DayPickerNavigation_rightButton__horizontalDefault {
+  transform: rotate(-135deg);
+}
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: var(--searchBoxBgColor, #107295);
+  border-color: var(--searchBoxBgColor, #107295);
+  border-radius: 50%;
+  color:#fff !important
+}
+.CalendarMonth_table tr td:nth-child(6),
+.CalendarMonth_table tr td:nth-child(7) {
+  font-weight: 600;
+}
+
+.CalendarDay__selected:hover {
+  border: none;
+}
+
+.DayPickerNavigation_button__default:focus, .DayPickerNavigation_button__default:hover {
+  border: 2px solid #c4c4c4;
+}
+
+.DayPickerNavigation_button__horizontal {
+  border-radius: 0;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  top: 25px;
+  border-color: transparent transparent #444 #444 !important;
+  border-width: 2px;
+  outline: 0;
+}
+
+.CalendarDay__default:hover {
+  background: #e4e7e7;
+  border: none;
+  color: inherit;
+  border-radius: 50%;
+}
+
+.DateInput_input {
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 300;
+  border-color: rgba(0, 0, 0, 0.23);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  padding: 10px 26px 10px;
+  line-height: 1;
+  background: transparent;
+
+  &:hover {
+    border-color: #212121;
+  }
+
+  &:focus {
+    border-color: #3f51b5;
+    border-width: 2px;
+  }
+}
+
+.DateInput_label {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.4375em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  left: 23px;
+  top: 11px;
+  pointer-events: none;
+  background: #ffffff;
+  padding: 0 5px;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.DateInputLabel_focused {
+  left: 10px;
+  top: -7px;
+  color: #3f51b5;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: text;
+}
+
+.DateInputLabel_filled {
+  left: 10px;
+  top: -7px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: text;
+}

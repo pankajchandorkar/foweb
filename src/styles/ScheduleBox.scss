@@ -33,7 +33,7 @@
 .scheRow {
   display: flex;
   width: 100%;
-  padding-bottom: 7px;
+  padding-bottom: 10px;
 
   .scheTitle {
     width: 28%;
@@ -61,6 +61,33 @@
       align-items: center;
       width: 75%;
       float: right;
+
+      & .seats {
+        &.scheduled {
+          color: #505050;
+        }
+        &.blocked {
+          color: #ec3237;
+        }
+        &.inactive {
+          color: #7f7f7f;
+        }
+      }
+
+      & .bookingAmt {
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+        &.scheduled {
+          color: #2a6277;
+        }
+        &.blocked {
+          color: #ec3237;
+        }
+        &.inactive {
+          color: #7f7f7f;
+        }
+      }
     }
   }
 
@@ -70,39 +97,33 @@
 
   & .percentage {
     width: 28%;
-    padding-top: 10px;
-
+    padding-top: 15px;
     padding-bottom: 5px;
+    display: flex;
+    align-items: center;
   }
 
   & .status {
     width: 22%;
-    padding-top: 10px;
+    padding-top: 15px;
 
     padding-bottom: 5px;
   }
 
-  & .gross {
-    width: 25%;
-    padding-top: 10px;
-
+  & .gross-avg-fare {
+    width: 50%;
+    padding-top: 11px;
     text-align: right;
     padding-bottom: 5px;
-    & span {
+    text-decoration: underline;
+    cursor: pointer;
+    & .heading {
       font-weight: 600;
+      padding-left: 5px;
     }
   }
 
-  & .avgfare {
-    width: 25%;
-    padding-top: 10px;
-
-    text-align: right;
-    padding-bottom: 5px;
-    & span {
-      font-weight: 600;
-    }
-  }
+  
 }
 
 .card-action-left {
@@ -116,4 +137,61 @@
   width: 50%;
   text-align: center;
   padding: 13px;
+  & .spn-action{
+    cursor: pointer;
+  }
+}
+
+.seatWiseBreakup {
+  width: 285px;
+  height: 190px;
+  text-align: left;
+  font-size: 12px;
+
+  & table {
+    padding: 5px 0px;
+    width: 100%;
+
+    & td {
+      padding: 5px;
+    }
+
+    & td:nth-child(1) {
+      text-align: left;
+    }
+    & td:nth-child(2) {
+      text-align: center;
+    }
+    & td:nth-child(3) {
+      text-align: right;
+    }
+    & td:nth-child(4) {
+      text-align: right;
+    }
+  }
+
+  & .brd-bottom {
+    border-bottom: solid 1px #eeeeee;
+  }
+
+  & .txt-bold {
+    font-weight: 600;
+  }
+}
+
+.fareWiseBreakup {
+  width: 200px;
+  height: 50px;
+  text-align: left;
+  font-size: 11px;
+  & .txt-bold {
+    font-weight: 600;
+  }
+  & .firstRow {
+    padding:5px;
+    border-bottom: solid 1px #eeeeee;
+  }
+  & .secondRow {
+    padding:5px
+  }
 }

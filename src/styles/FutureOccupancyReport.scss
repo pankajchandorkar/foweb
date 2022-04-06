@@ -11,17 +11,17 @@
 
 #txtTripTypes {
   padding-left: 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 #txtTripTypes-label[data-shrink="false"] {
   padding-left: 15px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 #txtChartFromDate,
 #txtChartToDate {
   padding-left: 30px;
-  font-size:0.8rem;
+  font-size: 0.9rem;
 }
 
 .btn-orange,
@@ -29,10 +29,14 @@
   text-transform: none !important;
 }
 
-
-.for_resultblock{
-  background:#F1F1F1;
+.for_resultblock {
+  background: #f1f1f1;
   min-height: 84vh;
+}
+
+#for_searchblock {
+
+
 }
 
 /* for mobile */

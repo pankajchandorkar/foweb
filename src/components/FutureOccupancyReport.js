@@ -1,35 +1,51 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Grid, Checkbox } from '@material-ui/core';
-import { Typography, FormControlLabel, Divider, TextField, Autocomplete, InputAdornment, IconButton, Button } from '@mui/material';
+import { Box, Grid } from '@material-ui/core';
+import { Typography,  Divider, TextField,  InputAdornment,  Button } from '@mui/material';
 import SearchIcon from "@material-ui/icons/Search";
 import BusIcon from "./common/BusIcon";
-import CalenderIcon from "./common/CalenderIcon";
-import { makeStyles } from "@mui/styles";
-
 import DatePickerInput from "./common/DatePickerInput";
 import AutoCompleteInput from "./common/AutoCompleteInput";
 import CheckboxWithLabel from "./common/CheckboxWithLabel";
+import ProgressBar from "./common/ProgressBar";
+
+
+import { makeStyles } from "@mui/styles";
 import moment from 'moment';
-
-
 import ScheduleBox from "./ScheduleBox";
 
 import '../styles/FutureOccupancyReport.scss';
 
 function FutureOccupancyReport() {
 
-  const [fromDate, setFromDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState(moment(new Date()));
   const [toDate, setToDate] = useState(moment(new Date(), "DD-MM-YYYY").add(3, 'days'));
+  const [frDtFocused, setFrDtFocused] = useState(false);
+  const [toDtFocused, setToDtFocused] = useState(false);
+
   const [reportData, setReportData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handelFromDateChange = (date) => {
-    setFromDate(date);
+  //for handle date change event 
+  const handelChangeDate = (date, id) => {
+    if (id === "fromDate") {
+      setFromDate(date);
+    }
+    if (id === "toDate") {
+      setToDate(date);
+    }
   }
 
-  const handelToDateChange = (date) => {
-    setToDate(date);
+  //for handle date focuse event
+  const setDateFocused = (f, id) => {
+    if (id === "fromDate") {
+      setFrDtFocused(f);
+    }
+    if (id === "toDate") {
+      setToDtFocused(f);
+    }
   }
 
+  //options use for trip type drop down
   const options = [
     { label: 'All Trips', id: 1 },
     { label: 'Trip 1', id: 2 },
@@ -37,6 +53,7 @@ function FutureOccupancyReport() {
     { label: 'Trip 3', id: 4 },
   ];
 
+  //custom css code
   const useStyles = makeStyles({
 
     for_searchblock: {
@@ -44,6 +61,7 @@ function FutureOccupancyReport() {
       padding: "10px 0px",
       boxSizing: "border-box",
       boxShadow: "0px 1px 5px #aaa",
+      background: "#ffffff",
       "& .rptHeading": {
         paddingRight: '8px',
         "&.MuiTypography-h6": {
@@ -62,6 +80,7 @@ function FutureOccupancyReport() {
       "& .txtSearch": {
         "& .MuiOutlinedInput-root": {
           paddingLeft: "7px",
+          fontSize: "0.9rem",
           "& .MuiInputAdornment-root": {
             marginRight: "5px",
           },
@@ -72,7 +91,7 @@ function FutureOccupancyReport() {
       },
       "& .btmInputWrap": {
         marginTop: "10px",
-        fontSize:"0.9rem",
+        fontSize: "0.9rem",
       },
       "& .btn-orange": {
         "&.MuiButton-contained": {
@@ -97,79 +116,207 @@ function FutureOccupancyReport() {
     },
     for_resultblock: {
       marginTop: "11px",
-      background:"#F1F1F1",
+      background: "#F1F1F1",
+      overflow: "auto",
+      height: "80vh",
     }
   });
 
   const classes = useStyles();
 
+  //onclick on load button get report data
   const getReportData = () => {
 
-    let data = [
-      {
-        id: "1",
-        scheduleTitle: "BNG > CHN",
-        busType: "AC Seater Sleeper",
-        opName: "Bharat Benz",
-        status: "Scheduled",
-        booked: "35",
-        amount: "1250",
-        percentage: "27/48=56%",
-        gross:"23,400",
-        avgFare:"843",
-      },
-      {
-        id: "2",
-        scheduleTitle: "BNG > CHN",
-        busType: "NAC Sleeper",
-        opName: "TATA",
-        status: "Blocked",
-        booked: "00", 
-        amount: "00",
-        percentage:"00/00=00%",
-        gross:"00",
-        avgFare:"00",
-      },
-      {
-        id: "3",
-        scheduleTitle: "BNG > CHN",
-        busType: "AC Seater Sleeper",
-        opName: "Ashok Leyland",
-        status: "Inactive",
-        booked: "35", 
-        amount: "1250",
-        percentage:"27/48=56%",
-        gross:"23,400",
-        avgFare:"843",
-      }, {
-        id: "4",
-        scheduleTitle: "BNG > CHN",
-        busType: "AC Seater Sleeper",
-        opName: "Bharat Benze",
-        status: "Stop Booking",
-        booked: "00", 
-        amount: "00",
-        percentage:"00/00=00%",
-        gross:"00",
-        avgFare:"00",
-      },
-      
-    ]
-    setReportData(data);
+    setReportData([]);
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+
+      let data = [
+        {
+          id: "1",
+          scheduleTitle: "BNG > CHN",
+          scheduleTime: "26 Mar, 12:30 AM",
+          busType: "AC Seater Sleeper",
+          tripName: "Trip-123",
+          opName: "Bharat Benz",
+          status: "Scheduled",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        },
+        {
+          id: "2",
+          scheduleTitle: "BNG > CHN",
+          scheduleTime: "26 Mar, 12:30 AM",
+          busType: "NAC Sleeper",
+          tripName: "Trip-123",
+          opName: "TATA",
+          status: "Blocked",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+        {
+          id: "3",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Ashok Leyland",
+          tripName: "Trip-123",
+          status: "Inactive",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        }, {
+          id: "4",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Bharat Benze",
+          tripName: "Trip-123",
+          status: "Stop Booking",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+        {
+          id: "5",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Bharat Benz",
+          tripName: "Trip-123",
+          status: "Scheduled",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        },
+        {
+          id: "6",
+          scheduleTitle: "BNG > CHN",
+          scheduleTime: "26 Mar, 12:30 AM",
+          busType: "NAC Sleeper",
+          tripName: "Trip-123",
+          opName: "TATA",
+          status: "Blocked",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+        {
+          id: "7",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Ashok Leyland",
+          tripName: "Trip-123",
+          status: "Inactive",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        }, {
+          id: "8",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Bharat Benze",
+          tripName: "Trip-123",
+          status: "Stop Booking",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+
+        {
+          id: "9",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Bharat Benz",
+          tripName: "Trip-123",
+          status: "Scheduled",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        },
+        {
+          id: "10",
+          scheduleTitle: "BNG > CHN",
+          scheduleTime: "26 Mar, 12:30 AM",
+          busType: "NAC Sleeper",
+          tripName: "Trip-123",
+          opName: "TATA",
+          status: "Blocked",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+        {
+          id: "11",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Ashok Leyland",
+          tripName: "Trip-123",
+          status: "Inactive",
+          booked: "35",
+          amount: "1250",
+          percentage: "27/48=56%",
+          gross: "23,400",
+          avgFare: "843",
+        }, {
+          id: "12",
+          scheduleTitle: "BNG > CHN",
+          busType: "AC Seater Sleeper",
+          scheduleTime: "26 Mar, 12:30 AM",
+          opName: "Bharat Benze",
+          tripName: "Trip-123",
+          status: "Stop Booking",
+          booked: "00",
+          amount: "00",
+          percentage: "00/00=00%",
+          gross: "00",
+          avgFare: "00",
+        },
+      ]
+
+      setReportData(data);
+
+      setLoading(false);
+
+    }, 1000);
+
   }
 
-
+  //hooks for on page load
   useEffect(() => {
-
     getReportData()
-
-
-
   }, []);
 
   return (
     <div>
-      <div className={classes.for_searchblock}>
+      <div id="for_searchblock" className={classes.for_searchblock}>
         <Box mx={1}>
           <Grid container>
             <Grid container item md={12}>
@@ -193,14 +340,26 @@ function FutureOccupancyReport() {
           <Grid container spacing={1} className="btmInputWrap">
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                <CalenderIcon />
-                <DatePickerInput id="txtChartFromDate" lableText="Chart From Date" selectedDate={fromDate} handleDateChange={handelFromDateChange} />
+                <DatePickerInput
+                  id="fromDate"
+                  selectedDate={fromDate}
+                  handelChangeDate={handelChangeDate}
+                  setDateFocused={setDateFocused}
+                  focused={frDtFocused}
+                  label="From Chart Date"
+                />
               </Box>
             </Grid>
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                <CalenderIcon />
-                <DatePickerInput id="txtChartToDate" lableText="Chart To Date" selectedDate={toDate} handleDateChange={handelToDateChange} />
+                <DatePickerInput
+                  id="toDate"
+                  selectedDate={toDate}
+                  handelChangeDate={handelChangeDate}
+                  setDateFocused={setDateFocused}
+                  focused={toDtFocused}
+                  label="To Chart Date"
+                />
               </Box>
             </Grid>
             <Grid container item md={4} sm={6}>
@@ -210,7 +369,7 @@ function FutureOccupancyReport() {
               </Box>
             </Grid>
             <Grid container item md={2} sm={3}>
-              <TextField className={classes.txtSearch} id="txtSearch" size="small" label="Search"
+              <TextField className="txtSearch" id="txtSearch" size="small" label="Search"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -221,7 +380,7 @@ function FutureOccupancyReport() {
               />
             </Grid>
             <Grid container item md={1} sm={2} xs={3}>
-              <Button id="btnLoad" variant="contained" size="medium" className="btn-orange">Load</Button>
+              <Button id="btnLoad" variant="contained" size="medium" className="btn-orange" onClick={() => getReportData()}>Load</Button>
             </Grid>
             <Grid container item md={1} sm={2} xs={3}>
               <Button id="btnExport" variant="outlined" size="medium" className="btn-orange-outline">Export</Button>
@@ -229,26 +388,26 @@ function FutureOccupancyReport() {
           </Grid>
         </Box>
       </div>
-      <div className={classes.for_resultblock}>
-        <Box component="div" sx={{ margin: "5px 10px" }}>
+      {loading && <ProgressBar />}
+      <div id="for_resultblock" className={classes.for_resultblock}>
+        <Box component="div" sx={{ margin: "5px 15px" }}>
           <Grid container spacing={2}>
             {
               reportData.map((data) => {
                 return <ScheduleBox
                   key={data.id}
                   scheTitle={data.scheduleTitle}
+                  scheTime={data.scheduleTime}
+                  tripName={data.tripName}
                   status={data.status}
                   booked={data.booked}
                   busType={data.busType}
                   opName={data.opName}
                   amount={data.amount}
-
-                
                   percentage={data.percentage}
                   gross={data.gross}
                   avgFare={data.avgFare}
-
-
+                  
                 />
               })
             }
