@@ -35,8 +35,255 @@
 }
 
 #for_searchblock {
+}
 
+.tripScheduleWrap {
+  //border: solid 1px red;
+  margin-top: 5px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.01rem;
 
+  & .left-wrap {
+    //border: solid 1px red;
+    width: 70%;
+  }
+
+  & .right-wrap {
+    //border: solid 1px red;
+    width: 30%;
+  }
+
+  & .input-wrap {
+    display: flex;
+    width: 100%;
+    margin-bottom: 9px;
+
+    & .col {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: normal;
+
+      .tripSchRuns {
+        margin-right: 5px;
+        margin-left: 10px;
+
+        & + label {
+          margin-top: 2px;
+        }
+      }
+
+      .bkg-trip-week {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 12px;
+
+        & .lblClass-first {
+          border-radius: 4px 0px 0px 4px;
+        }
+
+        & .lblClass-last {
+          border-radius: 0px 4px 4px 0px;
+        }
+
+        & .tripSchWeekDay {
+          position: absolute;
+          visibility: hidden;
+
+          & + label {
+            padding: 8px 31px;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle;
+            border: solid 1px #d7d7d7;
+
+            &:hover {
+              border: 1px solid #212121;
+            }
+          }
+
+          &:checked + label {
+            background: #0086ff;
+            color: #ffffff;
+            border: solid 1px #0086ff;
+          }
+        }
+
+        // & label:last-child {
+        //   border-radius: 0px 4px 4px 0px;
+        // }
+      }
+
+      & .brd-bottom {
+        border-top: 1px solid #d7d7d7;
+        width: 100%;
+        margin-right: 6px;
+        height: 1px;
+      }
+
+      & .tripSchProps {
+        margin-right: 5px;
+
+        & + label {
+          margin-right: 7px;
+          margin-top: 2px;
+        }
+      }
+
+      & .chklbl-wrap {
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      & .select-wrap {
+        margin-left: 12px;
+      }
+
+      & .tripAminitiesWrap {
+        width: 100%;
+        background-color: #edf7f9;
+        padding: 15px 10px;
+        margin-right: 12px;
+        border-radius: 4px;
+      }
+    }
+
+    & .col1 {
+      //border: solid 1px red;
+      display: flex;
+      width: 40%;
+      &.chartDate {
+        .input-group .group-input {
+          border-radius: 0px;
+        }
+        & .input-group .group-button {
+          border-radius: 0px 4px 4px 0px;
+        }
+      }
+    }
+
+    & .col2 {
+      //border: solid 1px red;
+      display: flex;
+      width: 30%;
+    }
+
+    & .col3 {
+      //border: solid 1px red;
+      display: flex;
+      width: 30%;
+    }
+
+    & .hr-line {
+      width: 100%;
+      margin-right: 12px;
+      border-top: solid 0px #d7d7d7;
+    }
+
+    & .hrline {
+      text-align: left;
+      margin-left: 15px;
+      height: 32px;
+      border-width: 0;
+      color: grey;
+      background-color: lightgray;
+      margin-left: 6px;
+      margin-right: 6px;
+      width: 1px;
+      margin: 0;
+    }
+
+    & .covidDropDown {
+      border: 1px solid rgba(0, 0, 0, 0.23);
+      padding: 7px 12px;
+      margin-left: 10px;
+      border-radius: 4px;
+    }
+  }
+}
+
+// .bkg-trip-week label {
+//   border-radius: 4px 0 0 4px;
+//   border:solid 1px red;
+// }
+
+.input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  & .group-span {
+    padding: 6px 12px;
+    text-align: center;
+    background-color: #edf7f9;
+    border: 1px solid #ccc;
+    border-radius: 4px 0px 0px 4px;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-right: none;
+    min-width: 90px;
+  }
+
+  & .group-input {
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 0px 4px 4px 0px;
+    outline: none;
+
+    &:hover {
+      border: 1px solid #212121;
+    }
+
+    &:focus {
+      border: 2px solid #3f51b5;
+    }
+  }
+
+  & .group-button {
+    padding: 8px 25px;
+    color: #fff;
+    background-color: #ff6000;
+    border-color: #ff6000;
+    box-shadow: 0px 2px 4px #ccc;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    border-radius: 4px;
+    display: table-cell;
+  }
+
+  & .group-select {
+    width: 85px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+
+    &:hover {
+      border: 1px solid #212121;
+    }
+
+    &:focus {
+      border: 2px solid #3f51b5;
+    }
+  }
 }
 
 /* for mobile */

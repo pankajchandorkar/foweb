@@ -21,6 +21,7 @@ const TooltipText = (props) => {
             background: "#ffffff",
             color: "#434343",
             borderRadius: "10px",
+            boxShadow: "2px 2px 5px #ccc, -2px -2px 5px #ccc",
         },
     });
 
@@ -60,8 +61,12 @@ const TooltipText = (props) => {
                 open == true &&
                 <div style={{
                     position: "fixed",
-                    left: " 0", top: "0", width: "100%",
-                    zIndex: "1", opacity: "0.1", background: "#434343",
+                    left: " 0", 
+                    top: "0", 
+                    width: "100%",
+                    zIndex: "1", 
+                    opacity: "0.5", 
+                    background: "#434343",
                     height: "100%"
                 }}></div>
             }

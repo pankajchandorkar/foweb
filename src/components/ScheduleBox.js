@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid } from '@material-ui/core';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import SeatIcon from "../components/common/SeatIcon";
 import TooltipText from "../components/common/TooltipText";
-import DialogBox from "../components/common/DialogBox";
+import Modal from "./common/Modal";
 import SeatWiseBreakup from './SeatWiseBreakup';
 import FareWiseBreakup from './FareWiseBreakup';
 import "../styles/ScheduleBox.scss";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowUp, faCircleArrowDown, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
+import TripSchedule from "./TripSchedule";
 
 function ScheduleBox(props) {
 
@@ -20,6 +20,13 @@ function ScheduleBox(props) {
 
     const seatWiseBreakup = <SeatWiseBreakup />
     const fareWiseBreakup = <FareWiseBreakup />
+
+
+    const [showModal, setShowModal] = useState(false);
+
+    const updateModal = (flag) => {
+        setShowModal(flag);
+    }
 
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -90,7 +97,7 @@ function ScheduleBox(props) {
                             </div>
                         </div>
                     </div>
-                    
+
                 </CardContent>
                 <CardActions sx={{ padding: "0", display: "flex", color: "#054B66", background: "#EEF5FB", fontWeight: "600" }}>
                     <div className="card-action-left">
@@ -99,7 +106,13 @@ function ScheduleBox(props) {
                         }
                     </div>
                     <div className="card-action-right">
-                        <DialogBox link={<span className="spn-action">Trip Schedule</span>}/>
+                        <span className="spn-action" onClick={() => {updateModal(true);}}>Trip Schedule</span>
+                        {
+                            showModal && 
+                            <Modal headTxt={"Title"} updateModal={updateModal}>
+                                <TripSchedule />
+                            </Modal>
+                        }
                     </div>
                 </CardActions>
             </Card>

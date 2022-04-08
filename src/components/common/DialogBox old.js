@@ -26,8 +26,11 @@ export default function DialogBox(props) {
                 "& .MuiIconButton-root": {
                     padding: "6px",
                     color: "#ffffff",
-                    top:"0px",
+                    top: "0px",
                 }
+            },
+            "& .MuiDialogContent-root":{
+               padding:"5px 10px", 
             }
         }
     });
@@ -48,7 +51,7 @@ export default function DialogBox(props) {
         <div>
             <span onClick={handleClickOpen}>
                 {props.link}
-            </span>           
+            </span>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -74,7 +77,7 @@ export default function DialogBox(props) {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                                Content
+                        {props.content}
                     </DialogContentText>
                 </DialogContent>
                 {/*<DialogActions>

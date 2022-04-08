@@ -13,6 +13,8 @@ import { makeStyles } from "@mui/styles";
 import moment from 'moment';
 import ScheduleBox from "./ScheduleBox";
 
+
+
 import '../styles/FutureOccupancyReport.scss';
 
 function FutureOccupancyReport() {
@@ -305,7 +307,7 @@ function FutureOccupancyReport() {
 
       setLoading(false);
 
-    }, 1000);
+    }, 0);
 
   }
 
@@ -389,6 +391,9 @@ function FutureOccupancyReport() {
         </Box>
       </div>
       {loading && <ProgressBar />}
+
+              
+
       <div id="for_resultblock" className={classes.for_resultblock}>
         <Box component="div" sx={{ margin: "5px 15px" }}>
           <Grid container spacing={2}>
@@ -414,6 +419,7 @@ function FutureOccupancyReport() {
           </Grid>
         </Box>
       </div>
+       
     </div>
   )
 }
