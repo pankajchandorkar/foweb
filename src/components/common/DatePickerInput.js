@@ -27,7 +27,9 @@ const DatePickerInput = (props) => {
 
     return (
         <>
-            <CalenderIcon/>
+            {
+                props.calIcon==false ? "" : <CalenderIcon/>
+            }
             <SingleDatePicker
                 id={props.id}
                 readOnly={true}
@@ -41,13 +43,16 @@ const DatePickerInput = (props) => {
                 block={true}
                 numberOfMonths={2}
                 noBorder={true}
-                displayFormat="DD MMM YYYY"
+                displayFormat= {props.displayFormat!=""?props.displayFormat:"DD MMM YYYY"}
                 placeholder="Choose Date"
                 isOutsideRange={(event) => checkOutsideRange(props.id, event)}
                 anchorDirection="left"
                 firstDayOfWeek={1}
             />
-            <label className={`DateInput_label ${props.focused==true?"DateInputLabel_focused":props.selectedDate?"DateInputLabel_filled":""}`} htmlFor={props.id}>{props.label}</label>
+            {
+                props.labelReq==false ? "" : <label className={`DateInput_label ${props.focused==true?"DateInputLabel_focused":props.selectedDate?"DateInputLabel_filled":""}`} htmlFor={props.id}>{props.label}</label>
+            }
+            
         </>
     )
 }

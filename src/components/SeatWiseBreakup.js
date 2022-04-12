@@ -1,8 +1,6 @@
 import React from 'react'
 
-
 function SeatWiseBreakup(props) {
-
 
     return (
         <div className="seatWiseBreakup">

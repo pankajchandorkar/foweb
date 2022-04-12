@@ -1,3 +1,74 @@
-.slider{
-    background: red;
+.slider {
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+  padding: 5px;
+  position: relative;
+}
+
+.slider-container {
+  /* if you want to have a scrollbar, you can add overflow here */
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 1.8rem;
+  padding: 3px;
+  scroll-behavior: smooth;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.item {
+  padding: 0;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+  margin-right: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.active {
+    background: #1e59a7;
+    color: #fff;
+  }
+  
+  & .item-label{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+  }
+
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: #0086ff;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+}
+.prev {
+  left: 1px;
+}
+.next {
+  right: 1px;
+}
+.disable {
+  background: #b5b5be;
+  pointer-events: none;
 }

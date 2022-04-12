@@ -38,7 +38,6 @@
 }
 
 .tripScheduleWrap {
-  //border: solid 1px red;
   margin-top: 5px;
   display: flex;
   width: 100%;
@@ -49,157 +48,200 @@
   color: #555;
   letter-spacing: 0.01rem;
 
-  & .left-wrap {
-    //border: solid 1px red;
-    width: 70%;
+  & .MuiGrid-item {
+    margin-bottom: 7px;
   }
 
-  & .right-wrap {
-    //border: solid 1px red;
-    width: 30%;
+  & .chartDate {
+    & .DateInput_input {
+      border-radius: 0;
+      padding: 9px 10px 9px;
+    }
+
+    & .group-input {
+      width: 250px;
+      border-radius: 0px;
+    }
+
+    & .group-button {
+      border-radius: 0px 4px 4px 0px;
+    }
+
+    & .input-group{
+      width: 98%;
+    }
   }
 
-  & .input-wrap {
-    display: flex;
+  & .startDate,
+  & .endDate {
+    & .DateInput_input {
+      border-radius: 0 4px 4px 0;
+      padding: 9px 10px 9px;
+    }
+
+    & .input-group{
+      width: 98%;
+    }
+  }
+
+  & .chartTime{
+    & .input-group{
+      width: 98%;
+    }
+  }
+
+  & .code .group-input {
+    width: 120px;
+  }
+
+  & .suffix .group-input {
+    width: 120px;
+  }
+
+  & .tripSchRuns {
+    margin-right: 5px;
+    margin-left: 10px;
+
+    & + label {
+      margin-top: 2px;
+    }
+  }
+
+  & .bkg-trip-week {
     width: 100%;
-    margin-bottom: 9px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1px;
 
-    & .col {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: normal;
-
-      .tripSchRuns {
-        margin-right: 5px;
-        margin-left: 10px;
-
-        & + label {
-          margin-top: 2px;
-        }
-      }
-
-      .bkg-trip-week {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 12px;
-
-        & .lblClass-first {
-          border-radius: 4px 0px 0px 4px;
-        }
-
-        & .lblClass-last {
-          border-radius: 0px 4px 4px 0px;
-        }
-
-        & .tripSchWeekDay {
-          position: absolute;
-          visibility: hidden;
-
-          & + label {
-            padding: 8px 31px;
-            cursor: pointer;
-            text-align: center;
-            vertical-align: middle;
-            border: solid 1px #d7d7d7;
-
-            &:hover {
-              border: 1px solid #212121;
-            }
-          }
-
-          &:checked + label {
-            background: #0086ff;
-            color: #ffffff;
-            border: solid 1px #0086ff;
-          }
-        }
-
-        // & label:last-child {
-        //   border-radius: 0px 4px 4px 0px;
-        // }
-      }
-
-      & .brd-bottom {
-        border-top: 1px solid #d7d7d7;
-        width: 100%;
-        margin-right: 6px;
-        height: 1px;
-      }
-
-      & .tripSchProps {
-        margin-right: 5px;
-
-        & + label {
-          margin-right: 7px;
-          margin-top: 2px;
-        }
-      }
-
-      & .chklbl-wrap {
-        padding-right: 15px;
-        display: flex;
-        align-items: center;
-      }
-
-      & .select-wrap {
-        margin-left: 12px;
-      }
-
-      & .tripAminitiesWrap {
-        width: 100%;
-        background-color: #edf7f9;
-        padding: 15px 10px;
-        margin-right: 12px;
-        border-radius: 4px;
-      }
+    & .lblClass-first {
+      border-radius: 4px 0px 0px 4px;
     }
 
-    & .col1 {
-      //border: solid 1px red;
-      display: flex;
-      width: 40%;
-      &.chartDate {
-        .input-group .group-input {
-          border-radius: 0px;
-        }
-        & .input-group .group-button {
-          border-radius: 0px 4px 4px 0px;
+    & .lblClass-last {
+      border-radius: 0px 4px 4px 0px;
+    }
+
+    & .tripSchWeekDay {
+      position: absolute;
+      visibility: hidden;
+
+      & + label {
+        padding: 8px 26px;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        border: solid 1px #d7d7d7;
+
+        &:hover {
+          border: 1px solid #212121;
         }
       }
-    }
 
-    & .col2 {
-      //border: solid 1px red;
-      display: flex;
-      width: 30%;
+      &:checked + label {
+        background: #0086ff;
+        color: #ffffff;
+        border: solid 1px #0086ff;
+      }
     }
+  }
 
-    & .col3 {
-      //border: solid 1px red;
-      display: flex;
-      width: 30%;
-    }
+  & .tripRuns {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
 
-    & .hr-line {
-      width: 100%;
-      margin-right: 12px;
-      border-top: solid 0px #d7d7d7;
-    }
+  // & .input-wrap {
+  //   display: flex;
+  //   width: 100%;
+  //   margin-bottom: 9px;
 
-    & .hrline {
-      text-align: left;
-      margin-left: 15px;
-      height: 32px;
-      border-width: 0;
-      color: grey;
-      background-color: lightgray;
-      margin-left: 6px;
-      margin-right: 6px;
-      width: 1px;
-      margin: 0;
+  //   & .col {
+  //     display: flex;
+  //     width: 100%;
+  //     align-items: center;
+  //     justify-content: normal;
+
+  //     .tripSchRuns {
+  //       margin-right: 5px;
+  //       margin-left: 10px;
+
+  //       & + label {
+  //         margin-top: 2px;
+  //       }
+  //     }
+
+  //     & .brd-bottom {
+  //       border-top: 1px solid #d7d7d7;
+  //       width: 100%;
+  //       margin-right: 6px;
+  //       height: 1px;
+  //     }
+  //   } //.col end
+
+  //   & .col1 {
+  //     //border: solid 1px red;
+  //     display: flex;
+  //     width: 40%;
+  //     &.chartDate {
+  //       .input-group .group-input {
+  //         border-radius: 0px;
+  //       }
+  //       & .input-group .group-button {
+  //         border-radius: 0px 4px 4px 0px;
+  //       }
+  //     }
+  //   }
+
+  //   & .col2 {
+  //     //border: solid 1px red;
+  //     display: flex;
+  //     width: 30%;
+  //   }
+
+  //   & .col3 {
+  //     //border: solid 1px red;
+  //     display: flex;
+  //     width: 30%;
+  //   }
+  // }
+
+  & .tripSchePropRow {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  } //.tripSchePropRow end
+
+  & .chklbl-wrap {
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+
+    & .tripSchProps {
+      margin-right: 5px;
+
+      & + label {
+        margin-right: 7px;
+        margin-top: 2px;
+      }
     }
+  } //.chklbl-wrap end
+
+  & .hrline {
+    text-align: left;
+    margin-left: 15px;
+    height: 32px;
+    border-width: 0;
+    color: grey;
+    background-color: lightgray;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: 1px;
+    margin: 0;
+  } //.hrline end
+
+  & .select-wrap {
+    margin-left: 17px;
 
     & .covidDropDown {
       border: 1px solid rgba(0, 0, 0, 0.23);
@@ -207,13 +249,290 @@
       margin-left: 10px;
       border-radius: 4px;
     }
-  }
-}
+  } //.select-wrap end
 
-// .bkg-trip-week label {
-//   border-radius: 4px 0 0 4px;
-//   border:solid 1px red;
-// }
+  & .tripAminitiesWrap {
+    background-color: #edf7f9;
+    padding: 5px;
+    border-radius: 4px;
+  } //.tripAminitiesWrap end
+
+  .btnOrangeOutline {
+    border: 1px solid #ff6000;
+    padding: 3px 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background: #fff;
+    color: #ff6000;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    min-height: 27px;
+
+    &:hover {
+      color: #fff;
+      background-color: #ff6000;
+      border-color: #ff6000;
+    }
+
+    &.mlr {
+      margin: 0 5px;
+    }
+
+    &.mr {
+      margin-right: 12px;
+    }
+  }
+
+  .btnOrange {
+    border: 1px solid #ff6000;
+    padding: 3px 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background: #ff6000;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    min-height: 27px;
+
+    &:hover {
+      color: #fff;
+      background-color: #e25500;
+      border-color: #e25500;
+    }
+
+    &.mlr {
+      margin: 0 5px;
+    }
+
+    &.mlr10 {
+      margin: 0 10px;
+    }
+
+    &.mr {
+      margin-right: 12px;
+    }
+  }
+
+  & .tripSchAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .btnOrange {
+      padding: 5px 20px;
+      min-height: 33px;
+      min-width: 75px;
+    }
+
+    & .btnOrangeOutline {
+      padding: 5px 20px;
+      min-height: 33px;
+      min-width: 75px;
+    }
+
+    #quotamale {
+      background: url("../../public/images/male.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 20px;
+      height: 21px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #quotafemale {
+      background: url("../../public/images/female.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 20px;
+      height: 21px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .auto-increment-type {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+    & .auto-incr-type-lbl {
+      padding-left: 1px;
+      padding-right: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      & img {
+        padding-right: 1px;
+      }
+    }
+  }
+
+  & .fareInputs {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  & .fareIncrInputs {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  & .hr-line {
+    width: 100%;
+    margin-right: 12px;
+    border-top: solid 0px #d7d7d7;
+  }
+
+  & .col-fare {
+    display: flex;
+    align-items: center;
+    justify-content: normal;
+  }
+
+  & .col-pickup-dropoff {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  & .busPaymentDetailContent {
+    max-height: 200px;
+    overflow: auto;
+    width: 100%;
+    margin-right: 12px;
+
+    & .tblBusPaymentDetails {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      border: 1px solid #ddd;
+
+      & tr {
+        background: #e5f6fd;
+      }
+
+      tr:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f7fcfe;
+      }
+
+      & th {
+        padding: 7px 5px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      & th:first-child,
+      td:first-child {
+        display: none;
+      }
+
+      & td {
+        padding: 1px 5px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      & .busFareInput {
+        display: block;
+        width: 100%;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #c7c7c7;
+        border-color: #c7c7c7;
+        height: 25px !important;
+        font-size: 12px;
+        border-radius: 3px;
+        outline: none;
+      }
+    } //.tblBusPaymentDetails
+  } //.busPaymentDetailContent
+
+  & .chartType {
+    & .group-span {
+      min-width: 65px;
+    }
+    & .group-select {
+      width: 100%;
+    }
+  } //.chartType end
+
+  #tripSchChartDisplay {
+    & .table {
+      width: 100%;
+      border-spacing: 2px;
+      border-collapse: separate;
+      margin-bottom: 20px;
+      max-width: 100%;
+      background-color: transparent;
+
+      &.table-bordered {
+        border: 1px solid #ddd;
+        & tbody {
+          & tr {
+            & td {
+              border: 1px solid #ddd;
+            }
+          }
+        }
+      }
+
+      & th {
+        padding: 4px;
+        line-height: 1.428571429;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+        text-align: left;
+      }
+
+      & tbody {
+        & tr {
+          & td {
+            padding: 4px;
+            line-height: 1.428571429;
+            vertical-align: top;
+          }
+        }
+      }
+    }
+
+    .chart {
+      & td {
+        padding: 0;
+        height: 35px;
+        width: 35px;
+        font-size: 10px;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #818181;
+      }
+    }
+  }
+} //.tripScheduleWrap end
 
 .input-group {
   position: relative;
@@ -270,11 +589,17 @@
     font-size: 14px;
     border-radius: 4px;
     display: table-cell;
+
+    &:hover {
+      background-color: #e25500;
+      border-color: #e25500;
+    }
   }
 
   & .group-select {
-    width: 85px;
+    width: 111px;
     border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 8px 12px;
 
     &:hover {
       border: 1px solid #212121;

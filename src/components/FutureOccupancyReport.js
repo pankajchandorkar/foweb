@@ -8,11 +8,9 @@ import AutoCompleteInput from "./common/AutoCompleteInput";
 import CheckboxWithLabel from "./common/CheckboxWithLabel";
 import ProgressBar from "./common/ProgressBar";
 
-
 import { makeStyles } from "@mui/styles";
 import moment from 'moment';
 import ScheduleBox from "./ScheduleBox";
-
 
 
 import '../styles/FutureOccupancyReport.scss';
