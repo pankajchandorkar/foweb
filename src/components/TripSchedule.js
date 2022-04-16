@@ -6,46 +6,17 @@ import { Box, Grid } from '@material-ui/core';
 import DatePickerInput from "./common/DatePickerInput";
 import moment from 'moment';
 
-const TripSchedule = () => {
-
+const TripSchedule = (props) => {
 
     const [tripSchDate, setTripSchDate] = useState(moment(new Date()));
     const [tripSchStartDate, setTripSchStartDate] = useState(moment(new Date()));
     const [tripSchEndDate, setTripSchEndDate] = useState(moment(new Date()));
-
 
     const [tripSchDtFocused, setTripSchDtFocused] = useState(false);
     const [tripSchStartDtFocused, setTripSchStartDtFocused] = useState(false);
     const [tripSchEndDtFocused, setTripSchEndDtFocused] = useState(false);
 
 
-    //for handle date change event 
-    const handelChangeDate = (date, id) => {
-        if (id === "tripSchDate") {
-            setTripSchDate(date);
-        }
-        if (id === "tripSchStartDate") {
-            setTripSchStartDate(date);
-        }
-        if (id === "tripSchEndDate") {
-            setTripSchEndDate(date);
-        }
-    }
-
-    //for handle date focuse event
-    const setDateFocused = (f, id) => {
-        if (id === "tripSchDate") {
-            setTripSchDtFocused(f);
-        }
-
-        if (id === "tripSchStartDate") {
-            setTripSchStartDtFocused(f);
-        }
-
-        if (id === "tripSchEndDate") {
-            setTripSchEndDtFocused(f);
-        }
-    }
 
     const useStyles = makeStyles({
         root: {
@@ -89,8 +60,8 @@ const TripSchedule = () => {
                                     <DatePickerInput
                                         id="tripSchDate"
                                         selectedDate={tripSchDate}
-                                        handelChangeDate={handelChangeDate}
-                                        setDateFocused={setDateFocused}
+                                        onDateChange={(date) => setTripSchDate(date)}
+                                        onFocusChange={(f) => setTripSchDtFocused(f)}
                                         focused={tripSchDtFocused}
                                         label=""
                                         calIcon={false}
@@ -108,8 +79,8 @@ const TripSchedule = () => {
                                     <DatePickerInput
                                         id="tripSchStartDate"
                                         selectedDate={tripSchStartDate}
-                                        handelChangeDate={handelChangeDate}
-                                        setDateFocused={setDateFocused}
+                                        onDateChange={(date) => setTripSchStartDate(date)}
+                                        onFocusChange={(f) => setTripSchStartDtFocused(f)}
                                         focused={tripSchStartDtFocused}
                                         label=""
                                         calIcon={false}
@@ -126,8 +97,8 @@ const TripSchedule = () => {
                                     <DatePickerInput
                                         id="tripSchEndDate"
                                         selectedDate={tripSchEndDate}
-                                        handelChangeDate={handelChangeDate}
-                                        setDateFocused={setDateFocused}
+                                        onDateChange={(date) => setTripSchEndDate(date)}
+                                        onFocusChange={(f) => setTripSchEndDtFocused(f)}
                                         focused={tripSchEndDtFocused}
                                         label=""
                                         calIcon={false}
@@ -248,25 +219,25 @@ const TripSchedule = () => {
                         <Grid item md={8} >
                             <div className="bkg-trip-week">
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Mon" value="Mon" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Mon" value="Mon" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Mon" className="lblClass-first">Mon</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Tue" value="Tue" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Tue" value="Tue" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Tue">Tue</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Wed" value="Wed" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Wed" value="Wed" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Wed">Wed</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Thu" value="Thu" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Thu" value="Thu" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Thu">Thu</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Fri" value="Fri" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Fri" value="Fri" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Fri">Fri</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Sat" value="Sat" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Sat" value="Sat" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Sat">Sat</label>
 
-                                <input type="checkbox" class="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Sun" value="Sun" placeholder="name" />
+                                <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Sun" value="Sun" placeholder="name" />
                                 <label htmlFor="tripSchWeekDay-Sun" className="lblClass-last">Sun</label>
                             </div>
                         </Grid>
@@ -278,36 +249,36 @@ const TripSchedule = () => {
                         {/*5th row*/}
                         <Grid className="tripSchePropRow" item md={9} >
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="tripSchIsActive" class="tripSchProps" placeholder="name" />
+                                <input type="checkbox" id="tripSchIsActive" className="tripSchProps" placeholder="name" />
                                 <label htmlFor="tripSchIsActive">
                                     Is Active
                                 </label>
                             </div>
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="tripSchNonRefundable" class="tripSchProps" />
+                                <input type="checkbox" id="tripSchNonRefundable" className="tripSchProps" />
                                 <label htmlFor="tripSchNonRefundable">
                                     Non-Refundable
                                 </label>
                             </div>
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="tripSchHasSTax" class="tripSchProps" placeholder="name" />
+                                <input type="checkbox" id="tripSchHasSTax" className="tripSchProps" placeholder="name" />
                                 <label htmlFor="tripSchHasSTax">
                                     Has GST
                                 </label>
                             </div>
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="tripSchAllowDynFareChange" class="tripSchProps" placeholder="name" />
+                                <input type="checkbox" id="tripSchAllowDynFareChange" className="tripSchProps" placeholder="name" />
                                 <label htmlFor="tripSchAllowDynFareChange">
                                     Allow Dynamic Fare Change
                                 </label>
                             </div>
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="tripSchAllowSeatEdit" class="tripSchProps" />
+                                <input type="checkbox" id="tripSchAllowSeatEdit" className="tripSchProps" />
                                 <label htmlFor="tripSchAllowSeatEdit">
                                     Allow Online SeatEdit
                                 </label>
                             </div>
-                            <hr class="hrline" />
+                            <hr className="hrline" />
                         </Grid>
                         <Grid item md={3} >
                             <div className="select-wrap">
@@ -335,7 +306,7 @@ const TripSchedule = () => {
                             <button type="button" id="TSAutoCalc" className="btnOrangeOutline">
                                 Auto Calculate
                             </button>
-                            <hr class="hrline" style={{ margin: "0 10px" }} />
+                            <hr className="hrline" style={{ margin: "0 10px" }} />
                         </Grid>
                         <Grid item md={4} className="fareIncrInputs">
                             <div className="auto-increment-type">
@@ -360,13 +331,13 @@ const TripSchedule = () => {
                         <Grid item md={8}>
                             <div className="col-fare">
                                 <div className="chklbl-wrap">
-                                    <input type="checkbox" id="tripSchHideZeroFares" class="tripSchProps" />
+                                    <input type="checkbox" id="tripSchHideZeroFares" className="tripSchProps" />
                                     <label htmlFor="tripSchHideZeroFares">
                                         Hide Zero Fares
                                     </label>
                                 </div>
                                 <div className="chklbl-wrap">
-                                    <input type="checkbox" id="tripSchFareIncGST" class="tripSchProps" />
+                                    <input type="checkbox" id="tripSchFareIncGST" className="tripSchProps" />
                                     <label htmlFor="tripSchFareIncGST">
                                         Fare Include GST
                                     </label>
@@ -713,14 +684,14 @@ const TripSchedule = () => {
                                 <Grid item md={6} style={{ textAlign: "left", display: "flex", alignItems: "center", justifyContent: "start" }}>
                                     <label style={{ marginRight: "10px" }}>Selected Seat: </label>
                                     <button type="button" id="quotamale" ></button>
-                                    <hr class="hrline" style={{ margin: "0 10px", height: "25px" }} />
+                                    <hr className="hrline" style={{ margin: "0 10px", height: "25px" }} />
                                     <button type="button" id="quotafemale" ></button>
                                 </Grid>
                                 <Grid item md={6} style={{ borderLeft: "solid 1px lightgray", textAlign: "right" }}>
                                     <button type="button" id="tripSchSave" className="btnOrange mlr10">
                                         Save
                                     </button>
-                                    <button type="button" id="tripSchClose" className="btnOrangeOutline">
+                                    <button type="button" id="tripSchClose" className="btnOrangeOutline" onClick={() => props.updateModal(false)}>
                                         Close
                                     </button>
                                 </Grid>

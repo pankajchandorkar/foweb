@@ -28,31 +28,34 @@ const DatePickerInput = (props) => {
     return (
         <>
             {
-                props.calIcon==false ? "" : <CalenderIcon/>
+                props.calIcon == false ? "" : <CalenderIcon />
             }
             <SingleDatePicker
                 id={props.id}
                 readOnly={true}
+                disabled={props.disabled == true ? true : false}
                 date={props.selectedDate}
-                onDateChange={(date) =>
-                    props.handelChangeDate(date, props.id)
-                }
                 focused={props.focused}
-                onFocusChange={(f) => props.setDateFocused(f.focused, props.id)}
+                onDateChange={(date) =>
+                    props.onDateChange(date)
+                }
+                onFocusChange={(f) => 
+                    props.onFocusChange(f.focused)
+                }
                 hideKeyboardShortcutsPanel={true}
                 block={true}
                 numberOfMonths={2}
                 noBorder={true}
-                displayFormat= {props.displayFormat!=""?props.displayFormat:"DD MMM YYYY"}
+                displayFormat={props.displayFormat != "" ? props.displayFormat : "DD MMM YYYY"}
                 placeholder="Choose Date"
                 isOutsideRange={(event) => checkOutsideRange(props.id, event)}
                 anchorDirection="left"
                 firstDayOfWeek={1}
             />
             {
-                props.labelReq==false ? "" : <label className={`DateInput_label ${props.focused==true?"DateInputLabel_focused":props.selectedDate?"DateInputLabel_filled":""}`} htmlFor={props.id}>{props.label}</label>
+                props.labelReq == false ? "" : <label className={`DateInput_label ${props.focused == true ? "DateInputLabel_focused" : props.selectedDate ? "DateInputLabel_filled" : ""}`} htmlFor={props.id}>{props.label}</label>
             }
-            
+
         </>
     )
 }

@@ -130,7 +130,10 @@
   width: 50%;
   text-align: center;
   border-right: solid 1px #c9cfd5;
-  padding: 13px;
+  padding: 13px; 
+  & .spn-action{
+    cursor: pointer;
+  }
 }
 
 .card-action-right {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid } from '@material-ui/core';
-import { Typography,  Divider, TextField,  InputAdornment,  Button } from '@mui/material';
+import { Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import SearchIcon from "@material-ui/icons/Search";
 import BusIcon from "./common/BusIcon";
 import DatePickerInput from "./common/DatePickerInput";
@@ -11,7 +11,6 @@ import ProgressBar from "./common/ProgressBar";
 import { makeStyles } from "@mui/styles";
 import moment from 'moment';
 import ScheduleBox from "./ScheduleBox";
-
 
 import '../styles/FutureOccupancyReport.scss';
 
@@ -24,26 +23,6 @@ function FutureOccupancyReport() {
 
   const [reportData, setReportData] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  //for handle date change event 
-  const handelChangeDate = (date, id) => {
-    if (id === "fromDate") {
-      setFromDate(date);
-    }
-    if (id === "toDate") {
-      setToDate(date);
-    }
-  }
-
-  //for handle date focuse event
-  const setDateFocused = (f, id) => {
-    if (id === "fromDate") {
-      setFrDtFocused(f);
-    }
-    if (id === "toDate") {
-      setToDtFocused(f);
-    }
-  }
 
   //options use for trip type drop down
   const options = [
@@ -343,10 +322,11 @@ function FutureOccupancyReport() {
                 <DatePickerInput
                   id="fromDate"
                   selectedDate={fromDate}
-                  handelChangeDate={handelChangeDate}
-                  setDateFocused={setDateFocused}
+                  onDateChange={(date) => setFromDate(date)}
+                  onFocusChange={(f) => setFrDtFocused(f)}
                   focused={frDtFocused}
                   label="From Chart Date"
+                  displayFormat="DD MMM YYYY"
                 />
               </Box>
             </Grid>
@@ -355,10 +335,11 @@ function FutureOccupancyReport() {
                 <DatePickerInput
                   id="toDate"
                   selectedDate={toDate}
-                  handelChangeDate={handelChangeDate}
-                  setDateFocused={setDateFocused}
+                  onDateChange={(date) => setToDate(date)}
+                  onFocusChange={(f) => setToDtFocused(f)}
                   focused={toDtFocused}
                   label="To Chart Date"
+                  displayFormat="DD MMM YYYY"
                 />
               </Box>
             </Grid>
@@ -390,8 +371,6 @@ function FutureOccupancyReport() {
       </div>
       {loading && <ProgressBar />}
 
-              
-
       <div id="for_resultblock" className={classes.for_resultblock}>
         <Box component="div" sx={{ margin: "5px 15px" }}>
           <Grid container spacing={2}>
@@ -410,14 +389,14 @@ function FutureOccupancyReport() {
                   percentage={data.percentage}
                   gross={data.gross}
                   avgFare={data.avgFare}
-                  
+
                 />
               })
             }
           </Grid>
         </Box>
       </div>
-       
+
     </div>
   )
 }

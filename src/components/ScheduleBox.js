@@ -13,6 +13,7 @@ import "../styles/ScheduleBox.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowUp, faCircleArrowDown, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import TripSchedule from "./TripSchedule";
+import BusSchedule from "./BusSchedule";
 
 function ScheduleBox(props) {
 
@@ -21,12 +22,20 @@ function ScheduleBox(props) {
     const seatWiseBreakup = <SeatWiseBreakup />
     const fareWiseBreakup = <FareWiseBreakup />
 
-
+    const [modalType, setModalType] = useState("");
     const [showModal, setShowModal] = useState(false);
 
-    const updateModal = (flag) => {
-        setShowModal(flag);
+    //this function is used for set modal type, means which data content will show in modal popup
+    const updateModalType = (param) => {
+        setModalType(param)
     }
+
+    //this function is used for set modal show/hide status
+    const updateModal = (param) => {
+        setShowModal(param)
+    }
+
+
 
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -97,20 +106,27 @@ function ScheduleBox(props) {
                             </div>
                         </div>
                     </div>
-
                 </CardContent>
                 <CardActions sx={{ padding: "0", display: "flex", color: "#054B66", background: "#EEF5FB", fontWeight: "600" }}>
                     <div className="card-action-left">
                         {
-                            props.status == "Inactive" ? <span style={{ color: "#7F7F7F" }}>Bus Schedule</span> : <span>Bus Schedule</span>
+                            props.status == "Inactive" ? <span style={{ color: "#7F7F7F" }}>Bus Schedule</span> : <span className="spn-action" onClick={() => { updateModalType("busSchedule"); updateModal(true); }}> Bus Schedule</span>
+                        }
+                        {
+                            showModal && 
+                            modalType == "busSchedule" && 
+                            <Modal headTxt={"Schedule Bus No and Crew Staff "} updateModal={updateModal}>
+                                <BusSchedule updateModal={updateModal}/>
+                            </Modal>
                         }
                     </div>
                     <div className="card-action-right">
-                        <span className="spn-action" onClick={() => {updateModal(true);}}>Trip Schedule</span>
+                        <span className="spn-action" onClick={() => { updateModalType("tripSchedule"); updateModal(true); }}>Trip Schedule</span>
                         {
                             showModal && 
-                            <Modal headTxt={"Title"} updateModal={updateModal}>
-                                <TripSchedule />
+                            modalType == "tripSchedule" &&
+                            <Modal headTxt={"Trip Schedule | Service: Delhi - Lucknow - SRT-2X1(36) AC-Sleeper | Trip ID: 10943"} updateModal={updateModal}>
+                                <TripSchedule updateModal={updateModal} />
                             </Modal>
                         }
                     </div>

@@ -37,10 +37,163 @@
 #for_searchblock {
 }
 
+.input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  & .group-span {
+    padding: 6px 12px;
+    text-align: center;
+    background-color: #edf7f9;
+    border: 1px solid #ccc;
+    border-radius: 4px 0px 0px 4px;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-right: none;
+    min-width: 90px;
+  }
+
+  & .group-input {
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 0px 4px 4px 0px;
+    outline: none;
+
+    &:hover {
+      border: 1px solid #212121;
+    }
+
+    &:focus {
+      border: 2px solid #3f51b5;
+    }
+  }
+
+  & .group-button {
+    padding: 8px 25px;
+    color: #fff;
+    background-color: #ff6000;
+    border-color: #ff6000;
+    box-shadow: 0px 2px 4px #ccc;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    font-size: 14px;
+    border-radius: 4px;
+    display: table-cell;
+
+    &:hover {
+      background-color: #e25500;
+      border-color: #e25500;
+    }
+  }
+
+  & .group-select {
+    width: 111px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 8px 12px;
+
+    &:hover {
+      border: 1px solid #212121;
+    }
+
+    &:focus {
+      border: 2px solid #3f51b5;
+    }
+  }
+
+  & :disabled {
+    background: #f2f2f2;
+  }
+} //.input-group end
+
+.btnOrange {
+  border: 1px solid #ff6000;
+  padding: 3px 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #ff6000;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  white-space: nowrap;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  min-height: 27px;
+
+  &:hover {
+    color: #fff;
+    background-color: #e25500;
+    border-color: #e25500;
+  }
+
+  &.mlr {
+    margin: 0 5px;
+  }
+
+  &.mlr10 {
+    margin: 0 10px;
+  }
+
+  &.mr {
+    margin-right: 12px;
+  }
+}
+
+.btnOrangeOutline {
+  border: 1px solid #ff6000;
+  padding: 3px 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #fff;
+  color: #ff6000;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  white-space: nowrap;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  min-height: 27px;
+
+  &:hover {
+    color: #fff;
+    background-color: #ff6000;
+    border-color: #ff6000;
+  }
+
+  &.mlr {
+    margin: 0 5px;
+  }
+
+  &.mr {
+    margin-right: 12px;
+  }
+}
+
 .tripScheduleWrap {
   margin-top: 5px;
   display: flex;
-  width: 100%;
+  width: 95vw;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
@@ -67,7 +220,7 @@
       border-radius: 0px 4px 4px 0px;
     }
 
-    & .input-group{
+    & .input-group {
       width: 98%;
     }
   }
@@ -79,13 +232,13 @@
       padding: 9px 10px 9px;
     }
 
-    & .input-group{
+    & .input-group {
       width: 98%;
     }
   }
 
-  & .chartTime{
-    & .input-group{
+  & .chartTime {
+    & .input-group {
       width: 98%;
     }
   }
@@ -151,61 +304,6 @@
     justify-content: start;
   }
 
-  // & .input-wrap {
-  //   display: flex;
-  //   width: 100%;
-  //   margin-bottom: 9px;
-
-  //   & .col {
-  //     display: flex;
-  //     width: 100%;
-  //     align-items: center;
-  //     justify-content: normal;
-
-  //     .tripSchRuns {
-  //       margin-right: 5px;
-  //       margin-left: 10px;
-
-  //       & + label {
-  //         margin-top: 2px;
-  //       }
-  //     }
-
-  //     & .brd-bottom {
-  //       border-top: 1px solid #d7d7d7;
-  //       width: 100%;
-  //       margin-right: 6px;
-  //       height: 1px;
-  //     }
-  //   } //.col end
-
-  //   & .col1 {
-  //     //border: solid 1px red;
-  //     display: flex;
-  //     width: 40%;
-  //     &.chartDate {
-  //       .input-group .group-input {
-  //         border-radius: 0px;
-  //       }
-  //       & .input-group .group-button {
-  //         border-radius: 0px 4px 4px 0px;
-  //       }
-  //     }
-  //   }
-
-  //   & .col2 {
-  //     //border: solid 1px red;
-  //     display: flex;
-  //     width: 30%;
-  //   }
-
-  //   & .col3 {
-  //     //border: solid 1px red;
-  //     display: flex;
-  //     width: 30%;
-  //   }
-  // }
-
   & .tripSchePropRow {
     display: flex;
     align-items: center;
@@ -256,78 +354,6 @@
     padding: 5px;
     border-radius: 4px;
   } //.tripAminitiesWrap end
-
-  .btnOrangeOutline {
-    border: 1px solid #ff6000;
-    padding: 3px 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    background: #fff;
-    color: #ff6000;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-    white-space: nowrap;
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    min-height: 27px;
-
-    &:hover {
-      color: #fff;
-      background-color: #ff6000;
-      border-color: #ff6000;
-    }
-
-    &.mlr {
-      margin: 0 5px;
-    }
-
-    &.mr {
-      margin-right: 12px;
-    }
-  }
-
-  .btnOrange {
-    border: 1px solid #ff6000;
-    padding: 3px 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    background: #ff6000;
-    color: #ffffff;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-    white-space: nowrap;
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    min-height: 27px;
-
-    &:hover {
-      color: #fff;
-      background-color: #e25500;
-      border-color: #e25500;
-    }
-
-    &.mlr {
-      margin: 0 5px;
-    }
-
-    &.mlr10 {
-      margin: 0 10px;
-    }
-
-    &.mr {
-      margin-right: 12px;
-    }
-  }
 
   & .tripSchAction {
     display: flex;
@@ -534,82 +560,192 @@
   }
 } //.tripScheduleWrap end
 
-.input-group {
-  position: relative;
+//bus schedule form
+.busScheduleWrap {
+  margin-top: 5px;
   display: flex;
-  width: 100%;
+  width: 55vw;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.01rem;
+  text-align: left;
 
-  & .group-span {
-    padding: 6px 12px;
-    text-align: center;
-    background-color: #edf7f9;
-    border: 1px solid #ccc;
-    border-radius: 4px 0px 0px 4px;
-    white-space: nowrap;
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    border-right: none;
-    min-width: 90px;
+  & .MuiGrid-spacing-xs-2 > .MuiGrid-item {
+    padding: 6px 8px 6px 8px;
   }
 
   & .group-input {
-    padding: 8px 12px;
-    font-size: 12px;
-    line-height: 1.4;
-    color: #555;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.23);
-    border-radius: 0px 4px 4px 0px;
-    outline: none;
+    padding: 7px 10px;
+  }
 
-    &:hover {
-      border: 1px solid #212121;
+  & .dateOption {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    & .dateopt {
+      margin-right: 5px;
+      margin-left: 10px;
+
+      & + label {
+        margin-top: 2px;
+      }
     }
 
-    &:focus {
-      border: 2px solid #3f51b5;
+    & .dateopt:first-child {
+      margin-left: 2px;
     }
   }
 
-  & .group-button {
-    padding: 8px 25px;
-    color: #fff;
-    background-color: #ff6000;
-    border-color: #ff6000;
-    box-shadow: 0px 2px 4px #ccc;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    font-size: 14px;
+  & .dateFrom,
+  & .dateTo {
+    & .group-span {
+      border-radius: 0px 4px 4px 0px;
+      border-right: 1px solid #ccc;
+      border-left: none;
+      position: relative;
+      min-width: 40px;
+
+      & .input-icon {
+        left: 7px;
+        top: 7px;
+      }
+    }
+
+    & .DateInput_input {
+      padding: 8px 10px 8px;
+      border-radius: 4px 0px 0px 4px;
+    }
+
+    & .DateInput_input__disabled {
+      background: #f2f2f2;
+      font-style: normal;
+    }
+  }
+
+  & .trip,
+  & .driver,
+  & .busNum,
+  & .conductor,
+  & .pickupMan {
+    & .input-group {
+      & .group-span {
+        min-width: 165px;
+      }
+
+      & .group-input {
+        width: 100%;
+      }
+
+      & .iconWrap {
+        position: relative;
+        margin-right: 25px;
+        top: -4px;
+        left: 1px;
+      }
+
+      #cmbDriverNumberBS,
+      #cmbDriverCodeBS,
+      #cmbConductorNumberBS,
+      #cmbConductorCodeBS,
+      #cmbDriverNumber2BS,
+      #cmbDriver2CodeBS {
+        border-radius: 4px;
+      }
+    }
+  } //.trip
+
+  & .tripDateTime {
+    & .input-group {
+      & .group-span {
+        min-width: 165px;
+      }
+      & .group-input {
+        width: 100%;
+      }
+    }
+  }
+
+  .cityWisePickupMan {
+    padding: 11px 10px;
     border-radius: 4px;
-    display: table-cell;
-
-    &:hover {
-      background-color: #e25500;
-      border-color: #e25500;
-    }
+    background: #e5f6fd;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
-  & .group-select {
-    width: 111px;
-    border: 1px solid rgba(0, 0, 0, 0.23);
-    padding: 8px 12px;
+  & .busInfoSms {
+    display: flex;
+    align-items: center;
+    justify-content: start;
 
-    &:hover {
-      border: 1px solid #212121;
+    & .chklbl-wrap {
+      padding-right: 5px;
+      display: flex;
+      align-items: center;
+
+      & .infosms {
+        margin-right: 5px;
+
+        & + label {
+          margin-right: 7px;
+          margin-top: 2px;
+        }
+      }
+    } //.chklbl-wrap end
+
+    & .hrline {
+      text-align: left;
+      margin-left: 15px;
+      height: 32px;
+      border-width: 0;
+      color: grey;
+      background-color: lightgray;
+      margin-left: 6px;
+      margin-right: 6px;
+      width: 1px;
+      margin: 0;
+    } //.hrline end
+
+    & .smsOptionWrap {
+      padding-left: 10px;
+      font-size: 11px;
+      font-weight: 400;
+
+      & .smsOption {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding-bottom: 3px;
+      }
+
+      & .lblSmsType {
+        padding-left: 5px;
+      }
+    }
+  } //.busInfoSms
+
+  & .busSchAction {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    & .btnOrange {
+      padding: 5px 20px;
+      min-height: 33px;
+      min-width: 75px;
     }
 
-    &:focus {
-      border: 2px solid #3f51b5;
+    & .btnOrangeOutline {
+      padding: 5px 20px;
+      min-height: 33px;
+      min-width: 75px;
     }
   }
-}
+} //.busScheduleWrap
 
 /* for mobile */
 @media (max-width: 768px) {

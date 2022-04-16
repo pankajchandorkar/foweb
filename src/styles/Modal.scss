@@ -13,8 +13,8 @@
     background: white;
     top: 0%;
     left: 50%;
-    width: 98%;
-    height: 85vh;
+    width: auto;
+    height: 90vh;
     border-radius: 8px;
     transform: translate(-50%, 5%);
     z-index: 10;
@@ -34,9 +34,8 @@
 
     .model--body {
       padding: 10px;
-      height: 79vh;
+      height: 83vh;
       overflow: auto;
-      
     }
 
     .btn--wrapper {
