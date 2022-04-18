@@ -35,8 +35,6 @@ function ScheduleBox(props) {
         setShowModal(param)
     }
 
-
-
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ borderRadius: "10px", fontSize: "0.7rem" }}>
@@ -70,7 +68,6 @@ function ScheduleBox(props) {
                                                 props.status == "Inactive" ? <FontAwesomeIcon icon={faCircleArrowDown} style={{ fontSize: "1rem", color: "#7F7F7F" }} /> : null
                                     }
                                     <span className={`seats ${props.status == "Scheduled" ? "scheduled" : props.status == "Blocked" || props.status == "Stop Booking" ? "blocked" : props.status == "Inactive" ? "inactive" : ""}`}>{props.booked} Booked | </span>
-
                                     <TooltipText title={seatWiseBreakup} link={<span className={`bookingAmt ${props.status == "Scheduled" ? "scheduled" : props.status == "Blocked" || props.status == "Stop Booking" ? "blocked" : props.status == "Inactive" ? "inactive" : ""}`}>₹ {props.amount} + </span>} />
                                 </div>
                             </div>
@@ -94,13 +91,11 @@ function ScheduleBox(props) {
                                 <TooltipText
                                     title={fareWiseBreakup}
                                     link={[
-                                        <span className="heading">Gross: </span>,
+                                        <span key="gross" className="heading">Gross: </span>,
                                         props.gross,
-                                        <span className="heading">Avg Fare: </span>,
+                                        <span key="fare" className="heading">Avg Fare: </span>,
                                         props.avgFare,
-                                        <FontAwesomeIcon icon={faCaretDown}
-                                            style={{ fontSize: "1rem", color: "#878787", paddingLeft: "3px" }}
-                                        />
+                                        <FontAwesomeIcon key="icon" icon={faCaretDown} style={{ fontSize: "1rem", color: "#878787", paddingLeft: "3px" }}/>
                                     ]}
                                 />
                             </div>
@@ -113,17 +108,17 @@ function ScheduleBox(props) {
                             props.status == "Inactive" ? <span style={{ color: "#7F7F7F" }}>Bus Schedule</span> : <span className="spn-action" onClick={() => { updateModalType("busSchedule"); updateModal(true); }}> Bus Schedule</span>
                         }
                         {
-                            showModal && 
-                            modalType == "busSchedule" && 
+                            showModal &&
+                            modalType == "busSchedule" &&
                             <Modal headTxt={"Schedule Bus No and Crew Staff "} updateModal={updateModal}>
-                                <BusSchedule updateModal={updateModal}/>
+                                <BusSchedule updateModal={updateModal} />
                             </Modal>
                         }
                     </div>
                     <div className="card-action-right">
                         <span className="spn-action" onClick={() => { updateModalType("tripSchedule"); updateModal(true); }}>Trip Schedule</span>
                         {
-                            showModal && 
+                            showModal &&
                             modalType == "tripSchedule" &&
                             <Modal headTxt={"Trip Schedule | Service: Delhi - Lucknow - SRT-2X1(36) AC-Sleeper | Trip ID: 10943"} updateModal={updateModal}>
                                 <TripSchedule updateModal={updateModal} />

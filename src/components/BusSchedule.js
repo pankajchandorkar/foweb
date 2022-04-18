@@ -4,8 +4,12 @@ import DatePickerInput from "./common/DatePickerInput";
 import moment from 'moment';
 import LockIcon from "./common/LockIcon";
 import CalIcon from "./common/CalIcon";
+import Modal from "./common/Modal";
+import CityWisePickupMan from "./CityWisePickupMan";
 
 function BusSchedule(props) {
+
+    const [showModal, setShowModal] = useState(false);
 
     //for dates value
     const [busSchFrDate, setBusSchFrDate] = useState(moment(new Date()));
@@ -16,13 +20,18 @@ function BusSchedule(props) {
     const [busSchToDtFocused, setBusSchToDtFocused] = useState(false);
 
     //for dates disabled
-    const [busSchFrDtDisabled, setBusSchFrDtDisabled] = useState(false);
-    const [busSchToDtDisabled, setBusSchToDtDisabled] = useState(false);
+    const [busSchFrDtDisabled, setBusSchFrDtDisabled] = useState(true);
+    const [busSchToDtDisabled, setBusSchToDtDisabled] = useState(true);
+
+    //this function is used for set modal show/hide status
+    const updateModal = (param) => {
+        setShowModal(param)
+    }
 
     return (
         <div className="busScheduleWrap">
             <Box sx={{ width: "100%", paddingLeft: "15px" }}>
-                <Grid container spacing={2} md={12}>
+                <Grid container item spacing={2} md={12}>
                     {/* 1st row */}
                     <Grid className="dateOption" item md={12}>
                         <input className="dateopt" type="radio" name="dateopt" id="date_range" value="dateRange" />
@@ -166,7 +175,15 @@ function BusSchedule(props) {
                         </div>
                     </Grid>
                     <Grid item md={6}>
-                        <div className="cityWisePickupMan">Select City Wise Pickup Man</div>
+                        <div className="cityWisePickupMan">
+                        <span className="spn-action" onClick={() => {updateModal(true)}}>Select City Wise Pickup Man</span>
+                        {
+                            showModal &&
+                            <Modal headTxt={"City-Wise Pickup Man Selection"} updateModal={updateModal}>
+                                <CityWisePickupMan updateModal={updateModal}/>
+                            </Modal>
+                        }
+                        </div>
                     </Grid>
 
                     {/* 10th row */}

@@ -7,16 +7,19 @@
   background: rgba($color: #000000, $alpha: 0.6);
   z-index: 100;
   letter-spacing: 0.03rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .model--container {
     position: fixed;
     background: white;
-    top: 0%;
-    left: 50%;
+    // top: 0%;
+    // left: 50%;
     width: auto;
     height: 90vh;
     border-radius: 8px;
-    transform: translate(-50%, 5%);
+    // transform: translate(-50%, 5%);
     z-index: 10;
     overflow: hidden;
 

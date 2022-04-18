@@ -389,7 +389,6 @@ function FutureOccupancyReport() {
                   percentage={data.percentage}
                   gross={data.gross}
                   avgFare={data.avgFare}
-
                 />
               })
             }
