@@ -17,7 +17,7 @@
     // top: 0%;
     // left: 50%;
     width: auto;
-    height: 90vh;
+    height: 88vh;
     border-radius: 8px;
     // transform: translate(-50%, 5%);
     z-index: 10;
@@ -28,11 +28,15 @@
       justify-content: space-between;
       align-items: center;
       background: #0086ff;
-      padding: 0px 15px;
+      padding-left: 15px;
       color: #fff;
       font-weight: 500;
       border-top-right-radius: 6px;
       border-top-left-radius: 6px;
+
+      & h2 {
+        font-size: 1.2em;
+      }
     }
 
     .model--body {

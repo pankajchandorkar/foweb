@@ -50,7 +50,7 @@ const TooltipText = (props) => {
                     disableHoverListener
                     disableTouchListener
                     title={props.title}
-                    arrow
+                    arrow={true}
                     placement='top'
                     classes={classes}
                 >
@@ -65,8 +65,8 @@ const TooltipText = (props) => {
                     top: "0", 
                     width: "100%",
                     zIndex: "1", 
-                    opacity: "0.5", 
-                    background: "#434343",
+                    opacity: "0.3", 
+                    background: "#000000",
                     height: "100%"
                 }}></div>
             }

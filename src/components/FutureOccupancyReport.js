@@ -42,18 +42,21 @@ function FutureOccupancyReport() {
       boxShadow: "0px 1px 5px #aaa",
       background: "#ffffff",
       "& .rptHeading": {
-        paddingRight: '8px',
+        paddingRight: '15px',
         "&.MuiTypography-h6": {
           fontSize: '0.9rem',
           fontWeight: '600',
         }
       },
-      "& .rptCheckobx": {
+      "& .rptCheckbox": {
         "& .MuiIconButton-root": {
           padding: '0px 5px 0px 5px',
         },
         "& .MuiFormControlLabel-label": {
           fontSize: '0.8rem',
+        },
+        "& .Mui-checked": {
+          color: '#0086ff',
         }
       },
       "& .txtSearch": {
@@ -65,11 +68,16 @@ function FutureOccupancyReport() {
           },
           "& .MuiSvgIcon-root": {
             paddingTop: "4px"
-          }
-        }
+          },
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+          borderColor: "#0086ff"
+        }, " & .MuiInputLabel-root.Mui-focused": {
+          color: "#0086ff"
+        },
       },
       "& .btmInputWrap": {
-        marginTop: "10px",
+        marginTop: "12px",
         fontSize: "0.9rem",
       },
       "& .btn-orange": {
@@ -98,6 +106,9 @@ function FutureOccupancyReport() {
       background: "#F1F1F1",
       overflow: "auto",
       height: "80vh",
+    },
+    "hr_divider": {
+      marginTop: "5px!important"
     }
   });
 
@@ -301,21 +312,21 @@ function FutureOccupancyReport() {
             <Grid container item md={12}>
               <Typography variant="h6" className="rptHeading">Future Occupancy Report</Typography>
               |
-              <Box ml={1}>
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"Include Phone Booking"} />
+              <Box ml={2}>
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Include Phone Booking"} />
               </Box>
               |
               <Box ml={1}>
                 <span className="span_show">Show: </span>
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"All Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"Unscheduled Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"Blocked Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"Booking Stoped Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckobx" label={"Inactive Trips"} />
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"All Trips"} />
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Unscheduled Trips"} />
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Blocked Trips"} />
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Booking Stoped Trips"} />
+                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Inactive Trips"} />
               </Box>
             </Grid>
           </Grid>
-          <Divider />
+          <Divider className={classes.hr_divider} />
           <Grid container spacing={1} className="btmInputWrap">
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>

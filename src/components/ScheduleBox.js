@@ -54,7 +54,7 @@ function ScheduleBox(props) {
                         </div>
                         {/*for trip, bus-type, seats booked, amount*/}
                         <div className="scheRow btmBrd">
-                            <div className="scheTitle">
+                            <div className="tripName">
                                 {props.tripName}
                             </div>
                             <div className="busType">

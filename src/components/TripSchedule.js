@@ -51,9 +51,9 @@ const TripSchedule = (props) => {
         <div className="tripScheduleWrap">
             <Box sx={{ width: "100%" }} className={classes.root}>
                 <Grid container spacing={2} >
-                    <Grid container item md={8} >
+                    <Grid container item xs={12} md={8} >
                         {/*1st row*/}
-                        <Grid className="chartDate" item md={6}>
+                        <Grid className="chartDate" item xs={12} md={6}>
                             <div className="input-group">
                                 <span className="group-span">Chart Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
@@ -72,7 +72,7 @@ const TripSchedule = (props) => {
                                 <button className="group-button">Load</button>
                             </div>
                         </Grid>
-                        <Grid className="startDate" item md={3} >
+                        <Grid className="startDate" item xs={12} md={3} >
                             <div className="input-group" >
                                 <span className="group-span">Start Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
@@ -90,8 +90,8 @@ const TripSchedule = (props) => {
                                 </Box>
                             </div>
                         </Grid>
-                        <Grid className="endDate" item md={3} >
-                            <div className="input-group" style={{ marginLeft: "3px" }}>
+                        <Grid className="endDate" item xs={12} md={3} >
+                            <div className="input-group">
                                 <span className="group-span">End Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
                                     <DatePickerInput
@@ -109,7 +109,7 @@ const TripSchedule = (props) => {
                             </div>
                         </Grid>
                         {/*2nd row*/}
-                        <Grid className="chartTime" item md={6} >
+                        <Grid className="chartTime" item xs={12} md={6} >
                             <div className="input-group">
                                 <span className="group-span">Chart Time</span>
                                 <select className="group-select" id="tripSchTimeHr">
@@ -194,20 +194,20 @@ const TripSchedule = (props) => {
                                 </select>
                             </div>
                         </Grid>
-                        <Grid className="code" item md={3} >
+                        <Grid className="code" item xs={12} md={3} >
                             <div className="input-group" >
                                 <span className="group-span">Code</span>
                                 <input className="group-input" type="text" name="" id="input" placeholder="Code" autoComplete='off' />
                             </div>
                         </Grid>
-                        <Grid className="suffix" item md={3} >
-                            <div className="input-group" style={{ marginLeft: "3px" }}>
+                        <Grid className="suffix" item xs={12} md={3} >
+                            <div className="input-group" >
                                 <span className="group-span">Suffix</span>
                                 <input className="group-input" type="text" name="" id="input" placeholder="Suffix" autoComplete='off' />
                             </div>
                         </Grid>
                         {/*3rd row*/}
-                        <Grid className="tripRuns" item md={4}>
+                        <Grid className="tripRuns" item xs={12} sm={4} md={4}>
                             Runs:
                             <input className="tripSchRuns" type="radio" name="tripSchRuns" id="tripSchRuns-d" value="daily" />
                             <label htmlFor="tripSchRuns-d">Daily</label>
@@ -216,7 +216,7 @@ const TripSchedule = (props) => {
                             <input className="tripSchRuns" type="radio" name="tripSchRuns" id="tripSchRuns-w" value="weekdays" />
                             <label htmlFor="tripSchRuns-w">Weekdays</label>
                         </Grid>
-                        <Grid item md={8} >
+                        <Grid className="tripWeek" item  xs={12} sm={8} md={8}>
                             <div className="bkg-trip-week">
 
                                 <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Mon" value="Mon" placeholder="name" />
@@ -243,11 +243,11 @@ const TripSchedule = (props) => {
                         </Grid>
 
                         {/*4th row*/}
-                        <Grid item md={12} >
+                        <Grid item xs={12} md={12} >
                             <hr className="hr-line" />
                         </Grid>
                         {/*5th row*/}
-                        <Grid className="tripSchePropRow" item md={9} >
+                        <Grid className="tripSchePropRow" item xs={12} md={9} >
                             <div className="chklbl-wrap">
                                 <input type="checkbox" id="tripSchIsActive" className="tripSchProps" placeholder="name" />
                                 <label htmlFor="tripSchIsActive">
@@ -280,7 +280,7 @@ const TripSchedule = (props) => {
                             </div>
                             <hr className="hrline" />
                         </Grid>
-                        <Grid item md={3} >
+                        <Grid className="tripScheCovidDropDown" item xs={12} md={3} >
                             <div className="select-wrap">
                                 <select id="idcoviddropdown" className="covidDropDown">
                                     <option value="none">Disable Covid 19 Block</option>
@@ -290,13 +290,13 @@ const TripSchedule = (props) => {
                             </div>
                         </Grid>
                         {/*6th row*/}
-                        <Grid item md={12} >
+                        <Grid item xs={12} md={12} >
                             <div className="tripAminitiesWrap">
                                 <AminitiesSlider />
                             </div>
                         </Grid>
                         {/*7th row*/}
-                        <Grid item md={8} className="fareInputs">
+                        <Grid item xs={12} md={8} className="fareInputs">
                             <TextField id="sit" size="small" label="SitNAC" autoComplete="off" />
                             <TextField id="sitAC" size="small" label="SitAC" autoComplete="off" />
                             <TextField id="slmb" size="small" label="SlmbNAC" autoComplete="off" />
@@ -308,7 +308,7 @@ const TripSchedule = (props) => {
                             </button>
                             <hr className="hrline" style={{ margin: "0 10px" }} />
                         </Grid>
-                        <Grid item md={4} className="fareIncrInputs">
+                        <Grid item xs={12} md={4} className="fareIncrInputs">
                             <div className="auto-increment-type">
                                 <input type="radio" name="autoIncr" id="autoIncr-per" value="per" className=""
                                 />
@@ -324,11 +324,8 @@ const TripSchedule = (props) => {
                             </button>
                         </Grid>
                         {/*8th row*/}
-                        <Grid item md={12} >
-                            <hr className="hr-line" />
-                        </Grid>
                         {/*9th row*/}
-                        <Grid item md={8}>
+                        <Grid item xs={8} md={9} className="grid-tripSchProps">
                             <div className="col-fare">
                                 <div className="chklbl-wrap">
                                     <input type="checkbox" id="tripSchHideZeroFares" className="tripSchProps" />
@@ -344,8 +341,7 @@ const TripSchedule = (props) => {
                                 </div>
                             </div>
                         </Grid>
-                        <Grid item md={1} style={{ borderRight: "solid 1px lightgray" }}></Grid>
-                        <Grid item md={3} >
+                        <Grid item xs={4} md={3} className="grid-pickup-dropoff">
                             <div className="col-pickup-dropoff">
                                 Datewise
                                 <button type="button" id="tripSchAutoIncrbtn" className="btnOrangeOutline mlr">
@@ -357,7 +353,7 @@ const TripSchedule = (props) => {
                             </div>
                         </Grid>
                         {/*10th row*/}
-                        <Grid item md={12}>
+                        <Grid item xs={12} md={12}>
                             <div className="busPaymentDetailContent">
                                 <table
                                     className="tblBusPaymentDetails"
@@ -538,10 +534,10 @@ const TripSchedule = (props) => {
                             </div>
                         </Grid>
                     </Grid>
-                    <Grid container item md={4}>
+                    <Grid container item xs={12} md={4}>
                         <Box sx={{ width: "100%" }}>
                             {/*1st row*/}
-                            <Grid className='chartType' item md={12} style={{ background: "pink" }}>
+                            <Grid className='chartType' item md={12}>
                                 <div className="input-group">
                                     <span className="group-span">Chart</span>
                                     <select className="group-select" id="tripSchChart">
@@ -561,7 +557,7 @@ const TripSchedule = (props) => {
                                 </div>
                             </Grid>
                             {/*2nd row*/}
-                            <Grid item md={12}>
+                            <Grid item xs={12} md={12}>
                                 {<div id="tripSchChartDisplay">
                                     <table id="tripScheduleChart" className="chart table table-bordered">
                                         <thead>
@@ -680,7 +676,7 @@ const TripSchedule = (props) => {
                                 </div>}
                             </Grid>
                             {/*3rd row*/}
-                            <Grid className='tripSchAction' container item md={12}>
+                            <Grid className='tripSchAction' container item xs={12} md={12}>
                                 <Grid item md={6} style={{ textAlign: "left", display: "flex", alignItems: "center", justifyContent: "start" }}>
                                     <label style={{ marginRight: "10px" }}>Selected Seat: </label>
                                     <button type="button" id="quotamale" ></button>

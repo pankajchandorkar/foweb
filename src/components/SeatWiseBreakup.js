@@ -51,7 +51,7 @@ function SeatWiseBreakup(props) {
                         <td className="brd-bottom">1250</td>
                     </tr>
                     <tr>
-                        <td colSpan={4} className="txt-bold">Available Seats: 08</td>
+                        <td colSpan={4} className="availSeats">Available Seats: 08</td>
                     </tr>
                 </tbody>
                 <tfoot></tfoot>

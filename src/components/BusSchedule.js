@@ -44,7 +44,7 @@ function BusSchedule(props) {
                         <label htmlFor="selective_date">Selective Date</label>
                     </Grid>
                     {/* 2ndrow */}
-                    <Grid className="dateFrom" item md={6}>
+                    <Grid className="dateFrom" item xs={12} md={6}>
                         <div className="input-group" >
                             <Box component="div" sx={{ width: "100%", position: "relative" }}>
                                 <DatePickerInput
@@ -63,7 +63,7 @@ function BusSchedule(props) {
                             <span className="group-span"><CalIcon /></span>
                         </div>
                     </Grid>
-                    <Grid className="dateTo" item md={6}>
+                    <Grid className="dateTo" item xs={12} md={6}>
                         <div className="input-group" >
                             <Box component="div" sx={{ width: "100%", position: "relative" }}>
                                 <DatePickerInput
@@ -82,27 +82,27 @@ function BusSchedule(props) {
                             <span className="group-span"><CalIcon /></span></div>
                     </Grid>
                     {/* 3rd row */}
-                    <Grid className="trip" item md={12}>
+                    <Grid className="trip" item xs={12} md={12}>
                         <div className="input-group" >
                             <span className="group-span">Trip</span>
                             <input className="group-input" id="txtTripBS" name="txtTripBS" placeholder="Trip Name" disabled="disabled" autoComplete='off' value="Delhi - Lucknow - SRT-2X1(36) AC-Sleeper" />
                         </div>
                     </Grid>
                     {/* 4th row */}
-                    <Grid className="tripDateTime" item md={12}>
+                    <Grid className="tripDateTime" item xs={12} md={12}>
                         <div className="input-group" >
                             <span className="group-span">Trip Date / Time</span>
                             <input className="group-input" id="txtdatetimeBS" name="txtdatetimeBS" placeholder="Trip Date / Time" disabled="disabled" autoComplete='off' value="15-Dec-2020 09:30 PM" />
                         </div>
                     </Grid>
                     {/* 5th row */}
-                    <Grid className="busNum" item md={6}>
+                    <Grid className="busNum" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Master Bus Number</span>
                             <input className="group-input" id="cmbMstBusNumberBS" name="cmbMstBusNumberBS" placeholder="" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="busNum" item md={6}>
+                    <Grid className="busNum" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Bus Number</span>
                             <input className="group-input" id="cmbBusNumberBS" name="cmbBusNumberBS" placeholder="" autoComplete='off' value="" />
@@ -110,18 +110,18 @@ function BusSchedule(props) {
                     </Grid>
 
                     {/* 6th row */}
-                    <Grid className="driver" item md={6}>
+                    <Grid className="driver" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Driver</span>
                             <input className="group-input" id="cmbDriverBS" name="cmbDriverBS" placeholder="" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="driver" item md={3}>
+                    <Grid className="driver" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbDriverNumberBS" name="cmbDriverNumberBS" placeholder="Type Number To Search" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="driver" item md={3}>
+                    <Grid className="driver" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbDriverCodeBS" name="cmbDriverCodeBS" placeholder="" autoComplete='off' value="" />
                             <span className="iconWrap"><LockIcon /></span>
@@ -129,18 +129,18 @@ function BusSchedule(props) {
                     </Grid>
 
                     {/* 7th row */}
-                    <Grid className="conductor" item md={6}>
+                    <Grid className="conductor" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Conductor</span>
                             <input className="group-input" id="cmbConductorBS" name="cmbConductorBS" placeholder="" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="conductor" item md={3}>
+                    <Grid className="conductor" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbConductorNumberBS" name="cmbConductorNumberBS" placeholder="Type Number To Search" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="conductor" item md={3}>
+                    <Grid className="conductor" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbConductorCodeBS" name="cmbConductorCodeBS" placeholder="" autoComplete='off' value="" />
                             <span className="iconWrap"><LockIcon /></span>
@@ -149,18 +149,18 @@ function BusSchedule(props) {
 
 
                     {/* 8th row */}
-                    <Grid className="driver" item md={6}>
+                    <Grid className="driver" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Driver 2</span>
                             <input className="group-input" id="cmbDriver2BS" name="cmbDriver2BS" placeholder="" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="driver" item md={3}>
+                    <Grid className="driver" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbDriverNumber2BS" name="cmbDriverNumber2BS" placeholder="Type Number To Search" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid className="driver" item md={3}>
+                    <Grid className="driver" item xs={12} md={3}>
                         <div className="input-group" >
                             <input className="group-input" id="cmbDriver2CodeBS" name="cmbDriver2CodeBS" placeholder="" autoComplete='off' value="" />
                             <span className="iconWrap"><LockIcon /></span>
@@ -168,43 +168,46 @@ function BusSchedule(props) {
                     </Grid>
 
                     {/* 9th row */}
-                    <Grid className="pickupMan" item md={6}>
+                    <Grid className="pickupMan" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Pickup Man</span>
                             <input className="group-input" id="cmbPickupManBS" name="cmbPickupManBS" placeholder="" autoComplete='off' value="" />
                         </div>
                     </Grid>
-                    <Grid item md={6}>
+                    <Grid item xs={12} md={6}>
                         <div className="cityWisePickupMan">
-                        <span className="spn-action" onClick={() => {updateModal(true)}}>Select City Wise Pickup Man</span>
-                        {
-                            showModal &&
-                            <Modal headTxt={"City-Wise Pickup Man Selection"} updateModal={updateModal}>
-                                <CityWisePickupMan updateModal={updateModal}/>
-                            </Modal>
-                        }
+                            <span className="spn-action" onClick={() => { updateModal(true) }}>Select City Wise Pickup Man</span>
+                            {
+                                showModal &&
+                                <Modal headTxt={"City-Wise Pickup Man Selection"} updateModal={updateModal}>
+                                    <CityWisePickupMan updateModal={updateModal} />
+                                </Modal>
+                            }
                         </div>
                     </Grid>
 
                     {/* 10th row */}
-                    <Grid className="busInfoSms" item md={12}>
-                        <div className="chklbl-wrap">
-                            <input type="checkbox" id="infosms" className="infosms" />
-                            <label htmlFor="infosms">
-                                Bus Info SMS
-                            </label>
-                        </div>
-                        <hr className="hrline" style={{ margin: "0px 10px;" }}></hr>
-                        <div className="smsOptionWrap">
-                            <div className="smsOption">
-                                <input type="radio" name="smsTmType" value="false" id="withottc" checked="checked" />
-                                <label htmlFor="withottc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], PickupMan No:[PMN].</label>
+                    <Grid className="busInfoSms" container item xs={12} md={12}>
+                        <Grid item xs={12} md={2}>
+                            <div className="chklbl-wrap">
+                                <input type="checkbox" id="infosms" className="infosms" />
+                                <label htmlFor="infosms">
+                                    Bus Info SMS
+                                </label>
                             </div>
-                            <div className="smsOption">
-                                <input type="radio" name="smsTmType" value="true" id="withtc" />
-                                <label htmlFor="withtc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], Bus Suffix:[SFX], PickupMan No:[PMN], Driver No: [DM].</label>
+                        </Grid>
+                        <Grid item xs={12} md={10}>
+                            <div className="smsOptionWrap">
+                                <div className="smsOption">
+                                    <input type="radio" name="smsTmType" value="false" id="withottc" checked="checked" />
+                                    <label htmlFor="withottc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], PickupMan No:[PMN].</label>
+                                </div>
+                                <div className="smsOption">
+                                    <input type="radio" name="smsTmType" value="true" id="withtc" />
+                                    <label htmlFor="withtc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], Bus Suffix:[SFX], PickupMan No:[PMN], Driver No: [DM].</label>
+                                </div>
                             </div>
-                        </div>
+                        </Grid>
                     </Grid>
                     {/* 11th row */}
                     <Grid className="busSchAction" item md={12}>

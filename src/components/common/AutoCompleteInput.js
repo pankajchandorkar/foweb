@@ -8,10 +8,10 @@ const AutoCompleteInput = (props) => {
     const useStyles = makeStyles({
         root: {
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#3f51b5"
+                borderColor: "#0086ff"
             },
             " & .MuiInputLabel-root.Mui-focused": {
-                color: "#3f51b5"
+                color: "#0086ff"
             },
             "& .MuiAutocomplete-option": {
                 border: "solid 1px red"

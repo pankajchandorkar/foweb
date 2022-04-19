@@ -1,5 +1,5 @@
 :root {
-  --searchBoxBgColor: #3f51b5;
+  --searchBoxBgColor: #0086ff;
   --buttonColor: #3f51b5;
 }
 
@@ -22,7 +22,7 @@
   border: 0;
 }
 .DateInput_input:focus {
-  border: 2px solid #005575;
+  border: 2px solid #0086ff!important;
 }
 
 .DateInput_fang.DateInput_fang_1 {
@@ -141,7 +141,7 @@
 .DateInputLabel_focused {
   left: 10px;
   top: -7px;
-  color: #3f51b5;
+  color: #0086ff;
   font-size: 0.76rem;
   font-weight: 500;
   cursor: text;
