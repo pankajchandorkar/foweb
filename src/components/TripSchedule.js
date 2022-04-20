@@ -37,11 +37,15 @@ const TripSchedule = (props) => {
             " & .MuiInputLabel-root.Mui-focused": {
                 top: "3px",
                 left: "0px",
+                color: "#0086ff",
             },
             "& .MuiFormLabel-filled": {
                 top: "3px",
                 left: "0px",
             },
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#0086ff",
+            }
         }
     });
 
@@ -216,7 +220,7 @@ const TripSchedule = (props) => {
                             <input className="tripSchRuns" type="radio" name="tripSchRuns" id="tripSchRuns-w" value="weekdays" />
                             <label htmlFor="tripSchRuns-w">Weekdays</label>
                         </Grid>
-                        <Grid className="tripWeek" item  xs={12} sm={8} md={8}>
+                        <Grid className="tripWeek" item xs={12} sm={8} md={8}>
                             <div className="bkg-trip-week">
 
                                 <input type="checkbox" className="tripSchWeekDay" name="tripSchWeekDay" id="tripSchWeekDay-Mon" value="Mon" placeholder="name" />

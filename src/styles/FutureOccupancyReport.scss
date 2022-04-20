@@ -38,6 +38,98 @@
 #for_searchblock {
 }
 
+.for_searchblock {
+  margin: 0px;
+  padding: 10px 0px;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 5px #aaa;
+  background: #ffffff;
+
+  & .rptHeading {
+    padding-right: 15px;
+
+    &.MuiTypography-h6 {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  } //.rptHeading
+
+  & .rptCheckbox {
+    & .MuiIconButton-root {
+      padding: 0px 5px 0px 5px;
+    }
+
+    & .MuiFormControlLabel-label {
+      font-size: 0.8rem;
+    }
+
+    & .Mui-checked {
+      color: #0086ff;
+    }
+  } //.rptCheckbox
+
+  & .txtSearch {
+    & .MuiOutlinedInput-root {
+      padding-left: 7px;
+      font-size: 0.9rem;
+
+      & .MuiInputAdornment-root {
+        margin-right: 5px;
+      }
+
+      & .MuiSvgIcon-root {
+        padding-top: 4px;
+      }
+    }
+
+    & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #0086ff;
+    }
+
+    & .MuiInputLabel-root.Mui-focused {
+      color: #0086ff;
+    }
+  } //.txtSearch
+
+  & .btmInputWrap {
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+
+  & .btn-orange {
+    &.MuiButton-contained {
+      color: #ffffff;
+      background-color: #ff6000;
+      border-color: #ff6000;
+      &:hover {
+        background-color: #e25500;
+      }
+    }
+  } //.btn-orange
+
+  & .btn-orange-outline {
+    &.MuiButton-outlined {
+      border: 1px solid #ff6000;
+      color: #ff6000;
+      &:hover {
+        background-color: #ff6000;
+        color: #ffffff;
+      }
+    }
+  } //.btn-orange-outline
+} //.for_searchblock
+
+.hr_divider {
+  margin-top: 5px !important;
+}
+
+.for_resultblock {
+  margin-top: 11px;
+  background: #f1f1f1;
+  overflow: auto;
+  height: 80vh;
+} //for_resultblock
+
 .input-group {
   position: relative;
   display: flex;
@@ -72,7 +164,7 @@
     }
 
     &:focus {
-      border: 2px solid #3f51b5;
+      border: 2px solid #0086ff;
     }
   }
 
@@ -110,7 +202,7 @@
     }
 
     &:focus {
-      border: 2px solid #3f51b5;
+      border: 2px solid #0086ff;
     }
   }
 
@@ -201,10 +293,6 @@
   font-weight: 600;
   color: #555;
   letter-spacing: 0.01rem;
-
-  // & .MuiGrid-item {
-  //   margin-bottom: 7px;
-  // }
 
   & .chartDate {
     & .DateInput_input {
@@ -305,25 +393,25 @@
   & .tripRuns {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
-  & .tripWeek{
+  & .tripWeek {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   & .tripSchePropRow {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   } //.tripSchePropRow end
 
   & .tripScheCovidDropDown {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   & .chklbl-wrap {
@@ -362,6 +450,14 @@
       padding: 7px 12px;
       margin-left: 10px;
       border-radius: 4px;
+
+      &:hover {
+        border: 1px solid #212121;
+      }
+
+      &:focus {
+        border: 2px solid #0086ff;
+      }
     }
   } //.select-wrap end
 
@@ -430,14 +526,14 @@
   & .fareInputs {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 1px;
   }
 
   & .fareIncrInputs {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin-bottom: 1px;
   }
 
@@ -451,7 +547,7 @@
     margin-bottom: 0px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     border-top: solid 1px #d7d7d7;
   }
 
@@ -459,7 +555,7 @@
     margin-bottom: 0px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     border-top: solid 1px #d7d7d7;
   }
 
@@ -472,13 +568,14 @@
   & .col-pickup-dropoff {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding-left: 5px;
     border-left: solid 1px #d7d7d7;
   }
 
   & .busPaymentDetailContent {
-    max-height: 200px;
+    max-height: 250px;
+    min-height: 250px;
     overflow: auto;
     width: 100%;
     margin-right: 12px;
@@ -621,7 +718,7 @@
   & .dateOption {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
     & .dateopt {
       margin-right: 5px;
@@ -721,7 +818,7 @@
   & .busInfoSms {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
     & .chklbl-wrap {
       padding-right: 5px;
@@ -759,7 +856,7 @@
 
       & .smsOption {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         padding-bottom: 3px;
       }
@@ -773,7 +870,7 @@
   & .busSchAction {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 10px;
 
     & .btnOrange {
@@ -1007,6 +1104,10 @@
     width: 100%;
     margin-left: 0px;
   }
+
+  .tripScheduleWrap .MuiGrid-item {
+    margin-bottom: 7px;
+  }
 }
 
 /* for tablet */
@@ -1070,6 +1171,10 @@
     width: 100%;
     margin-left: 0px;
   }
+
+  .tripScheduleWrap .MuiGrid-item {
+    margin-bottom: 7px;
+  }
 }
 
 /* for laptop */
@@ -1081,6 +1186,10 @@
 
   .tripScheduleWrap {
     width: 95vw;
+  }
+
+  .tripScheduleWrap .MuiGrid-item {
+    margin-bottom: 0px;
   }
 }
 
@@ -1137,5 +1246,9 @@
   .tripScheduleWrap .select-wrap .covidDropDown {
     width: 100%;
     margin-left: 10px;
+  }
+
+  .tripScheduleWrap .MuiGrid-item {
+    margin-bottom: 0px;
   }
 }

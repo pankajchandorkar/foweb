@@ -29,7 +29,34 @@
       color: #7f7f7f;
     }
   }
-}
+
+  & .MuiTooltip-tooltip {
+    background: #ffffff;
+    color: #434343;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #ccc, -2px -2px 5px #ccc;
+  }
+
+  & .MuiTooltip-arrow {
+    color: #ffffff;
+    width: 22px;
+    height: 15px;
+    top: -8px !important;
+  }
+
+  & .tooltip-wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0.3;
+    background: #000000;
+    height: 100%;
+  }
+
+} //.scheDetails
+
 .scheRow {
   display: flex;
   width: 100%;
@@ -38,7 +65,7 @@
   .scheTitle {
     width: 28%;
     text-align: left;
-    color:#000000;
+    color: #000000;
 
     &.bold {
       font-weight: 600;
@@ -49,14 +76,14 @@
     width: 28%;
     text-align: left;
     font-weight: 400;
-    color:#444444;
+    color: #444444;
   }
 
   .scheTime {
     width: 44%;
     text-align: right;
     font-weight: 400;
-    color:#444444;
+    color: #444444;
 
     &.underline {
       text-decoration: underline;
@@ -101,7 +128,7 @@
   .tripName {
     width: 28%;
     text-align: left;
-    color:#444444;
+    color: #444444;
     font-weight: 400;
   }
 
@@ -115,7 +142,7 @@
     padding-bottom: 5px;
     display: flex;
     align-items: center;
-    color:#444444;
+    color: #444444;
     font-weight: 400;
   }
 
@@ -139,19 +166,17 @@
     & .heading {
       font-weight: 600;
       padding-left: 5px;
-      color:#000000;
+      color: #000000;
     }
   }
-
-  
 }
 
 .card-action-left {
   width: 50%;
   text-align: center;
   border-right: solid 1px #c9cfd5;
-  padding: 13px; 
-  & .spn-action{
+  padding: 13px;
+  & .spn-action {
     cursor: pointer;
   }
 }
@@ -160,7 +185,7 @@
   width: 50%;
   text-align: center;
   padding: 13px;
-  & .spn-action{
+  & .spn-action {
     cursor: pointer;
   }
 }
@@ -196,12 +221,12 @@
 
   & .brd-bottom {
     border-bottom: solid 1px #eeeeee;
-    padding-bottom:8px;
+    padding-bottom: 8px;
   }
 
-  & .availSeats{
+  & .availSeats {
     font-weight: 600;
-    padding:11px 0px 2px 5px;
+    padding: 11px 0px 2px 5px;
   }
 
   & .txt-bold {
@@ -218,10 +243,10 @@
     font-weight: 600;
   }
   & .firstRow {
-    padding:5px;
+    padding: 5px;
     border-bottom: solid 1px #eeeeee;
   }
   & .secondRow {
-    padding:5px
+    padding: 5px;
   }
 }

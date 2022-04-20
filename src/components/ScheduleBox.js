@@ -63,12 +63,12 @@ function ScheduleBox(props) {
                             <div className="scheTime">
                                 <div className="seatBooked">
                                     {
-                                        props.status == "Scheduled" ? <FontAwesomeIcon icon={faCircleArrowUp} style={{ fontSize: "1rem", color: "#1DB24B" }} /> :
-                                            props.status == "Blocked" || props.status == "Stop Booking" ? <FontAwesomeIcon icon={faCircleArrowDown} style={{ fontSize: "1rem", color: "#EC3237" }} /> :
-                                                props.status == "Inactive" ? <FontAwesomeIcon icon={faCircleArrowDown} style={{ fontSize: "1rem", color: "#7F7F7F" }} /> : null
+                                        props.status === "Scheduled" ? <FontAwesomeIcon icon={faCircleArrowUp} style={{ fontSize: "1rem", color: "#1DB24B" }} /> :
+                                            props.status === "Blocked" || props.status === "Stop Booking" ? <FontAwesomeIcon icon={faCircleArrowDown} style={{ fontSize: "1rem", color: "#EC3237" }} /> :
+                                                props.status === "Inactive" ? <FontAwesomeIcon icon={faCircleArrowDown} style={{ fontSize: "1rem", color: "#7F7F7F" }} /> : null
                                     }
-                                    <span className={`seats ${props.status == "Scheduled" ? "scheduled" : props.status == "Blocked" || props.status == "Stop Booking" ? "blocked" : props.status == "Inactive" ? "inactive" : ""}`}>{props.booked} Booked | </span>
-                                    <TooltipText title={seatWiseBreakup} link={<span className={`bookingAmt ${props.status == "Scheduled" ? "scheduled" : props.status == "Blocked" || props.status == "Stop Booking" ? "blocked" : props.status == "Inactive" ? "inactive" : ""}`}>₹ {props.amount} + </span>} />
+                                    <span className={`seats ${props.status === "Scheduled" ? "scheduled" : props.status === "Blocked" || props.status === "Stop Booking" ? "blocked" : props.status === "Inactive" ? "inactive" : ""}`}>{props.booked} Booked | </span>
+                                    <TooltipText title={seatWiseBreakup} link={<span className={`bookingAmt ${props.status === "Scheduled" ? "scheduled" : props.status === "Blocked" || props.status === "Stop Booking" ? "blocked" : props.status === "Inactive" ? "inactive" : ""}`}>₹ {props.amount} + </span>} />
                                 </div>
                             </div>
                         </div>
@@ -82,9 +82,9 @@ function ScheduleBox(props) {
                             </div>
                             <div className="status">
                                 {
-                                    props.status == "Scheduled" ? <span style={{ background: "#1DB24C", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> :
-                                        props.status == "Blocked" || props.status == "Stop Booking" ? <span style={{ background: "#EC3237", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> :
-                                            props.status == "Inactive" ? <span style={{ background: "#7F7F7F", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> : null
+                                    props.status === "Scheduled" ? <span style={{ background: "#1DB24C", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> :
+                                        props.status === "Blocked" || props.status === "Stop Booking" ? <span style={{ background: "#EC3237", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> :
+                                            props.status === "Inactive" ? <span style={{ background: "#7F7F7F", color: "#fff", padding: "2px 7px 2px 7px" }}>{props.status}</span> : null
                                 }
                             </div>
                             <div className="gross-avg-fare">
@@ -95,7 +95,7 @@ function ScheduleBox(props) {
                                         props.gross,
                                         <span key="fare" className="heading">Avg Fare: </span>,
                                         props.avgFare,
-                                        <FontAwesomeIcon key="icon" icon={faCaretDown} style={{ fontSize: "1rem", color: "#878787", paddingLeft: "3px" }}/>
+                                        <FontAwesomeIcon key="icon" icon={faCaretDown} style={{ fontSize: "1rem", color: "#878787", paddingLeft: "3px" }} />
                                     ]}
                                 />
                             </div>
@@ -105,11 +105,11 @@ function ScheduleBox(props) {
                 <CardActions sx={{ padding: "0", display: "flex", color: "#054B66", background: "#EEF5FB", fontWeight: "600" }}>
                     <div className="card-action-left">
                         {
-                            props.status == "Inactive" ? <span style={{ color: "#7F7F7F" }}>Bus Schedule</span> : <span className="spn-action" onClick={() => { updateModalType("busSchedule"); updateModal(true); }}> Bus Schedule</span>
+                            props.status === "Inactive" ? <span style={{ color: "#7F7F7F" }}>Bus Schedule</span> : <span className="spn-action" onClick={() => { updateModalType("busSchedule"); updateModal(true); }}> Bus Schedule</span>
                         }
                         {
                             showModal &&
-                            modalType == "busSchedule" &&
+                            modalType === "busSchedule" &&
                             <Modal headTxt={"Schedule Bus No and Crew Staff "} updateModal={updateModal}>
                                 <BusSchedule updateModal={updateModal} />
                             </Modal>
@@ -119,7 +119,7 @@ function ScheduleBox(props) {
                         <span className="spn-action" onClick={() => { updateModalType("tripSchedule"); updateModal(true); }}>Trip Schedule</span>
                         {
                             showModal &&
-                            modalType == "tripSchedule" &&
+                            modalType === "tripSchedule" &&
                             <Modal headTxt={"Trip Schedule | Service: Delhi - Lucknow - SRT-2X1(36) AC-Sleeper | Trip ID: 10943"} updateModal={updateModal}>
                                 <TripSchedule updateModal={updateModal} />
                             </Modal>

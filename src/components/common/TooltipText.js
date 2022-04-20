@@ -1,31 +1,8 @@
 import React, { useState } from 'react'
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { makeStyles } from "@mui/styles";
 
 const TooltipText = (props) => {
-
-    //custom css code
-    const useStyles = makeStyles({
-
-        arrow: {
-            color: "#fff",
-            width: "22px",
-            height: "15px",
-            top: "-8px!important",
-        },
-        tooltipArrow: {
-
-        },
-        tooltip: {
-            background: "#ffffff",
-            color: "#434343",
-            borderRadius: "10px",
-            boxShadow: "2px 2px 5px #ccc, -2px -2px 5px #ccc",
-        },
-    });
-
-    const classes = useStyles();
 
     const [open, setOpen] = useState(false);
 
@@ -51,24 +28,13 @@ const TooltipText = (props) => {
                     disableTouchListener
                     title={props.title}
                     arrow={true}
-                    placement='top'
-                    classes={classes}
+                    placement="top"
                 >
                     <span onClick={handleTooltipOpen}>{props.link}</span>
                 </Tooltip>
             </ClickAwayListener>
             {
-                open == true &&
-                <div style={{
-                    position: "fixed",
-                    left: " 0", 
-                    top: "0", 
-                    width: "100%",
-                    zIndex: "1", 
-                    opacity: "0.3", 
-                    background: "#000000",
-                    height: "100%"
-                }}></div>
+                open === true && <div className="tooltip-wrapper"></div>
             }
         </React.Fragment>
     )

@@ -8,7 +8,6 @@ import AutoCompleteInput from "./common/AutoCompleteInput";
 import CheckboxWithLabel from "./common/CheckboxWithLabel";
 import ProgressBar from "./common/ProgressBar";
 
-import { makeStyles } from "@mui/styles";
 import moment from 'moment';
 import ScheduleBox from "./ScheduleBox";
 
@@ -31,88 +30,6 @@ function FutureOccupancyReport() {
     { label: 'Trip 2', id: 3 },
     { label: 'Trip 3', id: 4 },
   ];
-
-  //custom css code
-  const useStyles = makeStyles({
-
-    for_searchblock: {
-      margin: "0px",
-      padding: "10px 0px",
-      boxSizing: "border-box",
-      boxShadow: "0px 1px 5px #aaa",
-      background: "#ffffff",
-      "& .rptHeading": {
-        paddingRight: '15px',
-        "&.MuiTypography-h6": {
-          fontSize: '0.9rem',
-          fontWeight: '600',
-        }
-      },
-      "& .rptCheckbox": {
-        "& .MuiIconButton-root": {
-          padding: '0px 5px 0px 5px',
-        },
-        "& .MuiFormControlLabel-label": {
-          fontSize: '0.8rem',
-        },
-        "& .Mui-checked": {
-          color: '#0086ff',
-        }
-      },
-      "& .txtSearch": {
-        "& .MuiOutlinedInput-root": {
-          paddingLeft: "7px",
-          fontSize: "0.9rem",
-          "& .MuiInputAdornment-root": {
-            marginRight: "5px",
-          },
-          "& .MuiSvgIcon-root": {
-            paddingTop: "4px"
-          },
-        },
-        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#0086ff"
-        }, " & .MuiInputLabel-root.Mui-focused": {
-          color: "#0086ff"
-        },
-      },
-      "& .btmInputWrap": {
-        marginTop: "12px",
-        fontSize: "0.9rem",
-      },
-      "& .btn-orange": {
-        "&.MuiButton-contained": {
-          color: '#ffffff',
-          backgroundColor: '#ff6000',
-          borderColor: ' #ff6000',
-          "&:hover": {
-            backgroundColor: '#e25500',
-          }
-        },
-      },
-      "& .btn-orange-outline": {
-        "&.MuiButton-outlined": {
-          border: "1px solid #ff6000",
-          color: "#ff6000",
-          "&:hover": {
-            backgroundColor: '#ff6000',
-            color: '#ffffff',
-          }
-        }
-      }
-    },
-    for_resultblock: {
-      marginTop: "11px",
-      background: "#F1F1F1",
-      overflow: "auto",
-      height: "80vh",
-    },
-    "hr_divider": {
-      marginTop: "5px!important"
-    }
-  });
-
-  const classes = useStyles();
 
   //onclick on load button get report data
   const getReportData = () => {
@@ -306,7 +223,7 @@ function FutureOccupancyReport() {
 
   return (
     <div>
-      <div id="for_searchblock" className={classes.for_searchblock}>
+      <div id="for_searchblock" className="for_searchblock">
         <Box mx={1}>
           <Grid container>
             <Grid container item md={12}>
@@ -326,7 +243,7 @@ function FutureOccupancyReport() {
               </Box>
             </Grid>
           </Grid>
-          <Divider className={classes.hr_divider} />
+          <Divider className="hr_divider" />
           <Grid container spacing={1} className="btmInputWrap">
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>
@@ -381,8 +298,7 @@ function FutureOccupancyReport() {
         </Box>
       </div>
       {loading && <ProgressBar />}
-
-      <div id="for_resultblock" className={classes.for_resultblock}>
+      <div id="for_resultblock" className="for_resultblock">
         <Box component="div" sx={{ margin: "5px 15px" }}>
           <Grid container spacing={2}>
             {
@@ -406,7 +322,6 @@ function FutureOccupancyReport() {
           </Grid>
         </Box>
       </div>
-
     </div>
   )
 }

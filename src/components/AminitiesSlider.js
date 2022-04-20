@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {  faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import "../styles/AminitiesSlider.scss";
 
 const SliderContent = (props) => {
