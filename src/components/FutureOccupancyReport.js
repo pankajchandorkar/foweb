@@ -212,7 +212,7 @@ function FutureOccupancyReport() {
 
       setLoading(false);
 
-    }, 0);
+    },1000);
 
   }
 
