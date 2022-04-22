@@ -36,7 +36,7 @@ function ScheduleBox(props) {
     }
 
     return (
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={4} xl={3}>
             <Card sx={{ borderRadius: "10px", fontSize: "0.7rem" }}>
                 <CardContent>
                     <div className={`scheDetails ${scheStatus}`}>

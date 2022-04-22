@@ -4,6 +4,7 @@ import { TextField } from '@mui/material';
 import { makeStyles } from "@material-ui/styles";
 import { Box, Grid } from '@material-ui/core';
 import DatePickerInput from "./common/DatePickerInput";
+import DropDown from "./common/DropDown";
 import moment from 'moment';
 
 const TripSchedule = (props) => {
@@ -16,7 +17,42 @@ const TripSchedule = (props) => {
     const [tripSchStartDtFocused, setTripSchStartDtFocused] = useState(false);
     const [tripSchEndDtFocused, setTripSchEndDtFocused] = useState(false);
 
+   
+    const [tripSchTimeHr, setTripSchTimeHr] = useState("01");
+    const [tripSchTimeMin, setTripSchTimeMin] = useState("01");
+    const [tripSchTimeHrForm, setTripSchTimeHrForm] = useState("AM");
+    const [idcoviddropdown, setIdcoviddropdown] = useState("Disable Covid 19 Block");
+    const [tripSchChart, setTripSchChart] = useState("");
 
+    const chartOptions = [
+        { id: 1, role: "Prakash 2X1(40) AC Seater- Sleeper" },
+        { id: 2, role: "1X0(10) AC Seater Naveen" },
+        { id: 3, role: "1X0(12) NAC -Sleeper" },
+        { id: 4, role: "1X0(12) NAC Seater-Sleeper" },
+        { id: 2, role: "1X0(12) NAC Seater-Sleeper" },
+        { id: 3, role: "1X0(12) NAC Seater-Sleeper AD BP" },
+        { id: 4, role: "1X0(5) NAC Seater-Sleeper" },
+    ];
+
+    const covidOptions = [
+        { value: "none", optionVal: "Disable Covid 19 Block" },
+        { value: "static", optionVal: "Static" },
+        { value: "dynamic", optionVal: "Dynamic" },
+    ];
+
+    const tsTimeHrOptions = [];
+    for (var i = 1; i <= 12; i++) {
+        i = i < 10 ? "0" + i : i;
+        tsTimeHrOptions.push({ value: i });
+    }
+
+    const tsTimeMinOptions = [];
+    for (var i = 0; i < 60; i++) {
+        i = i < 10 ? "0" + i : i;
+        tsTimeMinOptions.push({ value: i });
+    }
+
+    const tsTimeHrFromOptions = [{ value: "AM" }, { value: "PM" }];
 
     const useStyles = makeStyles({
         root: {
@@ -116,86 +152,36 @@ const TripSchedule = (props) => {
                         <Grid className="chartTime" item xs={12} md={6} >
                             <div className="input-group">
                                 <span className="group-span">Chart Time</span>
-                                <select className="group-select" id="tripSchTimeHr">
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                    <option value="4">04</option>
-                                    <option value="5">05</option>
-                                    <option value="6">06</option>
-                                    <option value="7">07</option>
-                                    <option value="8">08</option>
-                                    <option value="9">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                                <select className="group-select" id="tripSchTimeMin">
-                                    <option value="00">00</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                    <option value="32">32</option>
-                                    <option value="33">33</option>
-                                    <option value="34">34</option>
-                                    <option value="35">35</option>
-                                    <option value="36">36</option>
-                                    <option value="37">37</option>
-                                    <option value="38">38</option>
-                                    <option value="39">39</option>
-                                    <option value="40">40</option>
-                                    <option value="41">41</option>
-                                    <option value="42">42</option>
-                                    <option value="43">43</option>
-                                    <option value="44">44</option>
-                                    <option value="45">45</option>
-                                    <option value="46">46</option>
-                                    <option value="47">47</option>
-                                    <option value="48">48</option>
-                                    <option value="49">49</option>
-                                    <option value="50">50</option>
-                                    <option value="51">51</option>
-                                    <option value="52">52</option>
-                                    <option value="53">53</option>
-                                    <option value="54">54</option>
-                                    <option value="55">55</option>
-                                    <option value="56">56</option>
-                                    <option value="57">57</option>
-                                    <option value="58">58</option>
-                                    <option value="59">59</option>
-                                </select>
-                                <select className="group-select" id="tripSchTimeHrForm">
-                                    <option value="AM">AM</option>
-                                    <option value="PM">PM</option>
-                                </select>
+                                <DropDown
+                                    width={"100%"}
+                                    label={""}
+                                    field={""}
+                                    data={[...new Set(tsTimeHrOptions.map((el) => el.value))]}
+                                    searchPlaceholder={"Search Option"}
+                                    id="tripSchTimeHr"
+                                    defaultValue={tripSchTimeHr}
+                                    handelItemSelect={(value) => setTripSchTimeHr(value)}
+                                />
+                                <DropDown
+                                    width={"100%"}
+                                    label={""}
+                                    field={""}
+                                    data={[...new Set(tsTimeMinOptions.map((el) => el.value))]}
+                                    searchPlaceholder={"Search Option"}
+                                    id="tripSchTimeMin"
+                                    defaultValue={tripSchTimeMin}
+                                    handelItemSelect={(value) => setTripSchTimeMin(value)}
+                                />
+                                <DropDown
+                                    width={"100%"}
+                                    label={""}
+                                    field={""}
+                                    data={[...new Set(tsTimeHrFromOptions.map((el) => el.value))]}
+                                    searchPlaceholder={"Search Option"}
+                                    id="tripSchTimeHrForm"
+                                    defaultValue={tripSchTimeHrForm}
+                                    handelItemSelect={(value) => setTripSchTimeHrForm(value)}
+                                />
                             </div>
                         </Grid>
                         <Grid className="code" item xs={12} md={3} >
@@ -286,11 +272,16 @@ const TripSchedule = (props) => {
                         </Grid>
                         <Grid className="tripScheCovidDropDown" item xs={12} md={3} >
                             <div className="select-wrap">
-                                <select id="idcoviddropdown" className="covidDropDown">
-                                    <option value="none">Disable Covid 19 Block</option>
-                                    <option value="static">Static</option>
-                                    <option value="dynamic">Dynamic</option>
-                                </select>
+                                <DropDown
+                                    width={"100%"}
+                                    label={""}
+                                    field={""}
+                                    data={[...new Set(covidOptions.map((el) => el.optionVal))]}
+                                    searchPlaceholder={"Search Option"}
+                                    id="idcoviddropdown"
+                                    defaultValue={idcoviddropdown}
+                                    handelItemSelect={(value) => setIdcoviddropdown(value)}
+                                />
                             </div>
                         </Grid>
                         {/*6th row*/}
@@ -316,11 +307,11 @@ const TripSchedule = (props) => {
                             <div className="auto-increment-type">
                                 <input type="radio" name="autoIncr" id="autoIncr-per" value="per" className=""
                                 />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"./images/pct.png"} alt="Per" />Per</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"./foweb/images/pct.png"} alt="Per" />Per</label>
 
                                 <input type="radio" name="autoIncr" id="autoIncr-amt" value="amt"
                                     className="" />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"./images/amt.png"} alt="Amt" /> Amt</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"./foweb/images/amt.png"} alt="Amt" /> Amt</label>
                             </div>
                             <TextField id="autoincrease" size="small" label="Value" autoComplete="off" />
                             <button type="button" id="tripSchAutoIncrbtn" className="btnOrangeOutline">
@@ -544,20 +535,16 @@ const TripSchedule = (props) => {
                             <Grid className='chartType' item md={12}>
                                 <div className="input-group">
                                     <span className="group-span">Chart</span>
-                                    <select className="group-select" id="tripSchChart">
-                                        <option value="1">SRT-2X1(36) AC-Sleeper</option>
-                                        <option value="27587" data="683|8"> Prakash 2X1(40) AC
-                                            Seater-Sleeper </option>
-                                        <option value="45685" data="5505|46"> 1X0(10) AC Seater Naveen
-                                        </option>
-                                        <option value="31756" data="6269|72"> 1X0(12) NAC -Sleeper </option>
-                                        <option value="25619" data="2523|8"> 1X0(12) NAC Seater-Sleeper
-                                        </option>
-                                        <option value="25639" data="2523|6"> 1X0(12) NAC Seater-Sleeper AD
-                                            BP </option>
-                                        <option value="57910" data="15422|191"> 1X0(5) NAC Seater-Sleeper
-                                        </option>
-                                    </select>
+                                    <DropDown
+                                        width={"100%"}
+                                        label={""}
+                                        field={""}
+                                        data={[...new Set(chartOptions.map((el) => el.role))]}
+                                        searchPlaceholder={"Search Chart"}
+                                        id="tripSchChart"
+                                        defaultValue={tripSchChart}
+                                        handelItemSelect={(value) => setTripSchChart(value)}
+                                    />
                                 </div>
                             </Grid>
                             {/*2nd row*/}

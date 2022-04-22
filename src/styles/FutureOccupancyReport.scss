@@ -8,6 +8,7 @@
   position: absolute;
   top: 11px;
   left: 5px;
+  z-index: 1;
 }
 
 #txtTripTypes {
@@ -29,7 +30,6 @@
 .btn-orange-outline {
   text-transform: none !important;
 }
-
 
 .for_searchblock {
   margin: 0px;
@@ -60,6 +60,14 @@
       color: #0086ff;
     }
   } //.rptCheckbox
+
+  & .activeTrips {
+    & .dropdown--wrapper {
+      & .inp--field {
+        padding: 0 13px 0 25px;
+      }
+    }
+  }
 
   & .txtSearch {
     & .MuiOutlinedInput-root {
@@ -632,6 +640,12 @@
     & .group-select {
       width: 100%;
     }
+
+    & .dropdown--wrapper {
+      & .inp--field {
+        border-radius: 0px 4px 4px 0px;
+      }
+    }
   } //.chartType end
 
   #tripSchChartDisplay {
@@ -784,6 +798,39 @@
       }
     }
   } //.trip
+
+  & .busNum {
+    & .dropdown--wrapper {
+      & .inp--field {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+
+  & .driver {
+    & .dropdown--wrapper {
+      & #cmbDriverBS,& #cmbDriver2BS {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+
+  & .conductor {
+    & .dropdown--wrapper {
+      & #cmbConductorBS {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+  & .pickupMan {
+    & .dropdown--wrapper {
+      & #cmbPickupManBS {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+
+  
 
   & .tripDateTime {
     & .input-group {

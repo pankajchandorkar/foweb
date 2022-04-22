@@ -5,6 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import BusIcon from "./common/BusIcon";
 import DatePickerInput from "./common/DatePickerInput";
 import AutoCompleteInput from "./common/AutoCompleteInput";
+import DropDown from "./common/DropDown";
 import CheckboxWithLabel from "./common/CheckboxWithLabel";
 import ProgressBar from "./common/ProgressBar";
 
@@ -19,17 +20,18 @@ function FutureOccupancyReport() {
   const [toDate, setToDate] = useState(moment(new Date(), "DD-MM-YYYY").add(3, 'days'));
   const [frDtFocused, setFrDtFocused] = useState(false);
   const [toDtFocused, setToDtFocused] = useState(false);
-
+  const [activeTrip, setActiveTrip] = useState("");
   const [reportData, setReportData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   //options use for trip type drop down
   const options = [
-    { label: 'All Trips', id: 1 },
-    { label: 'Trip 1', id: 2 },
-    { label: 'Trip 2', id: 3 },
-    { label: 'Trip 3', id: 4 },
+    { id: 1, role: "Trip Type 1" },
+    { id: 2, role: "Trip Type 2" },
+    { id: 3, role: "Trip Type 3" },
+    { id: 4, role: "Trip Type 4" },
   ];
+
 
   //onclick on load button get report data
   const getReportData = () => {
@@ -212,7 +214,7 @@ function FutureOccupancyReport() {
 
       setLoading(false);
 
-    },1000);
+    }, 1000);
 
   }
 
@@ -272,9 +274,17 @@ function FutureOccupancyReport() {
               </Box>
             </Grid>
             <Grid container item md={4} sm={6}>
-              <Box component="div" sx={{ width: "100%", position: "relative" }}>
+              <Box className="activeTrips"  component="div" sx={{ width: "100%", position: "relative" }}>
                 <BusIcon />
-                <AutoCompleteInput id="txtTripTypes" labelText="Future Scheduled Active Trips" options={options} />
+                <DropDown
+                  width={"100%"}
+                  label={"Future Scheduled Active Trips"}
+                  field={""}
+                  data={[...new Set(options.map((el) => el.role))]}
+                  searchPlaceholder={"Future Scheduled Active Trips"}
+                  defaultValue={activeTrip}
+                  handelItemSelect={(value) => setActiveTrip(value)}
+                />
               </Box>
             </Grid>
             <Grid container item md={2} sm={3}>
