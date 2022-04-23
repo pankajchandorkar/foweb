@@ -57,7 +57,7 @@ const TripSchedule = (props) => {
     const useStyles = makeStyles({
         root: {
             "& .MuiTextField-root": {
-                width: "72px",
+                width: "100%",
                 marginRight: "7px",
             },
             "& .MuiOutlinedInput-input": {
@@ -307,11 +307,11 @@ const TripSchedule = (props) => {
                             <div className="auto-increment-type">
                                 <input type="radio" name="autoIncr" id="autoIncr-per" value="per" className=""
                                 />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"./foweb/images/pct.png"} alt="Per" />Per</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"./images/pct.png"} alt="Per" />Per</label>
 
                                 <input type="radio" name="autoIncr" id="autoIncr-amt" value="amt"
                                     className="" />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"./foweb/images/amt.png"} alt="Amt" /> Amt</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"./images/amt.png"} alt="Amt" /> Amt</label>
                             </div>
                             <TextField id="autoincrease" size="small" label="Value" autoComplete="off" />
                             <button type="button" id="tripSchAutoIncrbtn" className="btnOrangeOutline">

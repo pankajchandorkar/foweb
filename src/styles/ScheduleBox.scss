@@ -90,7 +90,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 75%;
+      //width: 75%;
+      width: auto;
       float: right;
 
       & .seats {
@@ -146,8 +147,8 @@
   & .status {
     width: 22%;
     padding-top: 15px;
-
     padding-bottom: 5px;
+    white-space: nowrap;
   }
 
   & .gross-avg-fare {

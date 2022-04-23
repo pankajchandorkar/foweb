@@ -228,20 +228,44 @@ function FutureOccupancyReport() {
       <div id="for_searchblock" className="for_searchblock">
         <Box mx={1}>
           <Grid container>
-            <Grid container item md={12}>
+            <Grid container item md={12} className="rptHeadingRow">
               <Typography variant="h6" className="rptHeading">Future Occupancy Report</Typography>
-              |
+              <span className="seperator"></span>
               <Box ml={2}>
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Include Phone Booking"} />
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>Include Phone Booking</label>
+                </div>
               </Box>
-              |
-              <Box ml={1}>
+              <span className="seperator"></span>
+              <Box ml={1} className="tripFilter">
                 <span className="span_show">Show: </span>
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"All Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Unscheduled Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Blocked Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Booking Stoped Trips"} />
-                <CheckboxWithLabel ml={2} className="rptCheckbox" label={"Inactive Trips"} />
+
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>All Trips</label>
+                </div>
+
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>Unscheduled Trips</label>
+                </div>
+
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>Blocked Trips</label>
+                </div>
+
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>Booking Stoped Trips</label>
+                </div>
+
+                <div className="chk-input-wrap">
+                  <input type="checkbox" />
+                  <label>Inactive Trips</label>
+                </div>
+              
               </Box>
             </Grid>
           </Grid>
@@ -274,7 +298,7 @@ function FutureOccupancyReport() {
               </Box>
             </Grid>
             <Grid container item md={4} sm={6}>
-              <Box className="activeTrips"  component="div" sx={{ width: "100%", position: "relative" }}>
+              <Box className="activeTrips" component="div" sx={{ width: "100%", position: "relative" }}>
                 <BusIcon />
                 <DropDown
                   width={"100%"}
