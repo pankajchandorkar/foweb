@@ -53,7 +53,6 @@ const DropDown = ({
     const dropRef = useRef(null);
     const searchInputRef = useRef(null);
 
-
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -92,6 +91,7 @@ const DropDown = ({
 
     const handleDrop = (e) => {
         setShowDrop(true);
+        setSearchInput("");
     };
 
     const handleReset = (e) => {
@@ -110,6 +110,7 @@ const DropDown = ({
             setInpVal("");
         }
         setShowDrop(false);
+
     };
 
     const searchItems = (searchValue) => {

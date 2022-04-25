@@ -22,7 +22,7 @@ const TripSchedule = (props) => {
     const [tripSchTimeMin, setTripSchTimeMin] = useState("01");
     const [tripSchTimeHrForm, setTripSchTimeHrForm] = useState("AM");
     const [idcoviddropdown, setIdcoviddropdown] = useState("Disable Covid 19 Block");
-    const [tripSchChart, setTripSchChart] = useState("");
+    const [tripSchChart, setTripSchChart] = useState("Prakash 2X1(40) AC Seater- Sleeper");
 
     const chartOptions = [
         { id: 1, role: "Prakash 2X1(40) AC Seater- Sleeper" },
@@ -42,13 +42,13 @@ const TripSchedule = (props) => {
 
     const tsTimeHrOptions = [];
     for (var i = 1; i <= 12; i++) {
-        i = i < 10 ? "0" + i : i;
+        i = i < 10 ? "0" + i : ""+i;
         tsTimeHrOptions.push({ value: i });
     }
 
     const tsTimeMinOptions = [];
     for (var i = 0; i < 60; i++) {
-        i = i < 10 ? "0" + i : i;
+        i = i < 10 ? "0" + i : ""+i;
         tsTimeMinOptions.push({ value: i });
     }
 
@@ -268,9 +268,9 @@ const TripSchedule = (props) => {
                                     Allow Online SeatEdit
                                 </label>
                             </div>
-                            <hr className="hrline" />
-                        </Grid>
+                            </Grid>
                         <Grid className="tripScheCovidDropDown" item xs={12} md={3} >
+                            <hr className="hrline" />
                             <div className="select-wrap">
                                 <DropDown
                                     width={"100%"}
@@ -307,11 +307,11 @@ const TripSchedule = (props) => {
                             <div className="auto-increment-type">
                                 <input type="radio" name="autoIncr" id="autoIncr-per" value="per" className=""
                                 />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"./images/pct.png"} alt="Per" />Per</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-per"><img src={"../foweb/images/pct.png"} alt="Per" />Per</label>
 
                                 <input type="radio" name="autoIncr" id="autoIncr-amt" value="amt"
                                     className="" />
-                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"./images/amt.png"} alt="Amt" /> Amt</label>
+                                <label className="auto-incr-type-lbl" htmlFor="autoIncr-amt"><img src={"../foweb/images/amt.png"} alt="Amt" /> Amt</label>
                             </div>
                             <TextField id="autoincrease" size="small" label="Value" autoComplete="off" />
                             <button type="button" id="tripSchAutoIncrbtn" className="btnOrangeOutline">

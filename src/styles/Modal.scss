@@ -14,12 +14,9 @@
   .model--container {
     position: fixed;
     background: white;
-    // top: 0%;
-    // left: 50%;
     width: auto;
-    height: 88vh;
+    //height: 88vh;
     border-radius: 8px;
-    // transform: translate(-50%, 5%);
     z-index: 10;
     overflow: hidden;
 
@@ -41,8 +38,8 @@
 
     .model--body {
       padding: 10px;
-      height: 83vh;
-      overflow: auto;
+      //height: 83vh;
+     // overflow: auto;
     }
 
     .btn--wrapper {

@@ -2,6 +2,8 @@
   //   margin: 50px;
   //   width: 20%;
   position: relative;
+  display: flex;
+  align-items: center;
 
   &.disable {
     background: #f1f1f5;
@@ -36,15 +38,16 @@
 
   .caret--icon {
     position: absolute;
-    top: 13px;
+    //top: 13px;
     right: 10px;
     transition: 0.3s all;
   }
 
   .times--icon {
     position: absolute;
-    top: 13px;
+    //top: 13px;
     right: 23px;
+    cursor: pointer;
     transition: 0.3s all;
   }
 

@@ -93,6 +93,18 @@
       & .inp--field {
         padding: 0 13px 0 25px;
       }
+
+      & .drop--wrapper {
+        & .drop--content {
+          & .drop--item {
+            & .search--checkbox {
+              & .check {
+                top:-2px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
@@ -325,6 +337,8 @@
   font-weight: 600;
   color: #555;
   letter-spacing: 0.01rem;
+  height:520px;
+  overflow: auto;
 
   & .chartDate {
     & .DateInput_input {
@@ -363,12 +377,15 @@
       width: 98%;
     }
 
-    #tripSchTimeMin,#tripSchTimeHr{
-      border-radius: 0 ;
+    #tripSchTimeMin,
+    #tripSchTimeHr {
+      border-radius: 0;
+      height: 35px;
     }
 
     #tripSchTimeHrForm {
       border-radius: 0 4px 4px 0;
+      height: 35px;
     }
   }
 
@@ -450,12 +467,19 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
+    & .dropdown--wrapper {
+      & .inp--field {
+        height: 35px;
+      }
+    }
   }
 
   & .chklbl-wrap {
     padding-right: 5px;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 
     & .tripSchProps {
       margin-right: 5px;
@@ -671,6 +695,7 @@
   } //.busPaymentDetailContent
 
   & .chartType {
+    margin-bottom: 7px;
     & .group-span {
       min-width: 65px;
     }
@@ -681,6 +706,7 @@
     & .dropdown--wrapper {
       & .inp--field {
         border-radius: 0px 4px 4px 0px;
+        height: 35px;
       }
     }
   } //.chartType end
@@ -750,6 +776,8 @@
   color: #555;
   letter-spacing: 0.01rem;
   text-align: left;
+  height:522px;
+  overflow: auto;
 
   & .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     padding: 6px 8px 6px 8px;
@@ -887,7 +915,7 @@
     cursor: pointer;
 
     & .model--container {
-      height: 70vh;
+      //height: 70vh;
     }
   }
 
@@ -976,6 +1004,8 @@
   color: #555;
   letter-spacing: 0.01rem;
   text-align: left;
+  height:370px;
+  overflow: auto;
 
   & .trip,
   & .tripDateTime {
@@ -1184,8 +1214,6 @@
   .tripScheduleWrap .MuiGrid-item {
     margin-bottom: 7px;
   }
-
-  
 }
 
 /* for tablet */
@@ -1253,8 +1281,6 @@
   .tripScheduleWrap .MuiGrid-item {
     margin-bottom: 7px;
   }
-
- 
 }
 
 /* for laptop */
@@ -1271,8 +1297,6 @@
   .tripScheduleWrap .MuiGrid-item {
     margin-bottom: 0px;
   }
-
- 
 }
 
 /* for desktop */
@@ -1334,12 +1358,12 @@
     margin-bottom: 0px;
   }
 
- 
+  .tripScheduleWrap .chartType {
+    margin-bottom: 7px;
+  }
 }
 
 @media screen and (min-width: 1400px) {
-  
-
   .tripScheduleWrap .code .group-input {
     width: 157px;
   }
@@ -1347,4 +1371,29 @@
   .tripScheduleWrap .suffix .group-input {
     width: 157px;
   }
+}
+
+// ----------------------------------------for testing---------------------------------------------
+/* for mobile */
+@media (max-width: 768px) {
+  
+}
+
+/* for tablet */
+@media (min-width: 768px) {
+  
+}
+
+/* for laptop */
+@media (min-width: 992px) {
+ 
+}
+
+/* for desktop */
+@media (min-width: 1200px) {
+  
+}
+
+@media screen and (min-width: 1400px) {
+  
 }

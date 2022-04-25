@@ -108,7 +108,7 @@ const AminitiesSlider = () => {
               <div key={value.id} className={"item"}>
                 <input type="checkbox" id={value.id} style={{ marginRight: "6px" }} />
                 <label htmlFor={value.id} className="item-label">
-                  <img src={`./images/${value.image}`} alt={value.type} style={{ paddingRight: "5px" }} />
+                  {<img src={`../foweb/images/${value.image}`} alt={value.type} style={{ paddingRight: "5px" }} />}
                   {value.type}
                 </label>
               </div>

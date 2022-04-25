@@ -95,6 +95,7 @@
       float: right;
 
       & .seats {
+        margin-left:3px;
         &.scheduled {
           color: #505050;
         }
