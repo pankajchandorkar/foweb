@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/foweb/static/css/main.f8a4fd69.css",
-    "main.js": "/foweb/static/js/main.8f3c2197.js",
+    "main.css": "/foweb/static/css/main.cbc164bb.css",
+    "main.js": "/foweb/static/js/main.c1479888.js",
     "static/media/female.png": "/foweb/static/media/female.b3a93d46c2bd9e16bf18.png",
     "static/media/male.png": "/foweb/static/media/male.6edfff11d55e9d5327d2.png",
     "index.html": "/foweb/index.html",
-    "main.f8a4fd69.css.map": "/foweb/static/css/main.f8a4fd69.css.map",
-    "main.8f3c2197.js.map": "/foweb/static/js/main.8f3c2197.js.map"
+    "main.cbc164bb.css.map": "/foweb/static/css/main.cbc164bb.css.map",
+    "main.c1479888.js.map": "/foweb/static/js/main.c1479888.js.map"
   },
   "entrypoints": [
-    "static/css/main.f8a4fd69.css",
-    "static/js/main.8f3c2197.js"
+    "static/css/main.cbc164bb.css",
+    "static/js/main.c1479888.js"
   ]
 }
