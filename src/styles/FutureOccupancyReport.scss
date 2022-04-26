@@ -337,7 +337,7 @@
   font-weight: 600;
   color: #555;
   letter-spacing: 0.01rem;
- 
+
   & .chartDate {
     & .DateInput_input {
       border-radius: 0;
@@ -774,7 +774,6 @@
   color: #555;
   letter-spacing: 0.01rem;
   text-align: left;
-  
 
   & .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     padding: 6px 8px 6px 8px;
@@ -991,7 +990,6 @@
 //citywise pickup man
 .citywisePickupManWrap {
   // border: solid 1px red;
-  margin-top: 5px;
   display: flex;
   width: 45vw;
   align-items: center;
@@ -1006,6 +1004,7 @@
 
   & .trip,
   & .tripDateTime {
+    margin-bottom: 7px;
     & .input-group {
       & .group-span {
         min-width: 100px;
@@ -1044,14 +1043,17 @@
 
       & .cityList {
         width: 30%;
-        border-right: solid 1px #c8c7cf;
+        // border-right: solid 1px #c8c7cf;
       }
 
       & .pickupManList {
-        width: 70%;
-        height: 200px;
+        width: 64%;
+        height: 202px;
         overflow: auto;
         margin-right: 5px;
+        position: absolute;
+        right: 24px;
+        border-left: solid 1px #c8c7cf;
       }
 
       & ul {
