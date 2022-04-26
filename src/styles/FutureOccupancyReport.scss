@@ -803,7 +803,8 @@
   }
 
   & .dateFrom,
-  & .dateTo {
+  & .dateTo,
+  & .dateSelect {
     & .group-span {
       border-radius: 0px 4px 4px 0px;
       border-right: 1px solid #ccc;
@@ -815,7 +816,7 @@
         left: 7px;
         top: 7px;
       }
-    }
+    } //.group-span
 
     & .DateInput_input {
       padding: 8px 10px 8px;
@@ -835,7 +836,7 @@
   & .pickupMan {
     & .input-group {
       & .group-span {
-        min-width: 165px;
+        min-width: 114px;
       }
 
       & .group-input {
@@ -858,7 +859,13 @@
         border-radius: 4px;
       }
     }
-  } //.trip
+  }
+
+  & .dateSelect {
+    & .SingleDatePicker_picker {
+      width: 46%;
+    }
+  }
 
   & .busNum {
     & .dropdown--wrapper {
@@ -989,7 +996,6 @@
 
 //citywise pickup man
 .citywisePickupManWrap {
-  // border: solid 1px red;
   display: flex;
   width: 45vw;
   align-items: center;
@@ -999,8 +1005,6 @@
   color: #555;
   letter-spacing: 0.01rem;
   text-align: left;
-  height: 370px;
-  overflow: auto;
 
   & .trip,
   & .tripDateTime {
@@ -1012,102 +1016,218 @@
     }
   }
 
-  .cityWisePickupManContainer {
+  //.cityWisePickupManContainer {
+  //border: solid 1px #eeeeee;
+  //box-shadow: 0px 2px 3px #ccc;
+
+  // & .header {
+  //   background: #def2fb;
+  //   color: #010000;
+  //   display: flex;
+  //   align-items: center;
+  //   width: 100%;
+
+  //   & .city {
+  //     width: 30%;
+  //     border-right: solid 1px #c8c7cf;
+  //     padding: 7px 7px 7px 10px;
+  //   }
+
+  //   & .pickup-man {
+  //     width: 70%;
+  //     padding: 7px 7px 7px 10px;
+  //   }
+  // } // .header
+
+  // & .body {
+  //   width: 100%;
+  //   //height: 130px;
+  //   overflow: auto;
+  //   display: flex;
+
+  //   & .cityList {
+  //     width: 30%;
+  //     // border-right: solid 1px #c8c7cf;
+  //   }
+
+  //   & .pickupManList {
+  //     width: 64%;
+  //     height: 202px;
+  //     overflow: auto;
+  //     margin-right: 5px;
+  //     position: absolute;
+  //     right: 24px;
+  //     border-left: solid 1px #c8c7cf;
+  //   }
+
+  //   & ul {
+  //     list-style: none;
+  //     width: 100%;
+  //     height: 200px;
+  //   }
+
+  //   & li {
+  //     padding: 7px 7px 7px 25px;
+  //     font-size: 11px;
+  //     font-weight: 400;
+
+  //     position: relative;
+
+  //     & .input-icon {
+  //       top: 9px;
+  //       left: 5px;
+  //     }
+  //   }
+
+  //   & li:nth-child(odd) {
+  //     background: #ffffff;
+  //   }
+
+  //   & li:nth-child(even) {
+  //     background: #f7fcff;
+  //   }
+
+  //   & li.active {
+  //     color: #0087fb;
+  //     & svg {
+  //       fill: #0087fb;
+  //     }
+  //   }
+
+  //   /* width */
+  //   ::-webkit-scrollbar {
+  //     width: 5px;
+  //   }
+
+  //   /* Track */
+  //   ::-webkit-scrollbar-track {
+  //     background: #ffffff;
+  //   }
+
+  //   /* Handle */
+  //   ::-webkit-scrollbar-thumb {
+  //     background: #c6cacb;
+  //   }
+
+  //   /* Handle on hover */
+  //   ::-webkit-scrollbar-thumb:hover {
+  //     background: #8f9394;
+  //   }
+  // }
+
+  // /* width */
+  // ::-webkit-scrollbar {
+  //   width: 10px;
+  // }
+
+  // /* Track */
+  // ::-webkit-scrollbar-track {
+  //   background: #def2fb;
+  // }
+
+  // /* Handle */
+  // ::-webkit-scrollbar-thumb {
+  //   background: #9aa9b0;
+  // }
+
+  // /* Handle on hover */
+  // ::-webkit-scrollbar-thumb:hover {
+  //   background: #85909a;
+  // }
+  //}
+
+  & .pickupman-container {
     border: solid 1px #eeeeee;
     box-shadow: 0px 2px 3px #ccc;
 
-    & .header {
-      background: #def2fb;
-      color: #010000;
+    & .heading-row {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       width: 100%;
 
-      & .city {
-        width: 30%;
+      & .city-heading {
+        background: #def2fb;
+        color: #010000;
+        padding: 7px 7px 7px 10px;
         border-right: solid 1px #c8c7cf;
-        padding: 7px 7px 7px 10px;
-      }
-
-      & .pickup-man {
-        width: 70%;
-        padding: 7px 7px 7px 10px;
-      }
-    } // .header
-
-    & .body {
-      width: 100%;
-      //height: 130px;
-      overflow: auto;
-      display: flex;
-
-      & .cityList {
         width: 30%;
-        // border-right: solid 1px #c8c7cf;
       }
 
-      & .pickupManList {
-        width: 64%;
-        height: 202px;
-        overflow: auto;
-        margin-right: 5px;
-        position: absolute;
-        right: 24px;
-        border-left: solid 1px #c8c7cf;
+      & .pickupman-heading {
+        background: #def2fb;
+        color: #010000;
+        padding: 7px 7px 7px 10px;
+        width: 70%;
       }
+    }
 
-      & ul {
-        list-style: none;
+    & .pickupman-list {
+      height: 205px;
+      overflow: auto;
+
+      & .data-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         width: 100%;
-        height: 200px;
-      }
 
-      & li {
-        padding: 7px 7px 7px 25px;
-        font-size: 11px;
-        font-weight: 400;
+        & .city-col {
+          background: #ffffff;
+          padding: 13px 7px 14px 23px;
+          border-right: solid 1px #c8c7cf;
+          font-size: 11px;
+          font-weight: 400;
+          position: relative;
+          width: 30%;
 
-        position: relative;
+          & .input-icon {
+            top: 14px;
+            display: none;
+          }
+        }
 
-        & .input-icon {
-          top: 9px;
-          left: 5px;
+        & .pickupman-col {
+          background: #ffffff;
+          font-size: 11px;
+          font-weight: 400;
+          width: 70%;
+          padding: 2px 5px 2px 5px;
+        }
+
+        &:hover {
+          & .city-col {
+            color: #0087fb;
+            & .input-icon {
+              display: block;
+              & svg {
+                fill: #0087fb;
+              }
+            }
+          }
         }
       }
 
-      & li:nth-child(odd) {
-        background: #ffffff;
-      }
-
-      & li:nth-child(even) {
-        background: #f7fcff;
-      }
-
-      & li.active {
-        color: #0087fb;
-        & svg {
-          fill: #0087fb;
+      & .data-row:nth-child(even) {
+        & .city-col,
+        & .pickupman-col {
+          background: #ffffff;
         }
       }
 
-      /* width */
-      ::-webkit-scrollbar {
-        width: 5px;
+      & .data-row:nth-child(odd) {
+        & .city-col,
+        & .pickupman-col {
+          background: #f7fcff;
+        }
       }
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #ffffff;
+      & .dropdown--wrapper .inp--field {
+        height: 35px;
       }
 
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #c6cacb;
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #8f9394;
+      & .dropdown--wrapper .drop--wrapper {
+        top: 0px;
       }
     }
 

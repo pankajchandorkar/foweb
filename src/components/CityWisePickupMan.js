@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid } from '@material-ui/core';
 import EditIcon from './common/EditIcon';
+import DropDown from "./common/DropDown";
 
 function CityWisePickupMan(props) {
-
-    const [activeCity, setActiveCity] = useState("Lonavala");
-    const [activePickupMan, setActivePickupMan] = useState("Kaka");
-    const [pickupManList, setPickupManList] = useState([]);
 
     const cityWisePickupManData = [
         {
@@ -173,21 +170,9 @@ function CityWisePickupMan(props) {
         }
     ];
 
-
-    const onClickCityHandel = (cityName) => {
-        setActiveCity(cityName);
-        setPickupManList([]);
-        setActivePickupMan("");
+    const handelPickupManSelect = (pickupman,city) => {
+        console.log(pickupman,city);
     }
-
-    useEffect(() => {
-        var pickupManData = cityWisePickupManData.filter((cityData) => {
-            return cityData.cityName == activeCity
-        });
-        if (Object.entries(pickupManData).length === 1) {
-            setPickupManList(pickupManData[0].pickupMan);
-        }
-    }, [activeCity]);
 
     return (
         <div className="citywisePickupManWrap">
@@ -206,56 +191,39 @@ function CityWisePickupMan(props) {
                             <input className="group-input" id="txtdatetimeBS" name="txtdatetimeBS" placeholder="Trip Date / Time" autoComplete='off' defaultValue="15-Dec-2020 09:30 PM" />
                         </div>
                     </Grid>
-                    <Grid item md={12}>
-                        <div className="cityWisePickupManContainer">
-                            <div className="header">
-                                <div className="city">City Name</div>
-                                <div className="pickup-man">Pickup Man</div>
+                    <Grid className="pickupman-container" item md={12}>
+                        <div className="heading-row">
+                            <div className="city-heading">
+                                City Name
                             </div>
-                            <div className="body">
-                                <div className="cityList">
-                                    <ul>
-                                        {
-                                            cityWisePickupManData.map((cities, index) => {
-                                                return (
-                                                    <li
-                                                        key={index}
-                                                        onClick={() => onClickCityHandel(cities.cityName)}
-                                                        className={activeCity == cities.cityName ? "active" : ""}
-                                                    >
-                                                        {activeCity == cities.cityName ? <EditIcon /> : ""}
-                                                        {cities.cityName}
-                                                    </li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                                <div className="pickupManList">
-                                    <ul>
-                                        {
-                                            pickupManList.length > 0 ? 
-                                            (
-                                                pickupManList.map((pickupMan, index) => {
-                                                    return (
-                                                        <li
-                                                            key={index}
-                                                            onClick={() => setActivePickupMan(pickupMan.name)}
-                                                            className={activePickupMan == pickupMan.name ? "active" : ""}
-                                                        >
-                                                            {pickupMan.name} | {pickupMan.mobile}
-                                                        </li>
-                                                    )
-                                                })
-                                            ) : 
-                                            (
-                                                <li>Pickup Man Not Available</li>
-                                            )
-                                        }
-                                    </ul>
-                                </div>
+                            <div className="pickupman-heading">
+                                Pickup Man
                             </div>
+                        </div>
+                        <div className="pickupman-list">
+                            {
+                                cityWisePickupManData.map((cities, index) => {
+                                    return (
+                                        <div className="data-row">
+                                            <div className="city-col">
+                                                <EditIcon /> {cities.cityName}
+                                            </div>
+                                            <div className="pickupman-col">
+                                                <DropDown
+                                                    width={"100%"}
+                                                    label={""}
+                                                    field={""}
+                                                    data={[...new Set(cities.pickupMan.map((el) => (el.name + " | " + el.mobile)))]}
+                                                    searchPlaceholder={"Search Code"}
+                                                    id="cmbPickupManBS"
+                                                    defaultValue={""}
+                                                    handelItemSelect={(value) => handelPickupManSelect(value,cities.cityName)}
+                                                />
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </Grid>
                     <Grid className="busSchAction" item xs={12}>

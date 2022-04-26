@@ -8,6 +8,7 @@ function Modal(props) {
     e.stopPropagation()
     props.updateModal(false)
   }
+
   return (
     <div className="model--wrapper" onClick={(e) => closeModal(e)}>
       <div
@@ -17,7 +18,7 @@ function Modal(props) {
         }}
       >
         <div className="model--header">
-          <h2>{props.headTxt}</h2>
+          <h2>{props.modalTitle}</h2>
           <div style={{ cursor: 'pointer' }} onClick={(e) => closeModal(e)}>
             {' '}
             <IconButton sx={{ color: "#ffffff" }}>

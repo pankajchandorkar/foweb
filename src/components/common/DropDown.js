@@ -213,31 +213,37 @@ const DropDown = ({
                                 <div className="not--found">No results found</div>
                             )
                         ) : (
-                            list.map((el) => (
-                                <div
-                                    key={el}
-                                    className={`drop--item ${el === selectedItem ? "selected" : ""
-                                        }`}
-                                    onClick={(e) => handleDropItem(e, el)}
-                                >
+
+                            list.length > 0 ? (
+                                list.map((el) => (
                                     <div
-                                        className={`search--checkbox ${el === selectedItem ? "checked" : ""
+                                        key={el}
+                                        className={`drop--item ${el === selectedItem ? "selected" : ""
                                             }`}
+                                        onClick={(e) => handleDropItem(e, el)}
                                     >
-                                        {el === selectedItem && (
-                                            <span className="check">
-                                                <FontAwesomeIcon icon={faCheck} color={"#fff"} />
-                                            </span>
-                                        )}
+                                        <div
+                                            className={`search--checkbox ${el === selectedItem ? "checked" : ""
+                                                }`}
+                                        >
+                                            {el === selectedItem && (
+                                                <span className="check">
+                                                    <FontAwesomeIcon icon={faCheck} color={"#fff"} />
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div>{el}</div>
                                     </div>
-                                    <div>{el}</div>
-                                </div>
-                            ))
+                                ))
+                         ) : (
+                                < div className="not--found">Data not present !</div>
+                            )
                         )}
-                    </div>
                 </div>
-            )}
-        </div>
+                </div>
+    )
+}
+        </div >
     );
 };
 

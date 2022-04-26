@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid } from '@material-ui/core';
 import DatePickerInput from "./common/DatePickerInput";
 import moment from 'moment';
@@ -7,6 +7,7 @@ import CalIcon from "./common/CalIcon";
 import Modal from "./common/Modal";
 import CityWisePickupMan from "./CityWisePickupMan";
 import DropDown from "./common/DropDown";
+import { StaticDatePicker } from '@mui/lab';
 
 function BusSchedule(props) {
 
@@ -81,34 +82,47 @@ function BusSchedule(props) {
 
     const [showModal, setShowModal] = useState(false);
 
-    //for dates value
+    //date option
+    const [dateOption, setDateOption] = useState();
+
+    //from date
     const [busSchFrDate, setBusSchFrDate] = useState(moment(new Date()));
+    const [busSchFrDtFocused, setBusSchFrDtFocused] = useState(false);
+
+    //to date
     const [busSchToDate, setBusSchToDate] = useState(moment(new Date()));
+    const [busSchToDtFocused, setBusSchToDtFocused] = useState(false);
+
+    //selected date
+    const [busSchSelectDate, setBusSchSelectDate] = useState(moment(new Date()));
+    const [busSchSelectDtFocused, setBusSchSelectDtFocused] = useState(false);
+
+    //master bus no
     const [masterBusNumber, setMasterBusNumber] = useState("");
+
+    //bus no
     const [busNumber, setBusNumber] = useState("");
 
+    //driver row
     const [cmbDriverBS, setCmbDriverBS] = useState("");
     const [cmbDriverNumberBS, setCmbDriverNumberBS] = useState("");
     const [cmbDriverCodeBS, setCmbDriverCodeBS] = useState("");
 
+    //conductor row
     const [cmbConductorBS, setCmbConductorBS] = useState("");
     const [cmbConductorNumberBS, setCmbConductorNumberBS] = useState("");
     const [cmbConductorCodeBS, setCmbConductorCodeBS] = useState("");
 
+    //dirver 2 row
     const [cmbDriver2BS, setCmbDriver2BS] = useState("");
     const [cmbDriverNumber2BS, setCmbDriverNumber2BS] = useState("");
     const [cmbDriver2CodeBS, setCmbDriver2CodeBS] = useState("");
 
+    //pickup man
     const [cmbPickupManBS, setCmbPickupManBS] = useState("");
 
-
-    //for dates focused value
-    const [busSchFrDtFocused, setBusSchFrDtFocused] = useState(false);
-    const [busSchToDtFocused, setBusSchToDtFocused] = useState(false);
-
-    //for dates disabled
-    const [busSchFrDtDisabled, setBusSchFrDtDisabled] = useState(true);
-    const [busSchToDtDisabled, setBusSchToDtDisabled] = useState(true);
+    //bus info sms
+    const [busInfoSms, setBusInfoSms] = useState(false);
 
     //this function is used for set modal show/hide status
     const updateModal = (param) => {
@@ -146,7 +160,6 @@ function BusSchedule(props) {
                 setCmbDriver2CodeBS(searchData[0].code);
             }
         }
-
     }
 
     const updateDriverNo = (n, val) => {
@@ -161,7 +174,6 @@ function BusSchedule(props) {
             }
         }
 
-
         if (n === 2) {
             let searchData = conductorOptions.filter((data) => {
                 return data.number === val
@@ -183,7 +195,6 @@ function BusSchedule(props) {
                 setCmbDriver2CodeBS(searchData[0].code);
             }
         }
-
     }
 
     const updateDriverCode = (n, val) => {
@@ -198,7 +209,6 @@ function BusSchedule(props) {
             }
         }
 
-        
         if (n === 2) {
             let searchData = conductorOptions.filter((data) => {
                 return data.code === val
@@ -209,7 +219,7 @@ function BusSchedule(props) {
                 setCmbConductorCodeBS(searchData[0].code);
             }
         }
-        
+
         if (n === 3) {
             let searchData = driverOptions.filter((data) => {
                 return data.code === val
@@ -220,6 +230,46 @@ function BusSchedule(props) {
                 setCmbDriver2CodeBS(searchData[0].code);
             }
         }
+    }
+
+    const onChangeDateOpt = (e) => {
+        setDateOption(e.target.value);
+        setBusSchFrDate(moment(new Date()));
+        setBusSchToDate(moment(new Date()));
+        setBusSchSelectDate(moment(new Date()));
+    }
+
+    const onChangeInfoSms = () => {
+        setBusInfoSms(!busInfoSms)
+    }
+
+    const saveBusSchedule = () => {
+
+        const busScheduleData = {
+            dateOption: dateOption,
+            fromChartDate: moment(busSchFrDate).format("YYYY-MM-DD"),
+            toChartDate: moment(busSchToDate).format("YYYY-MM-DD"),
+            selectedChartDate: moment(busSchSelectDate).format("YYYY-MM-DD"),
+            masterBusNo: masterBusNumber,
+            busNo: busNumber,
+            driverName: cmbDriverBS,
+            driverNo: cmbDriverNumberBS,
+            driverCode: cmbDriverCodeBS,
+            conductorName: cmbConductorBS,
+            conductorNo: cmbConductorNumberBS,
+            conductorCode: cmbConductorCodeBS,
+            driver2Name: cmbDriver2BS,
+            driver2No: cmbDriverNumber2BS,
+            driver2Code: cmbDriver2CodeBS,
+            pickupMan: cmbPickupManBS,
+            busInfoSms: busInfoSms,
+            smsType: "",
+        };
+
+        console.log(busScheduleData);
+
+
+        console.log(window.innerWidth);
 
     }
 
@@ -227,79 +277,86 @@ function BusSchedule(props) {
         <div className="busScheduleWrap">
             <Box sx={{ width: "100%", paddingLeft: "15px" }}>
                 <Grid container item spacing={2} md={12}>
-                    {/* 1st row */}
                     <Grid className="dateOption" item md={12}>
-                        <input className="dateopt" type="radio" name="dateopt" id="date_range" value="dateRange" />
+                        <input className="dateopt" type="radio" name="dateopt" id="date_range" value="dateRange" defaultChecked onChange={(e) => onChangeDateOpt(e)} />
                         <label htmlFor="date_range">Date Range</label>
-
-                        <input className="dateopt" type="radio" name="dateopt" id="alt_date" value="altDate" />
+                        <input className="dateopt" type="radio" name="dateopt" id="alt_date" value="altDate" onChange={(e) => onChangeDateOpt(e)} />
                         <label htmlFor="alt_date">Alternative Date</label>
-
-                        <input className="dateopt" type="radio" name="dateopt" id="selective_date" value="selectDate" />
+                        <input className="dateopt" type="radio" name="dateopt" id="selective_date" value="selectDate" onChange={(e) => onChangeDateOpt(e)} />
                         <label htmlFor="selective_date">Selective Date</label>
                     </Grid>
-                    {/* 2ndrow */}
-                    <Grid className="dateFrom" item xs={12} md={6}>
-                        <div className="input-group" >
-                            <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                <DatePickerInput
-                                    id="date_from"
-                                    selectedDate={busSchFrDate}
-                                    focused={busSchFrDtFocused}
-                                    disabled={busSchFrDtDisabled}
-                                    onDateChange={(date) => setBusSchFrDate(date)}
-                                    onFocusChange={(f) => setBusSchFrDtFocused(f)}
-                                    label=""
-                                    calIcon={false}
-                                    labelReq={false}
-                                    displayFormat="DD-MM-YYYY"
-                                />
-                            </Box>
-                            <span className="group-span"><CalIcon /></span>
-                        </div>
-                    </Grid>
-                    <Grid className="dateTo" item xs={12} md={6}>
-                        <div className="input-group" >
-                            <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                <DatePickerInput
-                                    id="date_to"
-                                    selectedDate={busSchToDate}
-                                    focused={busSchToDtFocused}
-                                    disabled={busSchToDtDisabled}
-                                    onDateChange={(date) => setBusSchToDate(date)}
-                                    onFocusChange={(f) => setBusSchToDtFocused(f)}
-                                    label=""
-                                    calIcon={false}
-                                    labelReq={false}
-                                    displayFormat="DD-MM-YYYY"
-                                />
-                            </Box>
-                            <span className="group-span"><CalIcon /></span></div>
-                    </Grid>
-                    {/* 3rd row */}
-                    <Grid className="trip" item xs={12} md={12}>
-                        <div className="input-group" >
-                            <span className="group-span">Trip</span>
-                            <input className="group-input" id="txtTripBS" name="txtTripBS" placeholder="Trip Name" disabled="disabled" autoComplete='off' value="Delhi - Lucknow - SRT-2X1(36) AC-Sleeper" />
-                        </div>
-                    </Grid>
-                    {/* 4th row */}
-                    <Grid className="tripDateTime" item xs={12} md={12}>
-                        <div className="input-group" >
-                            <span className="group-span">Trip Date / Time</span>
-                            <input className="group-input" id="txtdatetimeBS" name="txtdatetimeBS" placeholder="Trip Date / Time" disabled="disabled" autoComplete='off' value="15-Dec-2020 09:30 PM" />
-                        </div>
-                    </Grid>
-                    {/* 5th row */}
+                    {
+                        dateOption !== "selectDate" &&
+                        <>
+                            <Grid className="dateFrom" item xs={12} md={6}>
+                                <div className="input-group" >
+                                    <Box component="div" sx={{ width: "100%", position: "relative" }}>
+                                        <DatePickerInput
+                                            id="date_from"
+                                            selectedDate={busSchFrDate}
+                                            focused={busSchFrDtFocused}
+                                            onDateChange={(date) => setBusSchFrDate(date)}
+                                            onFocusChange={(f) => setBusSchFrDtFocused(f)}
+                                            label="From Chart Date"
+                                            labelReq={true}
+                                            calIcon={false}
+                                            displayFormat="YYYY-MM-DD"
+                                            noOfMonths={1}
+                                        />
+                                    </Box>
+                                    <span className="group-span"><CalIcon /></span>
+                                </div>
+                            </Grid>
+                            <Grid className="dateTo" item xs={12} md={6}>
+                                <div className="input-group" >
+                                    <Box component="div" sx={{ width: "100%", position: "relative" }}>
+                                        <DatePickerInput
+                                            id="date_to"
+                                            selectedDate={busSchToDate}
+                                            focused={busSchToDtFocused}
+                                            onDateChange={(date) => setBusSchToDate(date)}
+                                            onFocusChange={(f) => setBusSchToDtFocused(f)}
+                                            label="To Chart Date"
+                                            labelReq={true}
+                                            calIcon={false}
+                                            displayFormat="YYYY-MM-DD"
+                                            noOfMonths={1}
+                                        />
+                                    </Box>
+                                    <span className="group-span"><CalIcon /></span></div>
+                            </Grid>
+                        </>
+                    }
+                    {
+                        dateOption === "selectDate" &&
+                        <Grid className="dateSelect" item xs={12}>
+                            <div className="input-group" >
+                                <Box component="div" sx={{ width: "100%", position: "relative" }}>
+                                    <DatePickerInput
+                                        id="date_select"
+                                        selectedDate={busSchSelectDate}
+                                        focused={busSchSelectDtFocused}
+                                        onDateChange={(date) => setBusSchSelectDate(date)}
+                                        onFocusChange={(f) => setBusSchSelectDtFocused(f)}
+                                        label="Selected Chart Date"
+                                        labelReq={true}
+                                        calIcon={false}
+                                        displayFormat="YYYY-MM-DD"
+                                        noOfMonths={1}
+                                    />
+                                </Box>
+                                <span className="group-span"><CalIcon /></span></div>
+                        </Grid>
+                    }
                     <Grid className="busNum" item xs={12} md={6}>
                         <div className="input-group" >
-                            <span className="group-span">Master Bus Number</span>
+                            <span className="group-span">Master Bus No.</span>
                             <DropDown
                                 width={"100%"}
                                 label={""}
                                 field={""}
                                 data={[...new Set(masterBusNumOptions.map((el) => el.value))]}
-                                searchPlaceholder={"Search Bus Number"}
+                                searchPlaceholder={"Search Bus No."}
                                 id="cmbMstBusNumberBS"
                                 handelItemSelect={(value) => setMasterBusNumber(value)}
                                 defaultValue={masterBusNumber}
@@ -308,21 +365,19 @@ function BusSchedule(props) {
                     </Grid>
                     <Grid className="busNum" item xs={12} md={6}>
                         <div className="input-group" >
-                            <span className="group-span">Bus Number</span>
+                            <span className="group-span">Bus No.</span>
                             <DropDown
                                 width={"100%"}
                                 label={""}
                                 field={""}
                                 data={[...new Set(busNumOptions.map((el) => el.value))]}
-                                searchPlaceholder={"Search Bus Number"}
+                                searchPlaceholder={"Search Bus No."}
                                 id="cmbBusNumberBS"
                                 handelItemSelect={(value) => setBusNumber(value)}
                                 defaultValue={busNumber}
                             />
                         </div>
                     </Grid>
-
-                    {/* 6th row */}
                     <Grid className="driver" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Driver</span>
@@ -340,7 +395,6 @@ function BusSchedule(props) {
                     </Grid>
                     <Grid className="driver" item xs={12} md={3}>
                         <div className="input-group" >
-                            {/* Type Number To Search */}
                             <DropDown
                                 width={"100%"}
                                 label={""}
@@ -369,12 +423,6 @@ function BusSchedule(props) {
                             <span className="iconWrap"><LockIcon /></span>
                         </div>
                     </Grid>
-
-
-
-
-
-                    {/* 7th row */}
                     <Grid className="conductor" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Conductor</span>
@@ -420,8 +468,6 @@ function BusSchedule(props) {
                             <span className="iconWrap"><LockIcon /></span>
                         </div>
                     </Grid>
-
-                    {/* 8th row */}
                     <Grid className="driver" item xs={12} md={6}>
                         <div className="input-group" >
                             <span className="group-span">Driver 2</span>
@@ -467,9 +513,7 @@ function BusSchedule(props) {
                             <span className="iconWrap"><LockIcon /></span>
                         </div>
                     </Grid>
-
-                    {/* 9th row */}
-                    <Grid className="pickupMan" item xs={12} md={6}>
+                    <Grid className="pickupMan" item xs={12} md={8}>
                         <div className="input-group" >
                             <span className="group-span">Pickup Man</span>
                             <DropDown
@@ -484,44 +528,46 @@ function BusSchedule(props) {
                             />
                         </div>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                         <div className="cityWisePickupMan">
                             <span className="spn-action" onClick={() => { updateModal(true) }}>Select City Wise Pickup Man</span>
                             {
                                 showModal &&
-                                <Modal headTxt={"City-Wise Pickup Man Selection"} updateModal={updateModal}>
+                                <Modal modalTitle={"City-Wise Pickup Man Selection"} updateModal={updateModal}>
                                     <CityWisePickupMan updateModal={updateModal} />
                                 </Modal>
                             }
                         </div>
                     </Grid>
-
-                    {/* 10th row */}
                     <Grid className="busInfoSms" container item xs={12} md={12}>
                         <Grid item xs={12} md={2}>
                             <div className="chklbl-wrap">
-                                <input type="checkbox" id="infosms" className="infosms" />
+                                <input type="checkbox" id="infosms" className="infosms" value={busInfoSms} onChange={() => onChangeInfoSms()} />
                                 <label htmlFor="infosms">
                                     Bus Info SMS
                                 </label>
                             </div>
                         </Grid>
-                        <Grid item xs={12} md={10}>
-                            <div className="smsOptionWrap">
-                                <div className="smsOption">
-                                    <input type="radio" name="smsTmType" value="false" id="withottc" defaultChecked />
-                                    <label htmlFor="withottc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], PickupMan No:[PMN].</label>
+                        {
+                            busInfoSms &&
+                            <Grid item xs={12} md={10}>
+                                <div className="smsOptionWrap">
+                                    <div className="smsOption">
+                                        <input type="radio" name="smsTmType" value="false" id="withottc" defaultChecked />
+                                        <label htmlFor="withottc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], PickupMan No:[PMN].</label>
+                                    </div>
+                                    <div className="smsOption">
+                                        <input type="radio" name="smsTmType" value="true" id="withtc" />
+                                        <label htmlFor="withtc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], Bus Suffix:[SFX], PickupMan No:[PMN], Driver No: [DM].</label>
+                                    </div>
                                 </div>
-                                <div className="smsOption">
-                                    <input type="radio" name="smsTmType" value="true" id="withtc" />
-                                    <label htmlFor="withtc" className="lblSmsType">Booking PNR [PNR] Bus Info - Bus No:[BN], Bus Suffix:[SFX], PickupMan No:[PMN], Driver No: [DM].</label>
-                                </div>
-                            </div>
-                        </Grid>
+                            </Grid>
+
+                        }
+                        {busInfoSms}
                     </Grid>
-                    {/* 11th row */}
                     <Grid className="busSchAction" item md={12}>
-                        <button type="button" id="btnSaveBusSchedule" className="btnOrange mr">
+                        <button type="button" id="btnSaveBusSchedule" className="btnOrange mr" onClick={() => saveBusSchedule()}>
                             Save
                         </button>
                         <button type="button" id="btnCloseBusSchedule" className="btnOrangeOutline" onClick={() => props.updateModal(false)}>

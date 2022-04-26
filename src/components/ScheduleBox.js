@@ -110,7 +110,7 @@ function ScheduleBox(props) {
                         {
                             showModal &&
                             modalType === "busSchedule" &&
-                            <Modal headTxt={"Schedule Bus Crew for Delhi - Lucknow - SRT-2X1(36) AC-Sleeper on 15-Dec-2020 09:30 PM"} updateModal={updateModal}>
+                            <Modal modalTitle={"Schedule Bus Crew for Delhi - Lucknow - SRT-2X1(36) AC-Sleeper on 15-Dec-2020 09:30 PM"} updateModal={updateModal}>
                                 <BusSchedule updateModal={updateModal} />
                             </Modal>
                         }
@@ -120,7 +120,7 @@ function ScheduleBox(props) {
                         {
                             showModal &&
                             modalType === "tripSchedule" &&
-                            <Modal headTxt={"Trip Schedule | Service: Delhi - Lucknow - SRT-2X1(36) AC-Sleeper | Trip ID: 10943"} updateModal={updateModal}>
+                            <Modal modalTitle={"Trip Schedule | Service: Delhi - Lucknow - SRT-2X1(36) AC-Sleeper | Trip ID: 10943"} updateModal={updateModal}>
                                 <TripSchedule updateModal={updateModal} />
                             </Modal>
                         }
