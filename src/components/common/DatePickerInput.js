@@ -44,7 +44,7 @@ const DatePickerInput = (props) => {
                 }
                 hideKeyboardShortcutsPanel={true}
                 block={true}
-                numberOfMonths={props.noOfMonths!=""?props.noOfMonths:2}
+                numberOfMonths={props.noOfMonths!==""?props.noOfMonths:2}
                 noBorder={true}
                 displayFormat={props.displayFormat !== "" ? props.displayFormat : "DD MMM YYYY"}
                 placeholder="Choose Date"

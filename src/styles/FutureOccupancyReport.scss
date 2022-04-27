@@ -136,6 +136,15 @@
   & .btmInputWrap {
     margin-top: 12px;
     font-size: 0.9rem;
+    & .rmdp-container {
+      & .rmdp-input {
+        padding: 8px 26px 8px;
+        border-radius: 4px;
+      }
+    }
+    & .rmdp-week {
+      font-weight: 600;
+    }
   }
 
   & .btn-orange {
@@ -339,7 +348,7 @@
   letter-spacing: 0.01rem;
 
   & .chartDate {
-    & .DateInput_input {
+    & .rmdp-input {
       border-radius: 0;
       padding: 9px 10px 9px;
     }
@@ -360,7 +369,7 @@
 
   & .startDate,
   & .endDate {
-    & .DateInput_input {
+    & .rmdp-input {
       border-radius: 0 4px 4px 0;
       padding: 9px 10px 9px;
     }
@@ -760,6 +769,10 @@
       }
     }
   }
+
+  & .rmdp-week {
+    font-weight: 600;
+  }
 } //.tripScheduleWrap end
 
 //bus schedule form
@@ -911,7 +924,8 @@
   }
 
   .cityWisePickupMan {
-    padding: 11px 10px;
+    text-align: center;
+    padding: 12px 10px;
     border-radius: 4px;
     background: #e5f6fd;
     text-decoration: underline;
@@ -1016,126 +1030,6 @@
     }
   }
 
-  //.cityWisePickupManContainer {
-  //border: solid 1px #eeeeee;
-  //box-shadow: 0px 2px 3px #ccc;
-
-  // & .header {
-  //   background: #def2fb;
-  //   color: #010000;
-  //   display: flex;
-  //   align-items: center;
-  //   width: 100%;
-
-  //   & .city {
-  //     width: 30%;
-  //     border-right: solid 1px #c8c7cf;
-  //     padding: 7px 7px 7px 10px;
-  //   }
-
-  //   & .pickup-man {
-  //     width: 70%;
-  //     padding: 7px 7px 7px 10px;
-  //   }
-  // } // .header
-
-  // & .body {
-  //   width: 100%;
-  //   //height: 130px;
-  //   overflow: auto;
-  //   display: flex;
-
-  //   & .cityList {
-  //     width: 30%;
-  //     // border-right: solid 1px #c8c7cf;
-  //   }
-
-  //   & .pickupManList {
-  //     width: 64%;
-  //     height: 202px;
-  //     overflow: auto;
-  //     margin-right: 5px;
-  //     position: absolute;
-  //     right: 24px;
-  //     border-left: solid 1px #c8c7cf;
-  //   }
-
-  //   & ul {
-  //     list-style: none;
-  //     width: 100%;
-  //     height: 200px;
-  //   }
-
-  //   & li {
-  //     padding: 7px 7px 7px 25px;
-  //     font-size: 11px;
-  //     font-weight: 400;
-
-  //     position: relative;
-
-  //     & .input-icon {
-  //       top: 9px;
-  //       left: 5px;
-  //     }
-  //   }
-
-  //   & li:nth-child(odd) {
-  //     background: #ffffff;
-  //   }
-
-  //   & li:nth-child(even) {
-  //     background: #f7fcff;
-  //   }
-
-  //   & li.active {
-  //     color: #0087fb;
-  //     & svg {
-  //       fill: #0087fb;
-  //     }
-  //   }
-
-  //   /* width */
-  //   ::-webkit-scrollbar {
-  //     width: 5px;
-  //   }
-
-  //   /* Track */
-  //   ::-webkit-scrollbar-track {
-  //     background: #ffffff;
-  //   }
-
-  //   /* Handle */
-  //   ::-webkit-scrollbar-thumb {
-  //     background: #c6cacb;
-  //   }
-
-  //   /* Handle on hover */
-  //   ::-webkit-scrollbar-thumb:hover {
-  //     background: #8f9394;
-  //   }
-  // }
-
-  // /* width */
-  // ::-webkit-scrollbar {
-  //   width: 10px;
-  // }
-
-  // /* Track */
-  // ::-webkit-scrollbar-track {
-  //   background: #def2fb;
-  // }
-
-  // /* Handle */
-  // ::-webkit-scrollbar-thumb {
-  //   background: #9aa9b0;
-  // }
-
-  // /* Handle on hover */
-  // ::-webkit-scrollbar-thumb:hover {
-  //   background: #85909a;
-  // }
-  //}
-
   & .pickupman-container {
     border: solid 1px #eeeeee;
     box-shadow: 0px 2px 3px #ccc;
@@ -1150,7 +1044,7 @@
         background: #def2fb;
         color: #010000;
         padding: 7px 7px 7px 10px;
-        border-right: solid 1px #c8c7cf;
+        //border-right: solid 1px #c8c7cf;
         width: 30%;
       }
 
@@ -1175,8 +1069,7 @@
         & .city-col {
           background: #ffffff;
           padding: 13px 7px 14px 23px;
-          border-right: solid 1px #c8c7cf;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 400;
           position: relative;
           width: 30%;
@@ -1192,7 +1085,7 @@
           font-size: 11px;
           font-weight: 400;
           width: 70%;
-          padding: 2px 5px 2px 5px;
+          padding: 3px 5px 3px 5px;
         }
 
         &:hover {
@@ -1208,22 +1101,23 @@
         }
       }
 
-      & .data-row:nth-child(even) {
+      & .data-row:nth-child(odd) {
         & .city-col,
         & .pickupman-col {
           background: #ffffff;
         }
       }
 
-      & .data-row:nth-child(odd) {
+      & .data-row:nth-child(even) {
         & .city-col,
         & .pickupman-col {
-          background: #f7fcff;
+          background: #edf7f9;
         }
       }
 
       & .dropdown--wrapper .inp--field {
         height: 35px;
+        font-size: 12px;
       }
 
       & .dropdown--wrapper .drop--wrapper {

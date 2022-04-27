@@ -3,23 +3,18 @@ import { Box, Grid } from '@material-ui/core';
 import { Typography, Divider, TextField, InputAdornment, Button } from '@mui/material';
 import SearchIcon from "@material-ui/icons/Search";
 import BusIcon from "./common/BusIcon";
-import DatePickerInput from "./common/DatePickerInput";
-import AutoCompleteInput from "./common/AutoCompleteInput";
 import DropDown from "./common/DropDown";
-import CheckboxWithLabel from "./common/CheckboxWithLabel";
 import ProgressBar from "./common/ProgressBar";
-
-import moment from 'moment';
+import CalenderIcon from "./common/CalenderIcon";
 import ScheduleBox from "./ScheduleBox";
+import MultiDatePickerInput from "./common/MultiDatePickerInput";
 
 import '../styles/FutureOccupancyReport.scss';
 
 function FutureOccupancyReport() {
 
-  const [fromDate, setFromDate] = useState(moment(new Date()));
-  const [toDate, setToDate] = useState(moment(new Date(), "DD-MM-YYYY").add(3, 'days'));
-  const [frDtFocused, setFrDtFocused] = useState(false);
-  const [toDtFocused, setToDtFocused] = useState(false);
+  const [fromDate, setFromDate] = useState(new Date());
+  const [toDate, setToDate] = useState(new Date());
   const [activeTrip, setActiveTrip] = useState("");
   const [reportData, setReportData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -265,7 +260,7 @@ function FutureOccupancyReport() {
                   <input type="checkbox" />
                   <label>Inactive Trips</label>
                 </div>
-              
+
               </Box>
             </Grid>
           </Grid>
@@ -273,27 +268,27 @@ function FutureOccupancyReport() {
           <Grid container spacing={1} className="btmInputWrap">
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                <DatePickerInput
+                <CalenderIcon/>
+                <MultiDatePickerInput
                   id="fromDate"
-                  selectedDate={fromDate}
-                  onDateChange={(date) => setFromDate(date)}
-                  onFocusChange={(f) => setFrDtFocused(f)}
-                  focused={frDtFocused}
+                  labelReq={true}
                   label="From Chart Date"
-                  displayFormat="DD MMM YYYY"
+                  onDateChange={(date) => setFromDate(date)}
+                  selectedDate={fromDate}
+                  closeWrapper={false}
                 />
               </Box>
             </Grid>
             <Grid container item md={2} sm={3}>
               <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                <DatePickerInput
+              <CalenderIcon/>
+                <MultiDatePickerInput
                   id="toDate"
-                  selectedDate={toDate}
-                  onDateChange={(date) => setToDate(date)}
-                  onFocusChange={(f) => setToDtFocused(f)}
-                  focused={toDtFocused}
+                  labelReq={true}
                   label="To Chart Date"
-                  displayFormat="DD MMM YYYY"
+                  onDateChange={(date) => setToDate(date)}
+                  selectedDate={toDate}
+                  closeWrapper={false}
                 />
               </Box>
             </Grid>

@@ -1,0 +1,69 @@
+.rmdp-container {
+  width: 100%;
+  .rmdp-input {
+    padding: 8px 10px 8px;
+    border-radius: 4px 0px 0px 4px;
+    width: 100%;
+    margin: 0;
+    height: 38px;
+
+    &:focus {
+      border: solid 2px #0086ff;
+    }
+
+    &:hover {
+      border: solid 1px #212121;
+    }
+  }
+}
+
+.outsideCloseHandel {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  position: fixed;
+  opacity: 0.1;
+  height: 100%;
+  z-index: 1;
+}
+
+.DatePickerLabel {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.4375em;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  pointer-events: none;
+  background: #ffffff;
+  padding: 0 5px;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.DatePickerLabel_Focused {
+  left: 10px;
+  top: -7px;
+  color: #0086ff;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: text;
+}
+
+.DatePickerLabel_Filled {
+  left: 10px;
+  top: -7px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: text;
+}
+
+.rmdp-day.rmdp-deactive,
+.rmdp-day.rmdp-disabled {
+  font-weight: 400;
+}

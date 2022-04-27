@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { Box, Grid } from '@material-ui/core';
-import DatePickerInput from "./common/DatePickerInput";
-import moment from 'moment';
 import LockIcon from "./common/LockIcon";
 import CalIcon from "./common/CalIcon";
 import Modal from "./common/Modal";
 import CityWisePickupMan from "./CityWisePickupMan";
 import DropDown from "./common/DropDown";
-import { StaticDatePicker } from '@mui/lab';
+import MultiDatePickerInput from "./common/MultiDatePickerInput";
+
 
 function BusSchedule(props) {
 
@@ -86,16 +85,13 @@ function BusSchedule(props) {
     const [dateOption, setDateOption] = useState();
 
     //from date
-    const [busSchFrDate, setBusSchFrDate] = useState(moment(new Date()));
-    const [busSchFrDtFocused, setBusSchFrDtFocused] = useState(false);
+    const [busSchFrDate, setBusSchFrDate] = useState(new Date());
 
     //to date
-    const [busSchToDate, setBusSchToDate] = useState(moment(new Date()));
-    const [busSchToDtFocused, setBusSchToDtFocused] = useState(false);
+    const [busSchToDate, setBusSchToDate] = useState(new Date());
 
     //selected date
-    const [busSchSelectDate, setBusSchSelectDate] = useState(moment(new Date()));
-    const [busSchSelectDtFocused, setBusSchSelectDtFocused] = useState(false);
+    const [busSchSelectDate, setBusSchSelectDate] = useState(new Date());
 
     //master bus no
     const [masterBusNumber, setMasterBusNumber] = useState("");
@@ -234,9 +230,9 @@ function BusSchedule(props) {
 
     const onChangeDateOpt = (e) => {
         setDateOption(e.target.value);
-        setBusSchFrDate(moment(new Date()));
-        setBusSchToDate(moment(new Date()));
-        setBusSchSelectDate(moment(new Date()));
+        setBusSchFrDate(new Date());
+        setBusSchToDate(new Date());
+        setBusSchSelectDate(new Date());
     }
 
     const onChangeInfoSms = () => {
@@ -247,9 +243,9 @@ function BusSchedule(props) {
 
         const busScheduleData = {
             dateOption: dateOption,
-            fromChartDate: moment(busSchFrDate).format("YYYY-MM-DD"),
-            toChartDate: moment(busSchToDate).format("YYYY-MM-DD"),
-            selectedChartDate: moment(busSchSelectDate).format("YYYY-MM-DD"),
+            fromChartDate: busSchFrDate,
+            toChartDate: busSchToDate,
+            selectedChartDate: busSchSelectDate,
             masterBusNo: masterBusNumber,
             busNo: busNumber,
             driverName: cmbDriverBS,
@@ -267,8 +263,6 @@ function BusSchedule(props) {
         };
 
         console.log(busScheduleData);
-
-
         console.log(window.innerWidth);
 
     }
@@ -291,17 +285,12 @@ function BusSchedule(props) {
                             <Grid className="dateFrom" item xs={12} md={6}>
                                 <div className="input-group" >
                                     <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                        <DatePickerInput
+                                        <MultiDatePickerInput
                                             id="date_from"
-                                            selectedDate={busSchFrDate}
-                                            focused={busSchFrDtFocused}
-                                            onDateChange={(date) => setBusSchFrDate(date)}
-                                            onFocusChange={(f) => setBusSchFrDtFocused(f)}
-                                            label="From Chart Date"
                                             labelReq={true}
-                                            calIcon={false}
-                                            displayFormat="YYYY-MM-DD"
-                                            noOfMonths={1}
+                                            label="From Chart Date"
+                                            onDateChange={(date) => setBusSchFrDate(date)}
+                                            selectedDate={busSchFrDate}
                                         />
                                     </Box>
                                     <span className="group-span"><CalIcon /></span>
@@ -310,39 +299,32 @@ function BusSchedule(props) {
                             <Grid className="dateTo" item xs={12} md={6}>
                                 <div className="input-group" >
                                     <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                        <DatePickerInput
+                                        <MultiDatePickerInput
                                             id="date_to"
-                                            selectedDate={busSchToDate}
-                                            focused={busSchToDtFocused}
-                                            onDateChange={(date) => setBusSchToDate(date)}
-                                            onFocusChange={(f) => setBusSchToDtFocused(f)}
-                                            label="To Chart Date"
                                             labelReq={true}
-                                            calIcon={false}
-                                            displayFormat="YYYY-MM-DD"
-                                            noOfMonths={1}
+                                            label="To Chart Date"
+                                            onDateChange={(date) => setBusSchToDate(date)}
+                                            selectedDate={busSchToDate}
                                         />
                                     </Box>
                                     <span className="group-span"><CalIcon /></span></div>
                             </Grid>
                         </>
                     }
+                    <></>
                     {
-                        dateOption === "selectDate" &&
+                        dateOption === "selectDate"
+                        &&
                         <Grid className="dateSelect" item xs={12}>
                             <div className="input-group" >
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                    <DatePickerInput
+                                    <MultiDatePickerInput
                                         id="date_select"
-                                        selectedDate={busSchSelectDate}
-                                        focused={busSchSelectDtFocused}
-                                        onDateChange={(date) => setBusSchSelectDate(date)}
-                                        onFocusChange={(f) => setBusSchSelectDtFocused(f)}
-                                        label="Selected Chart Date"
                                         labelReq={true}
-                                        calIcon={false}
-                                        displayFormat="YYYY-MM-DD"
-                                        noOfMonths={1}
+                                        label="Selected Chart Date"
+                                        multiple={true}
+                                        onDateChange={(date) => setBusSchSelectDate(date)}
+                                        selectedDate={busSchSelectDate}
                                     />
                                 </Box>
                                 <span className="group-span"><CalIcon /></span></div>
@@ -513,7 +495,7 @@ function BusSchedule(props) {
                             <span className="iconWrap"><LockIcon /></span>
                         </div>
                     </Grid>
-                    <Grid className="pickupMan" item xs={12} md={8}>
+                    <Grid className="pickupMan" item xs={12} md={9}>
                         <div className="input-group" >
                             <span className="group-span">Pickup Man</span>
                             <DropDown
@@ -528,9 +510,9 @@ function BusSchedule(props) {
                             />
                         </div>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={3}>
                         <div className="cityWisePickupMan">
-                            <span className="spn-action" onClick={() => { updateModal(true) }}>Select City Wise Pickup Man</span>
+                            <span className="spn-action" onClick={() => { updateModal(true) }}>City Wise Pickup Man</span>
                             {
                                 showModal &&
                                 <Modal modalTitle={"City-Wise Pickup Man Selection"} updateModal={updateModal}>

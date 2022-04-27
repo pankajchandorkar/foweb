@@ -3,21 +3,16 @@ import AminitiesSlider from "./AminitiesSlider";
 import { TextField } from '@mui/material';
 import { makeStyles } from "@material-ui/styles";
 import { Box, Grid } from '@material-ui/core';
-import DatePickerInput from "./common/DatePickerInput";
 import DropDown from "./common/DropDown";
-import moment from 'moment';
+import MultiDatePickerInput from "./common/MultiDatePickerInput";
 
 const TripSchedule = (props) => {
 
-    const [tripSchDate, setTripSchDate] = useState(moment(new Date()));
-    const [tripSchStartDate, setTripSchStartDate] = useState(moment(new Date()));
-    const [tripSchEndDate, setTripSchEndDate] = useState(moment(new Date()));
+    const [tripSchDate, setTripSchDate] = useState(new Date());
+    const [tripSchStartDate, setTripSchStartDate] = useState(new Date());
+    const [tripSchEndDate, setTripSchEndDate] = useState(new Date());
+  
 
-    const [tripSchDtFocused, setTripSchDtFocused] = useState(false);
-    const [tripSchStartDtFocused, setTripSchStartDtFocused] = useState(false);
-    const [tripSchEndDtFocused, setTripSchEndDtFocused] = useState(false);
-
-   
     const [tripSchTimeHr, setTripSchTimeHr] = useState("01");
     const [tripSchTimeMin, setTripSchTimeMin] = useState("01");
     const [tripSchTimeHrForm, setTripSchTimeHrForm] = useState("AM");
@@ -41,14 +36,14 @@ const TripSchedule = (props) => {
     ];
 
     const tsTimeHrOptions = [];
-    for (var i = 1; i <= 12; i++) {
-        i = i < 10 ? "0" + i : ""+i;
+    for (let i = 1; i <= 12; i++) {
+        i = i < 10 ? "0" + i : "" + i;
         tsTimeHrOptions.push({ value: i });
     }
 
     const tsTimeMinOptions = [];
-    for (var i = 0; i < 60; i++) {
-        i = i < 10 ? "0" + i : ""+i;
+    for (let i = 0; i < 60; i++) {
+        i = i < 10 ? "0" + i : "" + i;
         tsTimeMinOptions.push({ value: i });
     }
 
@@ -97,16 +92,12 @@ const TripSchedule = (props) => {
                             <div className="input-group">
                                 <span className="group-span">Chart Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                    <DatePickerInput
+                                    <MultiDatePickerInput
                                         id="tripSchDate"
-                                        selectedDate={tripSchDate}
-                                        onDateChange={(date) => setTripSchDate(date)}
-                                        onFocusChange={(f) => setTripSchDtFocused(f)}
-                                        focused={tripSchDtFocused}
-                                        label=""
-                                        calIcon={false}
                                         labelReq={false}
-                                        displayFormat="DD/MM/YYYY"
+                                        label=""
+                                        onDateChange={(date) => setTripSchDate(date)}
+                                        selectedDate={tripSchDate}
                                     />
                                 </Box>
                                 <button className="group-button">Load</button>
@@ -116,16 +107,12 @@ const TripSchedule = (props) => {
                             <div className="input-group" >
                                 <span className="group-span">Start Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                    <DatePickerInput
+                                    <MultiDatePickerInput
                                         id="tripSchStartDate"
-                                        selectedDate={tripSchStartDate}
-                                        onDateChange={(date) => setTripSchStartDate(date)}
-                                        onFocusChange={(f) => setTripSchStartDtFocused(f)}
-                                        focused={tripSchStartDtFocused}
-                                        label=""
-                                        calIcon={false}
                                         labelReq={false}
-                                        displayFormat="DD/MM/YYYY"
+                                        label=""
+                                        onDateChange={(date) => setTripSchStartDate(date)}
+                                        selectedDate={tripSchStartDate}
                                     />
                                 </Box>
                             </div>
@@ -134,16 +121,12 @@ const TripSchedule = (props) => {
                             <div className="input-group">
                                 <span className="group-span">End Date</span>
                                 <Box component="div" sx={{ width: "100%", position: "relative" }}>
-                                    <DatePickerInput
+                                    <MultiDatePickerInput
                                         id="tripSchEndDate"
-                                        selectedDate={tripSchEndDate}
-                                        onDateChange={(date) => setTripSchEndDate(date)}
-                                        onFocusChange={(f) => setTripSchEndDtFocused(f)}
-                                        focused={tripSchEndDtFocused}
-                                        label=""
-                                        calIcon={false}
                                         labelReq={false}
-                                        displayFormat="DD/MM/YYYY"
+                                        label=""
+                                        onDateChange={(date) => setTripSchEndDate(date)}
+                                        selectedDate={tripSchEndDate}
                                     />
                                 </Box>
                             </div>
@@ -268,7 +251,7 @@ const TripSchedule = (props) => {
                                     Allow Online SeatEdit
                                 </label>
                             </div>
-                            </Grid>
+                        </Grid>
                         <Grid className="tripScheCovidDropDown" item xs={12} md={3} >
                             <hr className="hrline" />
                             <div className="select-wrap">

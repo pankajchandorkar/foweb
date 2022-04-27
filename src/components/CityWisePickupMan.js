@@ -15,7 +15,8 @@ function CityWisePickupMan(props) {
                 { name: "Dharma", mobile: "9901851265" },
                 { name: "Dhondu", mobile: "9901851265" },
                 { name: "Durgesh", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Lonavala",
@@ -26,7 +27,8 @@ function CityWisePickupMan(props) {
                 { name: "Ishant", mobile: "9901851265" },
                 { name: "Kaka", mobile: "9901851265" },
                 { name: "Karim", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Thiruvanthapuram",
@@ -37,7 +39,8 @@ function CityWisePickupMan(props) {
                 { name: "Lall", mobile: "9901851265" },
                 { name: "Mahesh", mobile: "9901851265" },
                 { name: "Mukund", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Mumbai",
@@ -48,7 +51,8 @@ function CityWisePickupMan(props) {
                 { name: "Pramod", mobile: "9901851265" },
                 { name: "Prashant", mobile: "9901851265" },
                 { name: "Radheshyam", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Chennai",
@@ -59,7 +63,8 @@ function CityWisePickupMan(props) {
                 { name: "Ramesh kumar", mobile: "9901851265" },
                 { name: "Rounak", mobile: "9901851265" },
                 { name: "Shahid", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Bangalore",
@@ -70,7 +75,8 @@ function CityWisePickupMan(props) {
                 { name: "Tushar", mobile: "9901851265" },
                 { name: "Venkat", mobile: "9901851265" },
                 { name: "Vinod", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad",
@@ -81,7 +87,8 @@ function CityWisePickupMan(props) {
                 { name: "Yash", mobile: "9901851265" },
                 { name: "Mangal", mobile: "9901851265" },
                 { name: "Mangesh", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         }
         ,
         {
@@ -105,13 +112,15 @@ function CityWisePickupMan(props) {
                 { name: "PickupMan-16", mobile: "9901851265" },
                 { name: "PickupMan-17", mobile: "9901851265" },
                 { name: "PickupMan-18", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad2",
             pickupMan: [
 
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad3",
@@ -122,7 +131,8 @@ function CityWisePickupMan(props) {
                 { name: "Yash3", mobile: "9901851265" },
                 { name: "Mangal3", mobile: "9901851265" },
                 { name: "Mangesh3", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad4",
@@ -133,7 +143,8 @@ function CityWisePickupMan(props) {
                 { name: "Yash4", mobile: "9901851265" },
                 { name: "Mangal4", mobile: "9901851265" },
                 { name: "Mangesh4", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad5",
@@ -144,7 +155,8 @@ function CityWisePickupMan(props) {
                 { name: "Yash5", mobile: "9901851265" },
                 { name: "Mangal5", mobile: "9901851265" },
                 { name: "Mangesh5", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad6",
@@ -155,7 +167,8 @@ function CityWisePickupMan(props) {
                 { name: "Yash6", mobile: "9901851265" },
                 { name: "Mangal6", mobile: "9901851265" },
                 { name: "Mangesh6", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         },
         {
             cityName: "Hyderabad7",
@@ -166,13 +179,57 @@ function CityWisePickupMan(props) {
                 { name: "Yash7", mobile: "9901851265" },
                 { name: "Mangal7", mobile: "9901851265" },
                 { name: "Mangesh7", mobile: "9901851265" },
-            ]
+            ],
+            defaultValue: "",
         }
     ];
 
-    const handelPickupManSelect = (pickupman,city) => {
-        console.log(pickupman,city);
+    const [cityPickupMan, setCityPickupMan] = useState(cityWisePickupManData);
+
+    const [tempCwpm, setTempCwpm] = useState([]);
+
+    const handelPickupManSelect = (pickupman, city) => {
+        console.log("select pickuman for city");
+        console.log(pickupman, city);
+        var tempArr = [...tempCwpm];
+        tempArr = tempArr.filter((d) => {
+            return d.city !== city
+        });
+        tempArr.push({ city: city, pickupman: pickupman });
+        setTempCwpm(tempArr);
     }
+
+    const saveCityWisePickupMan = (e) => {
+        e.preventDefault();
+        localStorage.setItem('cityWisePickupMan', JSON.stringify(tempCwpm));
+    }
+
+    useEffect(() => {
+        var cwpmData = localStorage.getItem('cityWisePickupMan');
+        console.log(cwpmData);
+        console.log("page load");
+        if (cwpmData) {
+            cwpmData = JSON.parse(cwpmData);
+            var cwpmDataOld = cityPickupMan;
+
+            var newData = cwpmDataOld.map((oldData) => {
+                var filterObj = cwpmData.filter((d) => {
+                    return d.city === oldData.cityName;
+                });
+                if (filterObj.length > 0) {
+
+                    var tempArr = [...tempCwpm];
+                    tempArr.push({ city: filterObj[0].city, pickupman: filterObj[0].pickupman });
+                    setTempCwpm(tempArr);
+
+                    return { ...oldData, defaultValue: filterObj[0].pickupman }
+                } else {
+                    return { ...oldData }
+                }
+            });
+            setCityPickupMan(newData);
+        }
+    }, [])
 
     return (
         <div className="citywisePickupManWrap">
@@ -202,11 +259,12 @@ function CityWisePickupMan(props) {
                         </div>
                         <div className="pickupman-list">
                             {
-                                cityWisePickupManData.map((cities, index) => {
+                                cityPickupMan.map((cities, index) => {
                                     return (
-                                        <div className="data-row">
+                                        <div key={index} className="data-row">
                                             <div className="city-col">
-                                                <EditIcon /> {cities.cityName}
+                                                <EditIcon />
+                                                {cities.cityName}
                                             </div>
                                             <div className="pickupman-col">
                                                 <DropDown
@@ -214,10 +272,10 @@ function CityWisePickupMan(props) {
                                                     label={""}
                                                     field={""}
                                                     data={[...new Set(cities.pickupMan.map((el) => (el.name + " | " + el.mobile)))]}
-                                                    searchPlaceholder={"Search Code"}
+                                                    searchPlaceholder={"Search Pickup Man"}
                                                     id="cmbPickupManBS"
-                                                    defaultValue={""}
-                                                    handelItemSelect={(value) => handelPickupManSelect(value,cities.cityName)}
+                                                    defaultValue={cities.defaultValue}
+                                                    handelItemSelect={(value) => handelPickupManSelect(value, cities.cityName)}
                                                 />
                                             </div>
                                         </div>
@@ -227,7 +285,7 @@ function CityWisePickupMan(props) {
                         </div>
                     </Grid>
                     <Grid className="busSchAction" item xs={12}>
-                        <button type="button" id="btnSaveBusSchedule" className="btnOrange mr">
+                        <button type="button" id="btnSaveBusSchedule" className="btnOrange mr" onClick={(e) => saveCityWisePickupMan(e)}>
                             Save
                         </button>
                         <button type="button" id="btnCloseBusSchedule" className="btnOrangeOutline" onClick={() => props.updateModal(false)}>
